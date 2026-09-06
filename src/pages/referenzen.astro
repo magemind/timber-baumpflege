@@ -1,19 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { CONTACT, REFERENZEN } from '../config';
+import { CONTACT, EINSATZTYPEN } from '../config';
 ---
 
 <BaseLayout
-  title="Referenzen"
-  description="Dokumentierte TIMBER-Projekte: Sturmfällung in Blankenese, Kronensicherung in Ahrensburg, Riesenporling-Buche in Pinneberg, Käferfichten im Kreis Pinneberg."
+  title="Einsatztypen"
+  description="Vier typische Einsatzszenarien, die TIMBER regelmäßig bearbeitet: Sturmfällung in Hanglage, Kronensicherung an Kastanien, Rotbuche mit Riesenporling, Reihenfällung Käferfichten."
 >
 
   <section class="bg-forst-dark text-birke">
     <div class="container-site section-padding-sm">
-      <span class="eyebrow text-messing">Referenzen</span>
-      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Aus der Praxis.<br/><span class="text-messing italic font-normal">Dokumentierte Projekte.</span></h1>
+      <span class="eyebrow text-messing">Einsatztypen</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Was wir bearbeiten.<br/><span class="text-messing italic font-normal">Vier typische Fälle.</span></h1>
       <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
-        Vier ausgewählte Projekte aus den letzten zwei Jahren. Ohne Kundennamen (Datenschutz) — aber mit dem, was den Einsatz besonders macht.
+        Dies ist keine Kundenliste — sondern eine Typologie. Vier Fall-Muster, die im norddeutschen Baumbestand regelmäßig vorkommen und mit denen wir fachlich vertraut sind. Was Deine Situation angeht: ruf am besten kurz an, meist reicht ein Foto für eine erste Einschätzung.
       </p>
     </div>
   </section>
@@ -21,11 +21,10 @@ import { CONTACT, REFERENZEN } from '../config';
   <section class="section-padding">
     <div class="container-site">
       <div class="grid gap-10 md:grid-cols-2">
-        {REFERENZEN.map((r) => (
+        {EINSATZTYPEN.map((r) => (
           <article class="panel p-8">
-            <div class="flex items-baseline justify-between mb-4">
-              <span class="text-caption uppercase tracking-widest text-messing-dark">{r.location}</span>
-              <span class="text-caption text-rauch">{r.year}</span>
+            <div class="mb-4">
+              <span class="text-caption uppercase tracking-widest text-messing-dark">{r.kategorie}</span>
             </div>
             <h2 class="text-forst" style="font-size: 1.5rem;">{r.title}</h2>
             <p class="mt-5 text-body text-tinte/80 leading-relaxed">{r.short}</p>
@@ -34,9 +33,9 @@ import { CONTACT, REFERENZEN } from '../config';
       </div>
 
       <div class="mt-16 panel-dark text-center">
-        <span class="eyebrow text-messing">Referenz-Check</span>
-        <h2 class="mt-4 text-birke" style="font-size: 1.75rem;">Ähnlicher Fall bei Dir?</h2>
-        <p class="mt-4 text-body text-birke/70 max-w-xl mx-auto">Wenn Du einen Baum hast, der Dich an eines dieser Projekte erinnert — schick uns ein Foto. Meist reicht das für eine erste Einschätzung.</p>
+        <span class="eyebrow text-messing">Ähnlicher Fall?</span>
+        <h2 class="mt-4 text-birke" style="font-size: 1.75rem;">Schick uns ein Foto.</h2>
+        <p class="mt-4 text-body text-birke/70 max-w-xl mx-auto">Wenn Deine Baum-Situation an eines dieser Muster erinnert — ein Foto reicht meist, um Aufwand und ungefähre Kosten einzuschätzen.</p>
         <div class="mt-8 flex flex-wrap gap-4 justify-center">
           <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
           <a href="/kontakt/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Foto senden →</a>

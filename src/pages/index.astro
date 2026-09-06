@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE, CONTACT, OWNER, LEISTUNGEN, SATELLITEN, REFERENZEN } from '../config';
+import { SITE, CONTACT, OWNER, LEISTUNGEN, SATELLITEN, EINSATZTYPEN } from '../config';
 ---
 
 <BaseLayout title="Startseite" description={SITE.description}>
@@ -13,14 +13,14 @@ import { SITE, CONTACT, OWNER, LEISTUNGEN, SATELLITEN, REFERENZEN } from '../con
         <span class="eyebrow text-messing">Baumpflege & Baumdienst · Norddeutschland</span>
         <h1 class="mt-6 text-birke leading-[1.05]">Handwerk mit Höhe.<br/><span class="text-messing italic font-normal">Bäume, die bleiben.</span></h1>
         <p class="mt-8 text-body-lg text-birke/75 max-w-xl leading-relaxed">
-          TIMBER ist der Baumdienst von <strong class="text-birke">Jan Möller</strong> — Fachagrarwirt Baumpflege, SKT-B, seit über zehn Jahren in norddeutschen Kronen. Wir arbeiten dort, wo kein Kran hinkommt, und pflegen Bäume so, dass sie stehen bleiben können.
+          TIMBER ist ein Team aus <strong class="text-birke">zertifizierten Baumkletterern und Fachagrarwirten</strong> in Norddeutschland. Wir arbeiten dort, wo kein Kran hinkommt, und pflegen Bäume so, dass sie stehen bleiben können.
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
           <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
           <a href="/team/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Über TIMBER →</a>
         </div>
         <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-caption text-birke/60 uppercase tracking-widest">
-          <span>SKT-A/B zertifiziert</span>
+          <span>SKT-A/B im Team</span>
           <span>·</span>
           <span>ZTV-Baumpflege</span>
           <span>·</span>
@@ -45,8 +45,8 @@ import { SITE, CONTACT, OWNER, LEISTUNGEN, SATELLITEN, REFERENZEN } from '../con
           </div>
         </div>
         <div class="absolute -bottom-6 -left-6 bg-messing text-forst-dark px-5 py-3 font-display text-sm shadow-xl">
-          <div class="font-semibold">10+ Jahre</div>
-          <div class="text-caption opacity-80">in norddeutschen Kronen</div>
+          <div class="font-semibold">Zertifiziertes Team</div>
+          <div class="text-caption opacity-80">SKT-A/B · ZTV-Baumpflege</div>
         </div>
       </div>
     </div>
@@ -116,18 +116,17 @@ import { SITE, CONTACT, OWNER, LEISTUNGEN, SATELLITEN, REFERENZEN } from '../con
     <div class="container-site">
       <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
         <div>
-          <span class="eyebrow text-messing">Portfolio</span>
-          <h2 class="mt-4 text-birke">Aus der Praxis.</h2>
+          <span class="eyebrow text-messing">Was wir bearbeiten</span>
+          <h2 class="mt-4 text-birke">Typische Fälle.</h2>
         </div>
-        <a href="/referenzen/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Alle Projekte →</a>
+        <a href="/referenzen/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Alle Einsatztypen →</a>
       </div>
 
       <div class="grid gap-6 md:grid-cols-2">
-        {REFERENZEN.slice(0, 4).map((r) => (
+        {EINSATZTYPEN.slice(0, 4).map((r) => (
           <article class="border border-birke/10 p-8 hover:border-messing/40 transition-colors">
-            <div class="flex items-baseline justify-between mb-3">
-              <span class="text-caption uppercase tracking-widest text-messing">{r.location}</span>
-              <span class="text-caption text-birke/50">{r.year}</span>
+            <div class="mb-3">
+              <span class="text-caption uppercase tracking-widest text-messing">{r.kategorie}</span>
             </div>
             <h3 class="text-birke" style="font-size: 1.5rem;">{r.title}</h3>
             <p class="mt-4 text-birke/70 text-body-sm leading-relaxed">{r.short}</p>

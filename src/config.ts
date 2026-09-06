@@ -21,20 +21,22 @@ export const CONTACT = {
   geo: { lat: 53.7089, lng: 10.1928 },
 };
 
-// Owner-Persona (Presse, About)
+// Inhaber-Persona
 export const OWNER = {
   name: 'Jan Möller',
-  role: 'Inhaber · Fachagrarwirt Baumpflege · SKT-B',
-  bio: 'Über 10 Jahre in norddeutschen Kronen. Ausbildung im Forst, Weiterbildung zum Fachagrarwirt Baumpflege, SKT-A/B-Zertifizierung. Fokus auf schwierige Fällungen in engen Lagen und langfristige Baumpflege statt Kahlschlag.',
-  certificates: [
-    'Fachagrarwirt Baumpflege (LWK Niedersachsen)',
-    'SKT-A (Seilklettertechnik Grundstufe)',
-    'SKT-B (Seilklettertechnik Aufbaustufe)',
-    'Motorsägenlehrgang AS Baum I + II',
-    'Ersthelfer im Baum',
-    'Sachkunde Pflanzenschutz',
-  ],
+  role: 'Inhaber · SKT-A',
+  bio: 'Jan Möller führt TIMBER als Inhaber. Er hält die SKT-A-Zertifizierung (Seilklettertechnik Grundstufe) und arbeitet mit einem festen Kreis freier Fachpartner, die die weiteren Qualifikationen abdecken. Sein Fokus: schwierige Fällungen in engen Lagen und langfristige Baumpflege statt Kahlschlag.',
 };
+
+// Qualifikationen im Team (Inhaber + feste freie Fachpartner)
+export const TEAM_QUALIFIKATIONEN = [
+  'SKT-A (Seilklettertechnik Grundstufe)',
+  'SKT-B (Seilklettertechnik Aufbaustufe)',
+  'Fachagrarwirt Baumpflege',
+  'Motorsägenlehrgang AS Baum I + II',
+  'Ersthelfer im Baum',
+  'Sachkunde Pflanzenschutz',
+];
 
 // Alle Satelliten der TIMBER-Domain-Pyramide
 export const SATELLITEN = [
@@ -133,35 +135,32 @@ export const LEISTUNGEN = [
   },
 ];
 
-// Referenz-Projekte (Portfolio, nicht ortsgebunden)
-export const REFERENZEN = [
+// Typische Einsatz-Szenarien (KEINE realen Kundenprojekte -
+// abstrahierte Fall-Typen, die wir fachlich bearbeiten)
+export const EINSATZTYPEN = [
   {
-    slug: 'sturm-eiche-blankenese',
-    title: 'Sturm-Eiche über Treppenviertel-Haus',
-    location: 'Hamburg-Blankenese',
-    year: 2025,
-    short: 'Nach Orkan Zeynep hing eine 22-Meter-Stieleiche über dem Treppenviertel-Haus. Zugang nur über Treppen, kein Kranstellplatz. Seilklettertechnik, Stück für Stück abgelassen, keine Schäden am Bestand.',
+    slug: 'sturm-eiche-hanglage',
+    title: 'Sturm-Eiche über Wohnhaus in Hanglage',
+    kategorie: 'Sturmschaden · Seilklettertechnik',
+    short: 'Klassischer norddeutscher Sturmfall: 20-Meter-Stieleiche hängt nach Orkan über einem Haus. Kein Kranstellplatz, Zugang nur über schmale Treppen. Vorgehen: SKT-B-Kletterer, Zerlegung von oben, Segment-Ablass. Ohne Schaden am Bestand.',
   },
   {
-    slug: 'kastanien-allee-ahrensburg',
-    title: 'Kronensicherung Kastanien-Allee',
-    location: 'Ahrensburg-Schlossgebiet',
-    year: 2025,
-    short: 'Sieben Rosskastanien mit fortgeschrittener Miniermotten-Belastung und Astrissen. Statt Fällung: dynamische Kronensicherung (Cobra-System), Totholz raus, jährliche Nachkontrolle vereinbart.',
+    slug: 'kastanien-kronensicherung',
+    title: 'Kronensicherung an alten Kastanien',
+    kategorie: 'Baumpflege · Kronensicherung',
+    short: 'Rosskastanien mit Miniermotten-Belastung und Astrissen sind ein typisches norddeutsches Bild. Statt Fällung: dynamische Kronensicherung (Cobra- oder Boa-System), Totholzentnahme, planmäßige Nachkontrolle.',
   },
   {
-    slug: 'buche-pinneberg',
-    title: 'Rotbuche direkt am Wohnhaus',
-    location: 'Pinneberg-Waldenau',
-    year: 2024,
-    short: 'Rotbuche mit Riesenporling (Meripilus giganteus) am Wurzelanlauf, akute Bruchgefahr. Zerlegung von oben nach unten mit Seilklettertechnik, Fällung in engster Lage zwischen zwei Häusern.',
+    slug: 'buche-mit-porling',
+    title: 'Rotbuche mit Riesenporling nah am Haus',
+    kategorie: 'Fällung · Bruchgefahr',
+    short: 'Rotbuche mit Riesenporling am Wurzelanlauf ist ein Notfall — Bruchgefahr auch bei Windstille. Zerlegung von oben nach unten mit Seilklettertechnik, kontrollierte Fällung in engster Lage zwischen zwei Gebäuden.',
   },
   {
-    slug: 'ndr-park-fichten',
-    title: 'Fichtenbestand nach Trockenheit',
-    location: 'Kreis Pinneberg',
-    year: 2024,
-    short: 'Reihenfällung von 40 abgestorbenen Fichten in Feldrandlage. Käferbefall, keine Rettung möglich. Fällung, Aufarbeitung, Entsorgung im Paket.',
+    slug: 'kaeferfichten-reihenfaellung',
+    title: 'Käferbefallene Fichtenreihen',
+    kategorie: 'Reihenfällung · Aufarbeitung',
+    short: 'Nach mehreren Trockenjahren sterben Fichten flächig — Käfer, Absterben von oben, keine Rettung mehr möglich. Reihenfällung, Aufarbeitung, Entsorgung im Paket, Ersatzpflanzung als Empfehlung.',
   },
 ];
 
