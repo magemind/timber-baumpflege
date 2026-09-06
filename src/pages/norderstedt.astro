@@ -6,57 +6,155 @@ const stadt = STAEDTE.find((s) => s.slug === 'norderstedt')!;
 const schema = localBusinessSchema(stadt);
 
 const stadtteile = [
-  { name: 'Garstedt', kurz: 'Villen­lage, große Grundstücke, alte Buchen und Eichen.' },
-  { name: 'Harksheide', kurz: 'Einfamilien­haus-Gebiet, gemischter Bestand aus den 70ern.' },
-  { name: 'Friedrichsgabe', kurz: 'Randlage zum Himmelmoor, viele Birken und Kiefern.' },
-  { name: 'Glashütte', kurz: 'Neubaugebiete plus Alt­bestand, häufig Nadel­holz.' },
+  {
+    name: 'Garstedt',
+    kurz: 'Villen­lage, große Grundstücke, viele Altbuchen und Stiel­eichen aus der Vorkriegs­zeit.',
+    typisch: 'Rotbuchen mit Riesen­porling am Wurzel­anlauf, Eichen mit Zwiesel­rissen. Zugang meist über Vor­gärten, teils über Rasen­flächen — Bodenmatten sind Standard.',
+  },
+  {
+    name: 'Harksheide',
+    kurz: 'Einfamilien­haus-Gebiet aus den 60er–70er-Jahren, dichter gemischter Baumbestand.',
+    typisch: 'Birken, Ahorn, Rot­eichen, viele Nadel­gehölze in Reihen­haus-Hinter­höfen. Klassische Kletter­einsätze: kein Kran­stellplatz, Zerlegung von oben.',
+  },
+  {
+    name: 'Friedrichsgabe',
+    kurz: 'Randlage zum Himmelmoor, sandiger Boden, viel Birke, Kiefer, Erle.',
+    typisch: 'Alte Kiefern zeigen häufig einseitige Kronen durch Wind­exposition Richtung Moor. Erle im Moor­rand zeigt regel­mäßig Wurzel­fäule.',
+  },
+  {
+    name: 'Glashütte',
+    kurz: 'Neubau­gebiete gemischt mit älteren Beständen, Nadel­holz-Reihen der 80er.',
+    typisch: 'Fichten­reihen aus den 80ern sind vielfach borken­käfer­geschädigt — Reihen­fällung mit Aufarbeitung wird häufiger nachgefragt.',
+  },
+  {
+    name: 'Norderstedt-Mitte',
+    kurz: 'Rathaus-Umfeld, Gewerbe, Wohnblöcke — Fokus liegt auf Verkehrs­sicherungs­pflicht.',
+    typisch: 'Hausverwaltungen und Wohnungs­gesellschaften — hier läuft der Groß­teil unserer FLL-Regel­kontroll­rundgänge.',
+  },
+  {
+    name: 'Randlagen',
+    kurz: 'Übergang nach Henstedt-Ulzburg, Quickborn, Tangstedt — Land­straße, Alleen, Höfe.',
+    typisch: 'Alleebäume mit Verkehrs­sicherungs­pflicht, Hofbäume mit ökologischem Wert. Fällung nur, wo Erhalt nachweislich nicht mehr geht.',
+  },
 ];
 
-const leistungen = [
-  { titel: 'Fällung im Kreis Segeberg', punkte: ['Genehmigungs­fähigkeit prüfen (Norderstedt hat Baumschutz­satzung)', 'Seilkletter­technik in engen Reihenhaus-Gärten', 'MEWP/Kran wo Zufahrt möglich', 'Vollentsorgung Stamm bis Schnittgut'] },
-  { titel: 'Baumpflege privat', punkte: ['Kronen­pflege nach ZTV', 'Obstbaum­schnitt (Winter- und Sommer­schnitt)', 'Totholz­entfernung', 'Kronen­sicherung Cobra/Boa'] },
-  { titel: 'Für Verwaltungen & Kommunen', punkte: ['FLL-Baum­kontrolle', 'Kataster-Aufbau und -Pflege', 'Rahmen­vertrag für regel­mäßige Rundgänge', 'Gutachterliche Einschätzung bei Verdacht'] },
-  { titel: 'Sturm-Notdienst', punkte: ['24/7 erreichbar', 'Priorisierung nach Personen­gefährdung', 'Freischneiden von Zufahrten', 'Sicherung angerissener Kronen'] },
+const baumarten = [
+  {
+    art: 'Rotbuche',
+    context: 'Am häufigsten in Garstedt und den älteren Wohnstraßen. Rotbuchen reagieren spät auf Schäden — wenn sie es zeigen, ist es schon dringend. Riesen­porling am Wurzel­anlauf ist der klassische Notfall.',
+  },
+  {
+    art: 'Stiel- und Traubeneiche',
+    context: 'Robust, aber Zwiesel­bruch ist typisch. Kronen­sicherung mit Cobra/Boa ist oft die richtige Antwort — nicht die Fällung.',
+  },
+  {
+    art: 'Birke',
+    context: 'Kurzlebig (60–80 Jahre), häufig auf sandigem Boden Richtung Friedrichs­gabe. Am Ende der Lebens­spanne bricht sie plötzlich — regel­mäßige Sicht­kontrolle ist Pflicht.',
+  },
+  {
+    art: 'Fichte',
+    context: 'Borken­käfer nach drei Trocken­jahren hat viele Fichten­reihen in Glashütte und Umland erledigt. Reihen­fällung ist inzwischen häufiger als Einzel­einsatz.',
+  },
+  {
+    art: 'Kiefer',
+    context: 'Vor allem am Moor­rand. Wind­exposition führt zu einseitigen Kronen — Stand­sicherheit kippt langsam, aber unumkehrbar.',
+  },
+  {
+    art: 'Obstbäume',
+    context: 'Alte Apfel- und Zwetschen­bäume in Klein­gärten und Reihen­haus-Gärten. Fällung meist genehmigungs­frei, Schnitt im Winter oder direkt nach der Ernte.',
+  },
+];
+
+const faq = [
+  {
+    frage: 'Was kostet eine Baumfällung in Norderstedt konkret?',
+    antwort: 'Grobricht­werte: Ein 10–15 Meter hoher Baum, gut zugänglich, liegt netto zwischen 400 und 900 €. Ein 25-Meter-Baum in enger Reihen­haus-Innen­lage mit Kletter­einsatz und Segment-Ablass kann 2.000 bis 4.000 € kosten. Entscheidend sind fünf Faktoren: Höhe, Zugang (Kran/MEWP/Klettern), Entsorgungs­umfang, Genehmigungs­aufwand und Nachbar­schaft. Für eine erste Einschätzung nutze den Preisrechner — oder schick uns zwei Fotos plus Adresse per WhatsApp, wir schätzen kostenfrei zurück.',
+  },
+  {
+    frage: 'Brauche ich in Norderstedt eine Genehmigung zum Fällen?',
+    antwort: 'Ja, in den meisten Fällen. Die Baumschutz­satzung der Stadt Norderstedt schützt Laubbäume ab einem Stamm­umfang von 60 cm (gemessen in 1 m Höhe über dem Boden) sowie ausgewiesene Nadel­gehölze. Ausnahmen: Obstbäume (außer Walnuss und Esskastanie), Bäume in Klein­gärten unter bestimmten Bedingungen, akute Gefahr. Wir prüfen die Genehmigungs­fähigkeit vor Ort, stellen den Antrag beim Umwelt­amt und begleiten den Vorgang — inklusive Ersatz­pflanzungs-Vorschlag, falls verlangt.',
+  },
+  {
+    frage: 'Wie lange dauert das Genehmigungs­verfahren?',
+    antwort: 'Norderstedt bearbeitet Anträge in der Regel innerhalb von 4 bis 8 Wochen. In der Vegetations­ruhe (Oktober bis Februar) laufen die meisten Fällungen; Anträge im Sommer werden oft zurück­gestellt, weil Vogel­schutz greift (§ 39 BNatSchG: keine erheblichen Rückschnitte oder Fällungen vom 1. März bis 30. September, ausser bei Gefahr im Verzug oder mit Sonder­genehmigung). Plane also mit Vorlauf.',
+  },
+  {
+    frage: 'Sturm-Notdienst in Norderstedt — wie schnell seid ihr da?',
+    antwort: 'Standort­vorteil: Wir sind in Nahe (23866), rund 20 Minuten von Norderstedt entfernt. Bei akuter Personen­gefährdung (Baum aufs Wohnhaus, Baum blockiert Zufahrt zur Rettungs­wache) sind wir in der Regel innerhalb von zwei Stunden vor Ort — nach Kapazität. Personen­gefahr immer zuerst 112, danach uns. Für Sturm­schäden ohne akute Gefahr planen wir nach Priorität: Verkehrs­wege, Gebäude, Nachbarschafts­eingriffe zuerst.',
+  },
+  {
+    frage: 'Nur ein Baum — lohnt sich die Anfahrt?',
+    antwort: 'Ja. Wir haben keine Mindest­auftrags­größe. Für einen Sicherungs­schnitt an einer alten Apfel­sorte, einen einzelnen Obstbaum­schnitt im Winter oder eine schnelle Sicht­kontrolle nach einem Sturm kommen wir gern. Die Anfahrt nach Norderstedt ist Teil unseres Kern­einzugs­gebiets — da rechnet sich das für beide Seiten.',
+  },
+  {
+    frage: 'Kann ich einen Rahmen­vertrag für unsere Hausverwaltung abschließen?',
+    antwort: 'Ja — das ist ein Kern­angebot. Rahmen­vertrag umfasst: einmal jährliche FLL-Regel­kontrolle nach Baumkontroll­richtlinie, digitaler Kataster­aufbau (jeder Baum mit ID, Standort, Art, Alter, Zustand, Empfehlung), Fotodokumentation, Handlungs­priorität, jederzeit abrufbar. Im Haftungs­fall ist diese Dokumentation Dein wichtigster Nachweis — Verwalter, die keine dokumentierte Baum­kontrolle vorweisen können, haften bei Personen­schaden persönlich mit.',
+  },
+  {
+    frage: 'Was passiert mit dem Holz nach der Fällung?',
+    antwort: 'Standard­option ist Voll­entsorgung: Wir nehmen Stamm und Schnittgut mit. Wenn Du Kaminholz möchtest, lassen wir das Stamm­holz auf 33 cm oder 50 cm gesägt liegen — meist ist das kostenfrei bis kosten­neutral (das Holz behält Wert). Reines "Alles bleibt liegen" reduziert den Preis um rund 15–20 %, weil Entsorgung entfällt. Klären wir vor Angebots­abgabe.',
+  },
+  {
+    frage: 'Seid ihr versichert? Was passiert, wenn beim Fällen etwas kaputt geht?',
+    antwort: 'Ja, voll­versichert — Betriebs­haftpflicht mit Deckungs­summen für Personen-, Sach- und Vermögens­schäden. Vor jedem Einsatz besprechen wir kritische Punkte (Zaun­verlauf, Terrassen­platten, Nachbar­grund­stück, Auto­stellplätze). Bei Sturm­einsätzen mit unklarer Statik dokumentieren wir vorher mit Fotos. Passiert doch etwas — sofortige Meldung, Regulierung über die Haftpflicht ohne Umweg.',
+  },
 ];
 ---
 
 <BaseLayout
-  title="Baumpflege Norderstedt — Baumfällung, Kronensicherung, Sturmdienst"
-  description="Baumpflege und Baumfällung in Norderstedt. Seilklettertechnik SKT-A/B, ZTV-Baumpflege, Baumschutzsatzung, FLL-Kontrolle. Von Garstedt bis Glashütte, Kreis Segeberg. Sturm-Notdienst 24/7."
+  title="Baumpflege Norderstedt — Baumfällung, Kronensicherung, Sturm-Notdienst"
+  description="Baumpflege und Baumfällung in Norderstedt. Seilklettertechnik SKT-A/B, ZTV-Baumpflege, Baumschutzsatzung, FLL-Baumkontrolle. Garstedt, Harksheide, Friedrichsgabe, Glashütte, Kreis Segeberg. Anfahrt 20 Minuten, Sturm-Notdienst 24/7."
   schema={schema}
 >
 
   <!-- HERO -->
   <section class="bg-forst-dark text-birke">
     <div class="container-site section-padding-sm">
-      <span class="eyebrow text-messing">Einsatzgebiet · Norderstedt</span>
-      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Norderstedt.<br/><span class="text-messing italic font-normal">Direkt vor der Haustür.</span></h1>
+      <span class="eyebrow text-messing">Einsatzgebiet · Norderstedt · Kreis Segeberg</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Norderstedt.<br/><span class="text-messing italic font-normal">Direkt vor der Haustür. 20 Minuten Anfahrt.</span></h1>
       <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
-        Norderstedt ist unser direktes Einzugs­gebiet — wir sitzen wenige Kilometer nördlich in der Segeberger Straße. Von Garstedt über Harksheide, Friedrichs­gabe bis Glashütte sind wir schnell da, kennen die Wege, die Böden und den typischen Baumbestand aus den 70er-Jahre-Siedlungen und den älteren Villen­lagen.
+        Norderstedt ist unser direktes Kern­einzugs­gebiet. Vom Standort in Nahe (Kreis Segeberg) sind wir in rund 20 Minuten in Garstedt, Harksheide, Friedrichs­gabe oder Glashütte — wir kennen die Baumschutz­satzung, die Wege in die Reihen­haus-Hinter­höfe und den typischen Bestand der 70er-Jahre-Siedlungen. Für Sturm­einsätze in Norderstedt sind wir meist innerhalb von zwei Stunden am Einsatzort.
       </p>
       <div class="mt-10 flex flex-wrap gap-4">
         <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
         <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
       </div>
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-caption text-birke/60 uppercase tracking-widest">
+        <span>SKT-A/B im Team</span>
+        <span>·</span>
+        <span>ZTV-Baumpflege</span>
+        <span>·</span>
+        <span>Vollversichert</span>
+        <span>·</span>
+        <span>Anfahrt 20 Min</span>
+      </div>
     </div>
   </section>
 
-  <!-- INTRO -->
+  <!-- WAS NORDERSTEDT BESONDERS MACHT -->
   <section class="section-padding">
     <div class="container-narrow prose-longform">
-      <span class="eyebrow">Wer ruft in Norderstedt an?</span>
-      <h2 class="mt-4">Privat­kunden, Verwalter, WEG, Stadt.</h2>
+      <span class="eyebrow">Was Norderstedt besonders macht</span>
+      <h2 class="mt-4">Vier Themen, die hier jeden zweiten Auftrag prägen.</h2>
 
       <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
-        Der typische Norderstedter Auftrag: ein 15-Meter-Baum im hinteren Garten­teil, hinter Reihenhäusern zugänglich nur durch schmale Wege oder gar nicht. Kein Kran, keine Fahr­spur, dafür Nachbarn links und rechts. Das ist unser Alltag — Seilkletter­technik ist Standard, nicht Ausnahme. Wir zerlegen von oben, lassen Segment für Segment kontrolliert ab, arbeiten mit Bodenmatten wo nötig und räumen bis zum Grasnarben-Niveau auf.
+        Norderstedt ist keine typische Stadt und kein klassisches Umland — es ist ein <strong>zusammen­gewachsenes Gebilde aus vier ehemals eigen­ständigen Ortsteilen</strong>, das seit 1970 offiziell Stadt ist. Das prägt bis heute den Baumbestand: In Garstedt und Harksheide stehen große Altbäume aus Vorkriegs- und Nachkriegs­villen, in Friedrichs­gabe dominieren die moor­nahen, sandigen Böden mit Kiefern und Birken, in Glashütte wurde in den 80er-Jahren viel Fichte gepflanzt, die heute borken­käfer­geschädigt reihen­weise fällt. Wer in Norderstedt Baumpflege oder Fällung braucht, hat also nie den einen Standard­fall — sondern jedes Mal einen anderen.
       </p>
 
       <p class="mt-6 text-body text-tinte/80 leading-relaxed">
-        Für Hausverwaltungen und Wohnungsbau­gesellschaften in Norderstedt übernehmen wir die <strong>Verkehrs­sicherungs­pflicht­kontrollen nach FLL</strong>. Regel­kontrolle mindestens einmal jährlich, Kataster­aufbau, Dokumentation mit Fotos und Handlungs­empfehlung — rechtsfest, verfügbar im Haftungs­fall. Wer das versäumt, haftet persönlich.
+        <strong>Erstens: Reihen­haus-Enge.</strong> Der typische Norderstedter Auftrag ist ein 12- bis 18-Meter-Baum im hinteren Garten­teil eines Reihen­hauses. Zugang oft nur über einen 90 cm breiten Gänge­streifen zwischen zwei Häusern, links und rechts Nachbar­grund­stücke, kein Kran­stellplatz, keine Auf­stellfläche für eine Hebebühne. Das ist der Standard­fall für Seilkletter­technik — Zerlegung von oben, Segment-Ablass, kontrollierte Landung auf Bodenmatten. Wer mit Kran plant und dann feststellt, dass keiner reinkommt, verliert einen halben Tag. Wir gehen mit der Erwartung "kletter­pflichtig" rein — wenn Kran geht, ist das Bonus.
       </p>
 
       <p class="mt-6 text-body text-tinte/80 leading-relaxed">
-        <strong>Baumschutz­satzung Norderstedt:</strong> Norderstedt hat eine eigene Satzung. Geschützt sind Laubbäume ab einem Stamm­umfang von 60 cm (gemessen in 1 m Höhe) sowie ausgewiesene Nadel­gehölze. Für Fällungen und starke Kronen­eingriffe brauchst Du eine Genehmigung. Ausnahmen sind eng: Obstbäume in Klein­gärten, akute Gefahr, bestimmte Baustellen­fälle. Wir übernehmen die Antrag­stellung bei der Stadt.
+        <strong>Zweitens: Baumschutz­satzung Norderstedt.</strong> Norderstedt hat eine der aktivsten Baumschutz­satzungen im Kreis Segeberg. Geschützt sind alle Laubbäume ab <strong>60 cm Stamm­umfang</strong>, gemessen in 1 m Höhe über dem Boden — plus bestimmte Nadel­gehölze. Das bedeutet: Ein normaler Ahorn oder eine Birke im Garten ist meist genehmigungs­pflichtig. Ausnahmen: Obstbäume (außer Walnuss und Esskastanie), Bäume in bestimmten Klein­gärten, akute Gefahr. Ohne Genehmigung fällen ist teuer — Bußgeld beginnt vierstellig, plus vor­geschriebene Ersatz­pflanzung. Wir stellen den Antrag beim Umwelt­amt für Dich und begleiten den Vorgang.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Drittens: FLL-Kontroll­pflicht für Verwaltungen.</strong> Norderstedt hat einen hohen Anteil an Miet- und Eigentums­wohnungen — SAGA-Bestände, WEG-Gebäude aus den 70ern, größere Wohnungs­bau­gesellschaften. Für die Baum­bestände dieser Objekte gilt die Verkehrs­sicherungs­pflicht: mindestens einmal jährliche Regel­kontrolle nach FLL-Baumkontroll­richtlinie, Dokumentation, Handlungs­empfehlung. Passiert etwas — Ast fällt auf ein Auto, Baum kippt auf einen Fußgänger — haftet der Eigentümer bzw. der Verwalter, wenn keine rechtsfeste Dokumentation vorliegt. Für Hausverwaltungen und WEG-Beiräte bieten wir Rahmen­verträge mit Kataster­aufbau und Foto­dokumentation.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Viertens: Sturm.</strong> Die Norderstedter Lage — offen nach Westen, sandiger Boden am Moor­rand, alte Kronen in Villen­lagen — macht die Stadt anfällig für Sturm­schäden. Jedes größere Ost­see­tief zieht Aufträge nach sich. Wir priorisieren bei Sturm nach Personen­gefährdung: Baum auf Wohn­haus, Baum blockiert Rettungs­zufahrt, Baum in Kinder­spielplatz-Nähe zuerst. Personen­gefahr immer zuerst 112.
       </p>
     </div>
   </section>
@@ -66,53 +164,125 @@ const leistungen = [
     <div class="container-site">
       <div class="max-w-2xl">
         <span class="eyebrow">Wo wir arbeiten</span>
-        <h2 class="mt-4">Norderstedt und Umland.</h2>
+        <h2 class="mt-4">Alle Norderstedter Stadtteile.</h2>
+        <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+          Norderstedt ist keine homogene Stadt. Jeder Stadtteil hat seine eigene Baum­geschichte, seinen eigenen typischen Bestand, seine eigenen Zugangs­probleme. Was Du hier findest, ist unser Ein­druck aus regel­mäßiger Arbeit vor Ort — kein Copy-Paste aus dem Wikipedia-Artikel.
+        </p>
       </div>
-      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {stadtteile.map((st) => (
           <div class="panel">
             <span class="rule"></span>
-            <h3 class="text-forst" style="font-size: 1.15rem;">{st.name}</h3>
+            <h3 class="text-forst" style="font-size: 1.25rem;">{st.name}</h3>
             <p class="mt-3 text-body-sm text-rauch leading-relaxed">{st.kurz}</p>
+            <p class="mt-4 text-caption text-rauch/80 leading-relaxed italic">{st.typisch}</p>
           </div>
         ))}
       </div>
       <p class="mt-12 text-caption text-rauch">
-        Auch: Henstedt-Ulzburg, Kaltenkirchen, Quickborn, Bad Bramstedt — auf dem Weg von unserem Standort.
+        Umland auf gleicher Route: <a href="/henstedt-ulzburg/" class="text-moos underline">Henstedt-Ulzburg</a> · <a href="/kaltenkirchen/" class="text-moos underline">Kaltenkirchen</a> · <a href="/bad-segeberg/" class="text-moos underline">Bad Segeberg</a> · <a href="/quickborn/" class="text-moos underline">Quickborn</a> · Tangstedt · Wakendorf
       </p>
     </div>
   </section>
 
-  <!-- LEISTUNGEN -->
+  <!-- BAUMARTEN -->
   <section class="section-padding">
     <div class="container-site">
       <div class="max-w-2xl">
-        <span class="eyebrow">Was wir hier machen</span>
-        <h2 class="mt-4">Leistungen in Norderstedt.</h2>
+        <span class="eyebrow">Bäume in Norderstedt</span>
+        <h2 class="mt-4">Was hier steht — und was daran typisch ist.</h2>
+        <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+          Der Norderstedter Baumbestand ist geprägt von zwei Phasen: Vorkriegs- und Nachkriegs­villen mit Alt­buchen und Eichen, plus Nach­kriegs­siedlungs­bau der 60er–80er mit Standard­sorten. Sechs Baumarten machen den Löwen­anteil aus.
+        </p>
       </div>
-      <div class="mt-14 grid gap-6 md:grid-cols-2">
-        {leistungen.map((l) => (
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {baumarten.map((b) => (
           <div class="border border-linie p-8">
-            <h3 class="text-forst" style="font-size: 1.35rem;">{l.titel}</h3>
-            <ul class="mt-6 space-y-2.5 text-body-sm text-rauch">
-              {l.punkte.map((p) => <li>· {p}</li>)}
-            </ul>
+            <h3 class="text-forst" style="font-size: 1.15rem;">{b.art}</h3>
+            <p class="mt-4 text-body-sm text-rauch leading-relaxed">{b.context}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ANFAHRT -->
+  <!-- LEISTUNGEN VERTIEFT -->
   <section class="section-padding bg-forst-dark text-birke">
-    <div class="container-narrow text-center">
-      <span class="eyebrow text-messing">Anfahrt</span>
-      <h2 class="mt-4 text-birke">Norderstedt ist praktisch nebenan.</h2>
-      <p class="mt-8 text-body-lg text-birke/75 leading-relaxed">
-        Unser Standort in Nahe (23866, Segeberger Straße) liegt rund 20 Minuten nördlich von Norderstedt — je nach Tages­zeit über die A7 oder die B432. Für Termin­einsätze planen wir ein bis drei Wochen Vorlauf, in ruhigen Phasen kürzer. Bei <strong>Sturm-Notfällen</strong> priorisieren wir nach Gefährdung und sind meist innerhalb weniger Stunden vor Ort.
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow text-messing">Leistungen in Norderstedt</span>
+        <h2 class="mt-4 text-birke">Fünf Kern­bereiche — nicht als Auf­zählung.</h2>
+      </div>
+      <div class="mt-14 grid gap-8 md:grid-cols-2">
+        <div class="border border-birke/10 p-8">
+          <h3 class="text-birke" style="font-size: 1.35rem;">Baumfällung — mit Genehmigung</h3>
+          <p class="mt-4 text-body-sm text-birke/70 leading-relaxed">
+            Von der Fällung eines einzelnen Reihen­haus-Baums (12 m, enger Zugang, SKT-B-Klettern) bis zur Reihen­fällung borken­käfer­geschädigter Fichten in Glashütte. Wir prüfen die Genehmigungs­fähigkeit nach der Norderstedter Satzung, stellen den Antrag beim Umwelt­amt, arbeiten in der Vegetations­ruhe (Oktober–Februar) oder mit Sonder­genehmigung. Zerlegung von oben mit Segment-Ablass ist Standard, Kran/MEWP wo Zugang es zulässt. Vollentsorgung inklusive — oder Stamm­holz bleibt liegen für Kamin­holz auf Wunsch.
+          </p>
+        </div>
+        <div class="border border-birke/10 p-8">
+          <h3 class="text-birke" style="font-size: 1.35rem;">Baumpflege nach ZTV-Baumpflege</h3>
+          <p class="mt-4 text-body-sm text-birke/70 leading-relaxed">
+            Kronen­pflege (Totholz raus, Zwiesel prüfen), Kronen­reduktion (bei Wind­exposition, Nähe zum Haus), Kronen­sicherung (dynamisch mit Cobra oder Boa, statisch mit Stahl­seil nur in Sonder­fällen). Für Norderstedter Alt­bäume in Villen­lagen ist das oft die richtige Antwort — nicht die Fällung. Ein Altbaum ersetzt sich nicht in einem Menschen­leben, das gilt in Garstedt genauso wie überall sonst.
+          </p>
+        </div>
+        <div class="border border-birke/10 p-8">
+          <h3 class="text-birke" style="font-size: 1.35rem;">FLL-Baumkontrolle & Kataster</h3>
+          <p class="mt-4 text-body-sm text-birke/70 leading-relaxed">
+            Für Hausverwaltungen, WEG-Beiräte, Wohnungs­bau­gesellschaften und Kommunen: Regel­kontrolle nach FLL-Baumkontroll­richtlinie einmal jährlich, digitaler Kataster­aufbau (jeder Baum mit ID, Standort­koordinate, Art, Alter­schätzung, Zustand, Empfehlung), Fotodokumentation, Handlungs­priorität. Bei Verdacht auf verborgene Schäden veranlassen wir Sonder­untersuchung (Schall­tomografie, Zugversuch).
+          </p>
+        </div>
+        <div class="border border-birke/10 p-8">
+          <h3 class="text-birke" style="font-size: 1.35rem;">Sturm-Notdienst 24/7</h3>
+          <p class="mt-4 text-body-sm text-birke/70 leading-relaxed">
+            Rund um die Uhr, sieben Tage die Woche, ganz­jährig. Norderstedt liegt in unserem schnellsten Anfahrts­radius — 20 Minuten bis Garstedt, 25 Minuten bis Glashütte. Priorität nach Personen­gefährdung: Baum auf Wohn­haus, Baum blockiert Rettungs­zufahrt zuerst. Personen­gefahr <strong>immer zuerst 112</strong>, danach uns.
+          </p>
+        </div>
+        <div class="border border-birke/10 p-8">
+          <h3 class="text-birke" style="font-size: 1.35rem;">Stubben­fräsen & Wurzel­entfernung</h3>
+          <p class="mt-4 text-body-sm text-birke/70 leading-relaxed">
+            Nach der Fällung: Stumpf­fräsen bis 40 cm unter Boden­niveau — bereit für Rasen-Neu­anlage oder Neu­bepflanzung. Radlader-geführte Fräse wo Zugang es zulässt, hand­geführt in engen Reihen­haus-Gärten. Wurzel­entfernung zum Beispiel bei Bau­grund­frei­machung nach Absprache.
+          </p>
+        </div>
+        <div class="border border-birke/10 p-8">
+          <h3 class="text-birke" style="font-size: 1.35rem;">Obstbaum­schnitt & Winter­schnitt</h3>
+          <p class="mt-4 text-body-sm text-birke/70 leading-relaxed">
+            Alte Apfel- und Zwetschen­bäume in Norderstedter Reihen­haus-Gärten und Klein­gärten. Winter­schnitt (Januar–Februar) für Auf­bau und Ertrag, Sommer­schnitt (Juli–August) für Kronen­beruhigung. Keine Mindest­auftrags­größe — auch für einen einzelnen Baum kommen wir.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SATZUNG / RECHT -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Recht & Satzung</span>
+      <h2 class="mt-4">Baumschutz­satzung Norderstedt — was Du wissen musst.</h2>
+
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Die <strong>Baumschutz­satzung der Stadt Norderstedt</strong> regelt, welche Bäume geschützt sind, welche Eingriffe erlaubt sind und welche eine Genehmigung brauchen. Die Kern­punkte:
       </p>
-      <p class="mt-6 text-body text-birke/60">
-        Personen­gefährdung: immer zuerst 112, danach uns.
+
+      <ul class="mt-8 space-y-4 text-body text-tinte/80 leading-relaxed">
+        <li><strong>Geschützt sind Laubbäume</strong> ab einem Stamm­umfang von <strong>60 cm</strong>, gemessen in 1 m Höhe über dem Boden. Bei mehr­stämmigen Bäumen zählt jeder Stamm einzeln ab 40 cm Umfang, wenn der Baum in der Summe die 60 cm überschreitet.</li>
+        <li><strong>Ausgenommen:</strong> Obstbäume (außer Walnuss und Esskastanie), Nadel­gehölze in Privat­gärten (mit Ausnahmen bei Landschafts­bild-prägenden Beständen), Bäume in gewerblich genutzten Baumschulen und Gärtnereien, Bäume in Klein­gärten nach BKleingG unter bestimmten Bedingungen.</li>
+        <li><strong>Genehmigungs­pflichtig sind:</strong> Fällung, starke Rückschnitte (mehr als 30 % der Krone), Wurzel­eingriffe, Boden­verdichtung im Wurzel­bereich, Beschädigung durch Bau­maßnahmen.</li>
+        <li><strong>Ausnahme­gründe für Fällung:</strong> Krankheit ohne Behandlungs­möglichkeit, Verkehrs­sicherungs­gefahr (Stand­sicherheit gefährdet), nach­gewiesene wirtschaftliche Un­zumut­barkeit (selten anerkannt), Bau­vorhaben mit rechts­kräftiger Bau­genehmigung.</li>
+        <li><strong>Ersatz­pflanzung:</strong> Bei genehmigter Fällung wird in der Regel Ersatz­pflanzung verlangt (typischer­weise 1:1 bis 1:3, je nach Größe und Wert des gefällten Baums). Alternativ Ausgleichs­zahlung an die Stadt.</li>
+        <li><strong>Bußgeld bei Fällung ohne Genehmigung:</strong> Vierstellig aufwärts, plus vor­geschriebene Ersatz­pflanzung. Wir haben Fälle gesehen, in denen mehrere Tausend Euro fällig wurden — und der Baum trotzdem noch ersetzt werden musste.</li>
+      </ul>
+
+      <p class="mt-8 text-body text-tinte/80 leading-relaxed">
+        <strong>Vogel­schutz­frist §&nbsp;39 BNatSchG:</strong> Unabhängig von der Baumschutz­satzung gilt bundes­weit vom <strong>1. März bis 30. September</strong> ein Fäll- und Rückschnitt­verbot für erhebliche Eingriffe an Bäumen und Hecken. Kleinere Pflege­schnitte sind erlaubt, echte Fällungen brauchen eine Ausnahme wegen Gefahr im Verzug oder eine natur­schutz­rechtliche Sonder­genehmigung. Deshalb liegt die Haupt­fäll­saison im Winter­halb­jahr.
+      </p>
+
+      <p class="mt-8 text-body text-tinte/80 leading-relaxed">
+        <strong>Wir übernehmen die Antrag­stellung.</strong> Für unsere Norderstedter Kunden ist der Antrags­prozess Teil des Auftrags — Formular, Lage­plan, Baum­foto, Begründung, Ersatz­pflanzungs­vorschlag. Bearbeitungs­zeit beim Umwelt­amt liegt bei 4–8 Wochen; für dringende Fälle (echte Standort­gefahr, dokumentiert mit Fotos) gibt es Beschleunigung.
+      </p>
+
+      <p class="mt-6 text-caption text-rauch">
+        Detaillierter Hintergrund: <a href="/wissen/baumschutzsatzung-grundlagen/" class="text-moos underline">Was Baumschutz­satzungen im Kern regeln</a>.
       </p>
     </div>
   </section>
@@ -121,24 +291,14 @@ const leistungen = [
   <section class="section-padding">
     <div class="container-narrow">
       <span class="eyebrow">Häufige Fragen</span>
-      <h2 class="mt-4">Was Norderstedter Kunden fragen.</h2>
-      <div class="mt-12 space-y-6">
-        <details class="border border-linie p-6">
-          <summary class="font-display font-medium text-forst cursor-pointer">Was kostet eine Baum­fällung in Norderstedt?</summary>
-          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Grobrichtwerte: 10–15 m gut zugänglich zwischen 400 und 900 € netto; enge Innen­lagen mit Kletter­einsatz höher, 25 m in schwieriger Lage schnell über 2.000 €. Für eine erste Einordnung: <a href="/preisrechner/" class="text-moos underline">Preisrechner</a>.</p>
-        </details>
-        <details class="border border-linie p-6">
-          <summary class="font-display font-medium text-forst cursor-pointer">Genehmigung in Norderstedt nötig?</summary>
-          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ab 60 cm Stamm­umfang in 1 m Höhe bei Laubbäumen und geschützten Nadel­gehölzen: ja. Antrag stellen wir gern für Dich.</p>
-        </details>
-        <details class="border border-linie p-6">
-          <summary class="font-display font-medium text-forst cursor-pointer">Nur ein Baum — lohnt sich Anfahrt?</summary>
-          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ja. Wir haben keine Mindest­auftrags­größe. Für einen Sicherungs­schnitt oder einen Obstbaum­schnitt kommen wir gern.</p>
-        </details>
-        <details class="border border-linie p-6">
-          <summary class="font-display font-medium text-forst cursor-pointer">Rahmen­vertrag für unsere Hausverwaltung?</summary>
-          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ja — inklusive FLL-Kontroll­rundgang, Kataster­pflege und rechtsfester Dokumentation. Schreib eine Mail, wir setzen ein Angebot auf.</p>
-        </details>
+      <h2 class="mt-4">Was Norderstedter Kunden am häufigsten fragen.</h2>
+      <div class="mt-12 space-y-4">
+        {faq.map((f) => (
+          <details class="border border-linie p-6">
+            <summary class="font-display font-medium text-forst cursor-pointer text-body">{f.frage}</summary>
+            <p class="mt-4 text-body-sm text-rauch leading-relaxed" set:html={f.antwort}></p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
@@ -147,13 +307,14 @@ const leistungen = [
   <section class="section-padding bg-messing text-forst-dark">
     <div class="container-narrow text-center">
       <span class="eyebrow text-forst-dark/70">Baumpflege Norderstedt</span>
-      <h2 class="mt-4 text-forst-dark">Kurzer Draht. Ohne Umweg.</h2>
+      <h2 class="mt-4 text-forst-dark">Kurzer Draht. 20 Minuten Anfahrt.</h2>
       <p class="mt-6 text-body-lg mx-auto max-w-xl">
-        Ruf an, schreib per WhatsApp oder E-Mail. Angebot in der Regel binnen 24 Stunden — mit Fotos meist ohne Ortstermin.
+        Ruf an, schreib per WhatsApp oder E-Mail. Angebot in der Regel binnen 24 Stunden — mit Fotos meist ohne Ortstermin. Für Sturm­einsätze in Norderstedt sind wir üblicherweise innerhalb von zwei Stunden vor Ort.
       </p>
       <div class="mt-10 flex flex-wrap gap-4 justify-center">
         <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
         <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+        <a href="/preisrechner/" class="btn-ghost">Preis schätzen</a>
       </div>
     </div>
   </section>

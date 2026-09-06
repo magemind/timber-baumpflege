@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, STAEDTE, localBusinessSchema } from '../config';
+
+const stadt = STAEDTE.find((s) => s.slug === 'kaltenkirchen')!;
+const schema = localBusinessSchema(stadt);
+
+const ortsteile = [
+  { name: 'Kaltenkirchen-Zentrum', kurz: 'Rund um den Bahnhof und die Innen­stadt, gemischte Bebauung, Alt­bestand entlang der Hauptstraße.' },
+  { name: 'Springhirsch', kurz: 'Wohn­gebiet südlich, viele Reihen­haus-Anlagen der 80er, dichte Bepflanzung.' },
+  { name: 'Moorkaten', kurz: 'Rand­lage Richtung Bad Segeberg, moor­nahe Bestände, viele Birken und Kiefern.' },
+  { name: 'Umland', kurz: 'Nützen, Alveslohe, Kisdorf, Ellerau — Termin­einsätze im Paket.' },
+];
+
+const faq = [
+  {
+    frage: 'Was kostet eine Baumfällung in Kaltenkirchen?',
+    antwort: 'Grobricht­werte: 10–15 m gut zugänglich 400–900 € netto, 25 m enge Lage 2.000–4.000 €. Für eine erste Einordnung <a href="/preisrechner/" class="text-moos underline">Preisrechner</a> nutzen — oder Fotos plus Adresse per WhatsApp schicken.',
+  },
+  {
+    frage: 'Genehmigung — was gilt in Kaltenkirchen?',
+    antwort: 'Kaltenkirchen hat eine kommunale Baumschutz­satzung. Geschützt sind Laubbäume ab 60 cm Stamm­umfang in 1 m Höhe. Antrag stellt das Bau­amt — Abwicklung übernehmen wir.',
+  },
+  {
+    frage: 'Wie schnell seid ihr in Kaltenkirchen?',
+    antwort: 'Anfahrt vom Standort in Nahe rund 15 Minuten. Für Sturm-Notfälle mit Personen­gefährdung meist unter 90 Minuten am Einsatzort.',
+  },
+  {
+    frage: 'Käfer­fichten in unserer Anlage — was tun?',
+    antwort: 'Reihen­fällung mit Aufarbeitung ist der Standard­weg. Wir schneiden ein, prüfen jeden Baum einzeln, entnehmen was tot ist, sichern was stehen bleiben kann. Ersatz­pflanzung mit standort­gerechten Arten (Hainbuche, Vogel­kirsche, Winterlinde) als Empfehlung.',
+  },
+];
+---
+
+<BaseLayout
+  title="Baumpflege Kaltenkirchen — Baumfällung, Käferfichten, Sturm-Notdienst"
+  description="Baumpflege und Baumfällung in Kaltenkirchen. Seilklettertechnik SKT-A/B, ZTV-Baumpflege, Baumschutzsatzung Kreis Segeberg, FLL-Kontrolle. Springhirsch, Moorkaten, auch Nützen und Alveslohe. Anfahrt 15 Minuten."
+  schema={schema}
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Einsatzgebiet · Kaltenkirchen · Kreis Segeberg</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Kaltenkirchen.<br/><span class="text-messing italic font-normal">Sandiger Boden, Käfer­fichten, kurze Wege.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Kaltenkirchen liegt an der A7 zwischen Hamburg und Neumünster — für uns 15 Minuten Anfahrt. Der Baumbestand ist geprägt von den 80er-Jahre-Sied­lungen mit vielen Nadel­gehölzen (Fichte, Kiefer, Douglasie) — und die haben nach drei Trocken­jahren viel gelitten. Käfer­befall und Trockenstress sind hier die häufigsten Fäll­gründe. Wir arbeiten in Kaltenkirchen für Privat­kunden, Verwaltungen und Kommunen im gesamten Kreis.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Was Kaltenkirchen besonders macht</span>
+      <h2 class="mt-4">Sandiger Boden, viel Nadel­holz, Käfer­dynamik.</h2>
+
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Kaltenkirchen liegt auf sandigem Geest-Boden — anders als das lehmige Umland Norderstedt oder Bad Segeberg. Das prägt den Baumbestand: Kiefer, Birke, Douglasie, Fichte fühlen sich hier lange wohl. Genau das wurde in den 80er-Jahren beim großen Ausbau der Wohn­gebiete auch gepflanzt, oft in Reihen, häufig als Sicht­schutz zwischen Grundstücken. Vier Jahrzehnte später sind diese Bestände am Ende ihrer besten Zeit — und nach den Trocken­sommern 2018, 2019 und 2020 hat der Borken­käfer den Rest erledigt.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Der Kaltenkirchner Standard­auftrag heißt inzwischen "Käfer­fichten".</strong> Ein ganze Reihe, ein halber Garten, manchmal ein ganzes WEG-Grund­stück — von oben braun, Rinde platzt ab, Baum ist nicht mehr zu retten. Wir fällen in Reihen mit Auf­arbeitung, entsorgen komplett oder lassen Kamin­holz liegen, empfehlen Ersatz­pflanzung mit heimischen Laubbäumen (Winterlinde, Hain­buche, Vogel­kirsche), die dem Trocken­stress besser standhalten.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Springhirsch und Moorkaten:</strong> In den älteren Reihen­haus-Anlagen sind die Innen­hof-Zugänge oft eng — Standard­fall für Seilkletter­technik. Kein Kran, kein MEWP, Zerlegung von oben. Bodenmatten wo Nachbar­rasen betroffen wäre.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Baumschutz­satzung:</strong> Kaltenkirchen hat eine eigene Satzung, geschützt sind Laubbäume ab 60 cm Stamm­umfang. Nadel­gehölze in Privat­gärten sind meist ausgenommen — was den Reihen­fäll-Aufwand für die Käfer­fichten juristisch vereinfacht. Für die geschützten Laubbäume stellen wir den Antrag beim Bau­amt.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Wo wir arbeiten</span>
+        <h2 class="mt-4">Kaltenkirchen und Umland.</h2>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-2">
+        {ortsteile.map((ot) => (
+          <div class="panel">
+            <span class="rule"></span>
+            <h3 class="text-forst" style="font-size: 1.15rem;">{ot.name}</h3>
+            <p class="mt-3 text-body-sm text-rauch leading-relaxed">{ot.kurz}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-12 text-caption text-rauch">
+        Nachbar­gemeinden im gleichen Radius: <a href="/henstedt-ulzburg/" class="text-moos underline">Henstedt-Ulzburg</a> · <a href="/bad-segeberg/" class="text-moos underline">Bad Segeberg</a> · <a href="/quickborn/" class="text-moos underline">Quickborn</a> · Ellerau · Kisdorf.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Leistungen in Kaltenkirchen</span>
+        <h2 class="mt-4">Was hier am häufigsten gebraucht wird.</h2>
+      </div>
+      <div class="mt-14 grid gap-8 md:grid-cols-2">
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Reihen­fällung Käfer­fichten</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Aufarbeitung, Entsorgung, Ersatz­pflanzungs­empfehlung mit standort­gerechten Arten. Für Privat­gärten, WEG-Anlagen und Kommunen.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Baumfällung mit Antrag</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Für geschützte Laubbäume: Genehmigung, Fällung in der Vegetations­ruhe, Seilkletter­technik in engen Innen­hof-Lagen.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Kronen­pflege & Kronen­sicherung</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Für die Alt­buchen und -eichen entlang der Hauptstraße und in älteren Villen­gärten. Erhalt statt Ersatz.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">FLL-Baumkontrolle</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Rahmen­verträge für Verwaltungen und WEG-Beiräte in Kaltenkirchen. Digitaler Kataster­aufbau, Fotodokumentation, Handlungs­empfehlung.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2 class="mt-4">Was Kaltenkirchner Kunden fragen.</h2>
+      <div class="mt-12 space-y-4">
+        {faq.map((f) => (
+          <details class="border border-linie p-6">
+            <summary class="font-display font-medium text-forst cursor-pointer text-body">{f.frage}</summary>
+            <p class="mt-4 text-body-sm text-rauch leading-relaxed" set:html={f.antwort}></p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst-dark">Kaltenkirchen — 15 Minuten Anfahrt.</h2>
+      <p class="mt-6 text-body-lg mx-auto max-w-xl">
+        Ruf an oder schick eine WhatsApp mit Foto und Adresse. Angebot binnen 24 Stunden.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

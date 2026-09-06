@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, STAEDTE, localBusinessSchema } from '../config';
+
+const stadt = STAEDTE.find((s) => s.slug === 'quickborn')!;
+const schema = localBusinessSchema(stadt);
+
+const ortsteile = [
+  { name: 'Quickborn-Zentrum', kurz: 'Rund um Rathaus und Bahnhof, gemischte Bebauung, Alt­bestand entlang der Kieler Straße.' },
+  { name: 'Quickborn-Heide', kurz: 'Wohn­gebiet Richtung Himmelmoor, sandiger Boden, viele Kiefern und Birken.' },
+  { name: 'Renzel', kurz: 'Ortsteil mit dörflichem Charakter, Hofbäume und Alleen.' },
+  { name: 'Nachbarn', kurz: 'Ellerau, Bönningstedt, Hasloh, Tangstedt — Termin­einsätze im Paket möglich.' },
+];
+
+const faq = [
+  {
+    frage: 'Was kostet eine Baumfällung in Quickborn?',
+    antwort: 'Grobricht­werte: 10–15 m gut zugänglich 400–900 € netto, 25 m enge Innen­lage 2.000–4.000 €. <a href="/preisrechner/" class="text-moos underline">Preisrechner</a> für erste Einordnung — oder Fotos plus Adresse per WhatsApp.',
+  },
+  {
+    frage: 'Genehmigung — was gilt in Quickborn?',
+    antwort: 'Quickborn liegt im Kreis Pinneberg und hat eine eigene Baumschutz­satzung. Geschützt sind Laubbäume ab 60 cm Stamm­umfang in 1 m Höhe. Antrag stellt das Bau­amt — wir übernehmen die Abwicklung.',
+  },
+  {
+    frage: 'Anfahrt Quickborn — wie schnell?',
+    antwort: 'Rund 25 Minuten vom Standort in Nahe. Für Sturm-Notfälle meist innerhalb von zwei Stunden vor Ort.',
+  },
+  {
+    frage: 'Bäume am Moor­rand — spezielle Vorsicht nötig?',
+    antwort: 'Ja. Wurzel­fäulen sind bei Erlen, Birken und Weiden am feuchten Moor­rand häufig, aber schwer zu erkennen. Wir arbeiten dort mit besonderer Vorsicht und empfehlen regel­mäßige VTA-Kontrollen (Visual Tree Assessment).',
+  },
+];
+---
+
+<BaseLayout
+  title="Baumpflege Quickborn — Baumfällung, Sturm-Notdienst, Himmelmoor-Rand"
+  description="Baumpflege und Baumfällung in Quickborn. Seilklettertechnik SKT-A/B, ZTV-Baumpflege, Baumschutzsatzung Kreis Pinneberg, FLL-Kontrolle. Quickborn-Heide, Renzel, Rand des Himmelmoors. Anfahrt 25 Minuten."
+  schema={schema}
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Einsatzgebiet · Quickborn · Kreis Pinneberg</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Quickborn.<br/><span class="text-messing italic font-normal">Himmelmoor-Rand, sandiger Boden, alter Bestand.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Quickborn ist der Nachbar Norderstedts im Westen — sandiger Boden am Himmelmoor, viel Kiefer und Birke in den älteren Wohn­gebieten, alte Villen­gärten mit Buche und Eiche im Zentrum. Wir arbeiten in Quickborn für Privat­kunden, Hausverwaltungen und die Gemeinde — mit rund 25 Minuten Anfahrt für alle Standorte im Stadt­gebiet.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Was Quickborn besonders macht</span>
+      <h2 class="mt-4">Moor­rand, Villen­gärten, Bahnhofs­nähe.</h2>
+
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Quickborn hat als eine der wenigen Gemeinden im Kreis Pinneberg einen direkten Zugang zum Himmelmoor — mit rund 600 Hektar dem größten Hoch­moor Schleswig-Holsteins. Das prägt den Baumbestand am west­lichen Stadt­rand: viel Erle, Birke, Kiefer auf feuchtem, teils anmoorigem Boden. In der Praxis heißt das für uns: Wurzel­fäule ist bei Alt­bäumen an Quickborner Moor­rand-Grundstücken ein Dauer­thema. Regel­mäßige VTA-Sicht­kontrollen (Visual Tree Assessment) sind hier wichtiger als anderswo, weil die typischen Schadens­bilder — Baum wirkt gesund, kippt aber wegen weg­gefaulter Wurzeln — schleichend entstehen.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Villen­gärten im Zentrum:</strong> Rund um den Marktplatz und entlang der Kieler Straße stehen alte Villen mit ausgewachsenen Buchen, Eichen und Kastanien. Für diese Bestände ist Kronen­pflege alle 5–8 Jahre und Kronen­sicherung bei Zwiesel­rissen die typische Antwort — nicht die Fällung. Ein Altbaum ersetzt sich nicht in einem Menschen­leben.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Quickborn-Heide:</strong> Wohn­gebiet der 60er und 70er Jahre mit dichter Reihen­haus-Bebauung. Zugang zu den hinteren Garten­teilen oft nur über schmale Wege — klassischer Fall für Seilkletter­technik. Kran nicht möglich, MEWP selten passend.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Baumschutz­satzung Quickborn:</strong> Als Kommune im Kreis Pinneberg hat Quickborn eine eigene Satzung. Geschützt sind Laubbäume ab 60 cm Stamm­umfang in 1 m Höhe sowie ausgewiesene Nadel­gehölze. Ausnahmen für Obstbäume (außer Walnuss und Esskastanie) und Bäume in Klein­gärten unter bestimmten Bedingungen. Antrag stellt das Bau­amt — wir übernehmen die Abwicklung.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Wo wir arbeiten</span>
+        <h2 class="mt-4">Quickborn und Umland.</h2>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-2">
+        {ortsteile.map((ot) => (
+          <div class="panel">
+            <span class="rule"></span>
+            <h3 class="text-forst" style="font-size: 1.15rem;">{ot.name}</h3>
+            <p class="mt-3 text-body-sm text-rauch leading-relaxed">{ot.kurz}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-12 text-caption text-rauch">
+        Nachbarn im gleichen Radius: <a href="/norderstedt/" class="text-moos underline">Norderstedt</a> · <a href="/henstedt-ulzburg/" class="text-moos underline">Henstedt-Ulzburg</a> · Pinneberg · Hasloh · Bönningstedt.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Leistungen in Quickborn</span>
+        <h2 class="mt-4">Was hier am häufigsten gebraucht wird.</h2>
+      </div>
+      <div class="mt-14 grid gap-8 md:grid-cols-2">
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Baumfällung — Reihen­haus & Moor­rand</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Genehmigung, Fällung in der Vegetations­ruhe, Seilkletter­technik in engen Innen­lagen, besondere Vorsicht bei mögl. Wurzel­fäule am Moor­rand. Vollentsorgung inklusive.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Kronen­pflege für Villen­gärten</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Kronen­pflege nach ZTV-Baumpflege, Kronen­sicherung (Cobra, Boa) für Alt­bäume mit Zwiesel­rissen. Statt Fällung: Erhalt.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">VTA-Sicht­kontrolle</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Für Bäume am Moor­rand oder mit Verdacht auf verborgene Schäden: Visual Tree Assessment, ggf. Empfehlung für Sonder­untersuchung (Schall­tomografie, Zugversuch).
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">FLL-Baumkontrolle & Kataster</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Rahmen­verträge für Verwaltungen und WEG-Beiräte in Quickborn. Digitaler Kataster­aufbau, Fotodokumentation, rechtsfeste Handlungs­empfehlung.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2 class="mt-4">Was Quickborner Kunden fragen.</h2>
+      <div class="mt-12 space-y-4">
+        {faq.map((f) => (
+          <details class="border border-linie p-6">
+            <summary class="font-display font-medium text-forst cursor-pointer text-body">{f.frage}</summary>
+            <p class="mt-4 text-body-sm text-rauch leading-relaxed" set:html={f.antwort}></p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst-dark">Quickborn — verlässlich, planbar, versichert.</h2>
+      <p class="mt-6 text-body-lg mx-auto max-w-xl">
+        Ruf an oder schick eine WhatsApp mit Foto und Adresse. Angebot binnen 24 Stunden.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

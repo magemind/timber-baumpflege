@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, STAEDTE, REGION_SH, ORG_SCHEMA } from '../config';
+---
+
+<BaseLayout
+  title="Baumpflege Schleswig-Holstein — TIMBER Baumdienst für den gesamten Norden"
+  description="Baumpflege und Baumfällung in Schleswig-Holstein. Kern-Einzugsgebiet Kreis Segeberg und Kreis Pinneberg, planbare Einsätze bis Kiel und Lübeck. Seilklettertechnik, ZTV-Baumpflege, FLL-Kontrolle, 24/7 Sturm-Notdienst."
+  schema={ORG_SCHEMA}
+>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Region · Schleswig-Holstein & Hamburg-Umland</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Schleswig-Holstein.<br/><span class="text-messing italic font-normal">Ein Team, ein Anspruch, echte Wege.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        TIMBER Baumpflege sitzt in <strong class="text-birke">Nahe (23866)</strong> im Kreis Segeberg — im geografischen Zentrum zwischen Hamburg, Lübeck und Kiel. Von hier aus arbeiten wir in ganz Schleswig-Holstein, mit klarem Schwer­punkt auf dem Kreis Segeberg (Norderstedt, Henstedt-Ulzburg, Bad Segeberg, Kaltenkirchen) und dem angrenzenden Kreis Pinneberg (Quickborn, Pinneberg, Elmshorn). Termin­einsätze bis Kiel, Lübeck und Rendsburg.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KERN-EINZUGSGEBIET -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Kern-Einzugsgebiet</span>
+        <h2 class="mt-4">Sechs Städte, in denen wir wöchentlich arbeiten.</h2>
+        <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+          Diese sechs Standorte sind unser tägliches Arbeits­gebiet — kurze Anfahrt, feste Präsenz, Kenntnis der lokalen Baumschutz­satzungen und des typischen Bestands. Jede Seite hat eigenen, aus­formulierten Kontext.
+        </p>
+      </div>
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {STAEDTE.map((s) => (
+          <a href={`/${s.slug}/`} class="group block border border-linie p-8 no-underline hover:border-messing/40 transition-colors">
+            <span class="text-caption uppercase tracking-widest text-moos">{s.region}</span>
+            <h3 class="mt-2 text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.35rem;">Baumpflege {s.name}</h3>
+            <p class="mt-4 text-body-sm text-rauch leading-relaxed">{s.kurz}</p>
+            <div class="mt-6 flex items-center justify-between">
+              <span class="text-caption text-moos font-semibold uppercase tracking-widest">Zum Standort →</span>
+              <span class="text-caption text-rauch/70">Anfahrt {s.anfahrt}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WEITERES EINZUGSGEBIET -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Weiteres Einzugsgebiet</span>
+      <h2 class="mt-4">Kiel, Lübeck, Rendsburg — planbare Einsätze.</h2>
+
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Für die weiter entfernten Städte in Schleswig-Holstein arbeiten wir mit einer klaren Regel: <strong>planbare Termin­einsätze ja — sofort­verfügbarer Sturm-Notdienst eingeschränkt</strong>. Wenn Du in Kiel oder Lübeck einen um­sturz­gefährdeten Baum hast, ruf zuerst einen ortsansässigen Baumkletterer — 60 bis 90 Minuten Anfahrt sind bei Personen­gefährdung zu lang.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        Für Termin­einsätze, Rahmen­verträge mit Verwaltungen, größere Fällungen oder Kronen­pflege-Projekte fahren wir gern hin. Wir bündeln solche Aufträge auf Route: Wenn wir in Kiel arbeiten, lohnt sich der Weg für zwei bis drei Aufträge am Tag.
+      </p>
+
+      <div class="mt-12 space-y-6">
+        {REGION_SH.fernorte.map((o) => (
+          <div class="border border-linie p-6 flex flex-wrap items-start gap-6">
+            <div class="min-w-[10rem]">
+              <div class="text-forst font-display font-semibold text-body-lg">{o.name}</div>
+              <div class="text-caption text-rauch uppercase tracking-widest mt-1">Anfahrt {o.anfahrt}</div>
+            </div>
+            <p class="text-body-sm text-rauch leading-relaxed flex-1">{o.hinweis}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-10 text-body text-tinte/80 leading-relaxed">
+        Nicht auf der Liste? Wir arbeiten grundsätzlich in ganz Schleswig-Holstein, Hamburg und angrenzendem Niedersachsen. Ruf einfach an — wir sagen ehrlich, ob wir sinnvoll fahren können, oder empfehlen bei Bedarf einen ortsansässigen Kollegen.
+      </p>
+    </div>
+  </section>
+
+  <!-- WAS UNS AUSMACHT -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Was wir bieten</span>
+        <h2 class="mt-4">Fünf Kern­bereiche für ganz Norddeutschland.</h2>
+      </div>
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Baumfällung — auch dort, wo kein Kran hinkommt</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Seilkletter­technik ist Standard. Wir zerlegen von oben, lassen Segment für Segment ab und arbeiten auch in engsten Reihen­haus-Innen­lagen — von Norderstedt bis Elmshorn, von Quickborn bis Bad Segeberg. Kran und MEWP setzen wir ein, wenn der Zugang es erlaubt.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Baumpflege nach ZTV-Baumpflege</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Kronen­pflege, Reduktion, Kronen­sicherung (dynamisch mit Cobra/Boa). Für Alt­bäume in Villen­lagen ist Erhalt fast immer besser als Ersatz — ein 100-jähriger Baum ist ökologisch und optisch nicht ersetzbar.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">FLL-Baumkontrolle für Verwaltungen</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Rahmen­verträge mit Hausverwaltungen, WEG-Beiräten, Wohnungs­bau­gesellschaften und Kommunen in ganz Schleswig-Holstein. Regel­kontrolle nach FLL-Baumkontroll­richtlinie, Kataster­aufbau, Fotodokumentation — rechtsfest im Haftungs­fall.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Sturm-Notdienst 24/7</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Im Kern­einzugs­gebiet (Kreis Segeberg, Kreis Pinneberg) meist innerhalb von zwei Stunden vor Ort. Personen­gefahr immer zuerst 112.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst-dark">Ein Team für den ganzen Norden.</h2>
+      <p class="mt-6 text-body-lg mx-auto max-w-xl">
+        Ruf an, schreib per WhatsApp oder E-Mail. Für eine erste Einordnung reichen zwei Fotos plus Adresse. Angebot binnen 24 Stunden.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

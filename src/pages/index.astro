@@ -79,22 +79,25 @@ import { SITE, CONTACT, LEISTUNGEN, EINSATZTYPEN, WISSEN, STAEDTE } from '../con
       <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
         <div class="max-w-xl">
           <span class="eyebrow text-messing">Einsatzgebiete</span>
-          <h2 class="mt-4 text-birke">Wir arbeiten in ganz Norddeutschland.<br/><span class="text-messing italic font-normal">Vier Kern-Städte, ein Team.</span></h2>
+          <h2 class="mt-4 text-birke">Wir arbeiten in ganz Norddeutschland.<br/><span class="text-messing italic font-normal">Kern-Einzugsgebiet: Kreis Segeberg &amp; Kreis Pinneberg.</span></h2>
         </div>
         <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
       </div>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {STAEDTE.map((s) => (
           <a href={`/${s.slug}/`} class="group block border border-birke/10 p-8 no-underline hover:border-messing/40 transition-colors">
             <span class="text-caption uppercase tracking-widest text-messing">{s.region}</span>
             <h3 class="mt-2 text-birke group-hover:text-messing transition-colors" style="font-size: 1.5rem;">Baumpflege {s.name}</h3>
             <p class="mt-4 text-body-sm text-birke/60 leading-relaxed">{s.kurz}</p>
-            <span class="mt-6 inline-block text-caption text-messing font-semibold uppercase tracking-widest">Zum Standort →</span>
+            <div class="mt-6 flex items-center justify-between">
+              <span class="text-caption text-messing font-semibold uppercase tracking-widest">Zum Standort →</span>
+              <span class="text-caption text-birke/50">Anfahrt {s.anfahrt}</span>
+            </div>
           </a>
         ))}
       </div>
-      <p class="mt-10 text-caption text-birke/50 text-center">
-        Nicht auf der Liste? Wir arbeiten in ganz Schleswig-Holstein, Hamburg und Umland — ruf einfach an.
+      <p class="mt-10 text-caption text-birke/60 text-center">
+        Weiteres Einzugsgebiet Kiel, Lübeck, Rendsburg, Neumünster, Elmshorn: <a href="/schleswig-holstein/" class="text-messing underline">Regions-Übersicht Schleswig-Holstein →</a>
       </p>
     </div>
   </section>

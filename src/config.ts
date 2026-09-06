@@ -214,6 +214,8 @@ export const WISSEN = [
 // Einsatzgebiete für TIMBER — echte Kern-Städte mit ausformuliertem Content.
 // Anders als SATELLITEN (die auf eigener Domain sitzen) sind das TIMBER-eigene
 // Landings mit unique Content pro Ort — kein Template-Doorway.
+// Priorität: reale Anfahrtsnähe zum Standort Nahe (23866). Kiel/Lübeck über
+// den Regions-Hub /schleswig-holstein/ abgedeckt (Anfahrt >60 Min).
 export const STAEDTE = [
   {
     slug: 'hamburg',
@@ -223,6 +225,7 @@ export const STAEDTE = [
     lng: 9.9937,
     kurz: 'Baumpflege, Fällung und Sturm-Notdienst im Hamburger Stadtgebiet — von Blankenese bis Bergedorf.',
     keyword: 'Baumpflege Hamburg',
+    anfahrt: '45 Min',
   },
   {
     slug: 'norderstedt',
@@ -230,28 +233,65 @@ export const STAEDTE = [
     region: 'Kreis Segeberg',
     lat: 53.7085,
     lng: 9.9998,
-    kurz: 'Baumdienst im gesamten Norderstedter Stadtgebiet und Umland — Garstedt, Harksheide, Friedrichsgabe, Glashütte.',
+    kurz: 'Kern­einzugs­gebiet — Garstedt, Harksheide, Friedrichs­gabe, Glashütte. Anfahrt 20 Minuten.',
     keyword: 'Baumpflege Norderstedt',
+    anfahrt: '20 Min',
   },
   {
-    slug: 'kiel',
-    name: 'Kiel',
-    region: 'Landeshauptstadt Schleswig-Holstein',
-    lat: 54.3233,
-    lng: 10.1228,
-    kurz: 'Baumpflege und Fällung in Kiel und Umland — Förde, Düsternbrook, Wik, Elmschenhagen.',
-    keyword: 'Baumpflege Kiel',
+    slug: 'henstedt-ulzburg',
+    name: 'Henstedt-Ulzburg',
+    region: 'Kreis Segeberg',
+    lat: 53.7833,
+    lng: 9.9667,
+    kurz: 'Direkt vor der Haustür — Henstedt, Ulzburg, Rhen, Götzberg, Kaden. Anfahrt 10 Minuten.',
+    keyword: 'Baumpflege Henstedt-Ulzburg',
+    anfahrt: '10 Min',
   },
   {
-    slug: 'luebeck',
-    name: 'Lübeck',
-    region: 'Hansestadt Lübeck',
-    lat: 53.8655,
-    lng: 10.6866,
-    kurz: 'Baumdienst im Lübecker Stadtgebiet und Umland — Altstadt, St. Gertrud, Travemünde, Bad Schwartau.',
-    keyword: 'Baumpflege Lübeck',
+    slug: 'bad-segeberg',
+    name: 'Bad Segeberg',
+    region: 'Kreis Segeberg',
+    lat: 53.9333,
+    lng: 10.3167,
+    kurz: 'Kreis­stadt Segeberg mit Kalkberg, Ihlsee und Umland — auch Wahlstedt, Trappenkamp.',
+    keyword: 'Baumpflege Bad Segeberg',
+    anfahrt: '25 Min',
+  },
+  {
+    slug: 'kaltenkirchen',
+    name: 'Kaltenkirchen',
+    region: 'Kreis Segeberg',
+    lat: 53.8333,
+    lng: 9.9667,
+    kurz: 'Kaltenkirchen und Umland — Springhirsch, Moorkaten, auch Nützen und Alveslohe.',
+    keyword: 'Baumpflege Kaltenkirchen',
+    anfahrt: '15 Min',
+  },
+  {
+    slug: 'quickborn',
+    name: 'Quickborn',
+    region: 'Kreis Pinneberg',
+    lat: 53.7307,
+    lng: 9.9036,
+    kurz: 'Quickborn, Quickborn-Heide, Renzel — Rand des Himmelmoors mit typischem Sandboden-Bestand.',
+    keyword: 'Baumpflege Quickborn',
+    anfahrt: '25 Min',
   },
 ];
+
+// Regions-Hub: fängt Suchen aus Kiel/Lübeck/Rendsburg auf ohne eigene
+// Ortsseite mit fehlender GBP-Nähe. Verweist auf die realistischen Nah-Orte.
+export const REGION_SH = {
+  slug: 'schleswig-holstein',
+  name: 'Schleswig-Holstein',
+  fernorte: [
+    { name: 'Kiel', anfahrt: '60 Min', hinweis: 'Terminfällungen und Rahmen­verträge — für Sofort-Notdienst nutze bitte einen Kieler Baumkletterer.' },
+    { name: 'Lübeck', anfahrt: '90 Min', hinweis: 'Planbare Einsätze und FLL-Kontrollrunden — Sofort-Sturmdienst nur eingeschränkt.' },
+    { name: 'Rendsburg', anfahrt: '75 Min', hinweis: 'Planeinsätze im NOK-Umfeld nach Terminvereinbarung.' },
+    { name: 'Neumünster', anfahrt: '40 Min', hinweis: 'Regelmäßig auf der Route — Termine gut planbar.' },
+    { name: 'Elmshorn', anfahrt: '40 Min', hinweis: 'Kreis Pinneberg westlich — Termine und Notdienst möglich.' },
+  ],
+};
 
 // Organization-Schema (nicht LocalBusiness, TIMBER ist überregional)
 export const ORG_SCHEMA = {

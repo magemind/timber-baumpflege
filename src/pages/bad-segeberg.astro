@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, STAEDTE, localBusinessSchema } from '../config';
+
+const stadt = STAEDTE.find((s) => s.slug === 'bad-segeberg')!;
+const schema = localBusinessSchema(stadt);
+
+const ortsteile = [
+  { name: 'Segeberg-Zentrum', kurz: 'Rund um Kalkberg und Ihlsee — Alt­buchen, Eichen und Kastanien im Kur­park und entlang der Uferwege.' },
+  { name: 'Christiansfelde', kurz: 'Wohn­gebiet mit gemischten Beständen, viele Kiefern und Birken aus den 70er-Jahren.' },
+  { name: 'Klosterfelde', kurz: 'Ortsteil im Norden, dörflich geprägt, Hofbäume und Alleen.' },
+  { name: 'Umland Wahlstedt & Trappenkamp', kurz: 'Nach­bar­gemeinden im gleichen Einsatz­radius — planbare Termine im Paket.' },
+];
+
+const faq = [
+  {
+    frage: 'Was kostet eine Baumfällung in Bad Segeberg?',
+    antwort: 'Grobricht­werte: 10–15 m gut zugänglich 400–900 € netto, 25 m in enger Lage mit Kletter­einsatz 2.000–4.000 €. Nutze den <a href="/preisrechner/" class="text-moos underline">Preisrechner</a> oder schick zwei Fotos plus Adresse per WhatsApp — kostenlose Einschätzung binnen 24 Stunden.',
+  },
+  {
+    frage: 'Genehmigung — was gilt in Bad Segeberg?',
+    antwort: 'Bad Segeberg hat eine kommunale Baumschutz­satzung. Geschützt sind Laubbäume ab einem Stamm­umfang von 60 cm in 1 m Höhe sowie ausgewiesene Nadel­gehölze. Antrag stellt das Bau­amt — wir übernehmen die Abwicklung.',
+  },
+  {
+    frage: 'Anfahrt Bad Segeberg — wie schnell seid ihr?',
+    antwort: 'Rund 25 Minuten vom Standort in Nahe. Für Sturm-Notfälle mit Personen­gefährdung meist innerhalb von zwei Stunden vor Ort.',
+  },
+  {
+    frage: 'Auch Rahmen­vertrag für den Kur- und Kloster­park-Bereich?',
+    antwort: 'Ja — für Verwaltungen, Wohnungs­eigentümer­gemeinschaften, Kur­betriebe. FLL-Regel­kontrolle einmal jährlich, digitaler Kataster­aufbau mit Fotos, Handlungs­empfehlung.',
+  },
+];
+---
+
+<BaseLayout
+  title="Baumpflege Bad Segeberg — Baumfällung & Sturm-Notdienst am Kalkberg"
+  description="Baumpflege und Baumfällung in Bad Segeberg. Seilklettertechnik SKT-A/B, ZTV-Baumpflege, Baumschutzsatzung, FLL-Kontrolle. Für Kur- und Klosterviertel, Christiansfelde, Umland Wahlstedt/Trappenkamp. Anfahrt 25 Minuten."
+  schema={schema}
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Einsatzgebiet · Bad Segeberg · Kreisstadt Segeberg</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Bad Segeberg.<br/><span class="text-messing italic font-normal">Kur­park, Kalkberg, alter Bestand.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Bad Segeberg hat einen Baumbestand mit Charakter — Alt­buchen und Alleen entlang des Kalkbergs, alte Kastanien im Kur­park, gemischte Bestände in den Wohn­gebieten Christiansfelde und Klosterfelde. Wir arbeiten in Bad Segeberg für Privat­kunden, Verwaltungen, Kur­betriebe und die Stadt — Termin­einsätze planen wir gern gebündelt mit den Nachbar­gemeinden Wahlstedt und Trappenkamp.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Bad Segeberg im Detail</span>
+      <h2 class="mt-4">Kur­stadt mit anspruchs­vollem Baum­erbe.</h2>
+
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Bad Segeberg ist Kreis­stadt des Kreises Segeberg und zieht durch die Karl-May-Fest­spiele am Kalkberg jedes Jahr rund 300.000 Besucher an. Das prägt auch den Umgang mit dem öffentlichen Baumbestand: Alt­bäume rund um den Kur­park und den Ihlsee sind Teil des Stadt­bilds und werden entsprechend erhalten. Für Privat­kunden in Bad Segeberg heißt das: die Baumschutz­satzung wird ernst genommen, Genehmigungen brauchen sauberen Antrag, und Fällungen ohne Anzeige werden vom Bau­amt konsequent verfolgt.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Typische Aufträge:</strong> Rund um den Kalkberg und den Ihlsee stehen viele Alt­buchen, deren Pflege­schnitte alle 5–8 Jahre anstehen — Totholz raus, Zwiesel prüfen, ggf. Kronen­sicherung. In den Wohn­gebieten Christiansfelde sind es oft Fällungen borken­käfer­geschädigter Fichten oder überalterte Kiefern in Villen­gärten. In den Rand­lagen Richtung Klosterfelde arbeiten wir mit Hof- und Alleebäumen.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Kur- und Kliniks­bezirk:</strong> Die Segeberger Kliniken und die Kur­einrichtungen haben eigene Bestände mit Verkehrs­sicherungs­pflicht. Für solche Bestände bieten wir Rahmen­verträge mit FLL-Regel­kontrolle, Kataster­pflege und schneller Reaktion bei Sturm.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Baumschutz­satzung Bad Segeberg:</strong> Geschützt sind Laubbäume ab 60 cm Stamm­umfang in 1 m Höhe. Ausgenommen Obstbäume (außer Walnuss und Esskastanie) und bestimmte Nadel­gehölze in Privat­gärten. Bei Verstoß droht Bußgeld ab 500 € pro Baum, plus vor­geschriebene Ersatz­pflanzung im Verhältnis 1:1 bis 1:3.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Wo wir arbeiten</span>
+        <h2 class="mt-4">Bad Segeberg und die Nachbargemeinden.</h2>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-2">
+        {ortsteile.map((ot) => (
+          <div class="panel">
+            <span class="rule"></span>
+            <h3 class="text-forst" style="font-size: 1.15rem;">{ot.name}</h3>
+            <p class="mt-3 text-body-sm text-rauch leading-relaxed">{ot.kurz}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-12 text-caption text-rauch">
+        Weitere Nachbarn: <a href="/kaltenkirchen/" class="text-moos underline">Kaltenkirchen</a> · <a href="/henstedt-ulzburg/" class="text-moos underline">Henstedt-Ulzburg</a> · Leezen · Wittenborn · Fahrenkrug.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Leistungen in Bad Segeberg</span>
+        <h2 class="mt-4">Was hier am häufigsten gebraucht wird.</h2>
+      </div>
+      <div class="mt-14 grid gap-8 md:grid-cols-2">
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Baumfällung mit Antrag</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Genehmigungs­fähigkeit prüfen, Antrag beim Bau­amt Bad Segeberg stellen, Fällung in der Vegetations­ruhe. Seilkletter­technik, Segment-Ablass in engen Innen­lagen, Kran wo Zugang möglich. Vollentsorgung inklusive.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Kronen­pflege für Alt­bäume</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Kronen­pflege nach ZTV-Baumpflege, dynamische Kronen­sicherung (Cobra, Boa) für Alt­buchen, Totholz­entfernung. Statt Fällung: Erhalt.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">FLL-Baumkontrolle für Verwaltungen</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Rahmen­verträge für Hausverwaltungen, Kur- und Klinik­betriebe, Wohnungs­eigentümer­gemeinschaften. Digitaler Kataster­aufbau, Fotodokumentation, rechtsfeste Handlungs­empfehlung.
+          </p>
+        </div>
+        <div class="border border-linie p-8">
+          <h3 class="text-forst" style="font-size: 1.35rem;">Sturm-Notdienst 24/7</h3>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">
+            Anfahrt 25 Minuten. Priorität nach Personen­gefährdung. Personen­gefahr immer zuerst 112.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2 class="mt-4">Was Bad Segeberger Kunden fragen.</h2>
+      <div class="mt-12 space-y-4">
+        {faq.map((f) => (
+          <details class="border border-linie p-6">
+            <summary class="font-display font-medium text-forst cursor-pointer text-body">{f.frage}</summary>
+            <p class="mt-4 text-body-sm text-rauch leading-relaxed" set:html={f.antwort}></p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst-dark">Bad Segeberg — planbar und schnell.</h2>
+      <p class="mt-6 text-body-lg mx-auto max-w-xl">
+        Ruf an oder schick eine WhatsApp mit Foto und Adresse. Angebot binnen 24 Stunden — meist ohne Ortstermin.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
