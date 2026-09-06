@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/Fraunces-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/Inter-Variable.woff2') format('woff2');
+}
+
+/* TIMBER-Farbwelt: dunkles Waldgrün, warmes Holz, Messing-Akzent.
+   Bewusst edler und dunkler als die transaktionalen Satelliten. */
+@theme {
+  --color-forst: #1B2A20;        /* Basisdunkelgrün (Marken-Ankerfarbe) */
+  --color-forst-dark: #0F1912;   /* Fast-schwarz für Hero-Flächen */
+  --color-forst-light: #2A3D30;  /* Hover, Panel */
+  --color-moos: #3F5A45;         /* Mid-Grün */
+  --color-moos-light: #7A937F;   /* Soft-Grün */
+
+  --color-holz: #5C4033;         /* Warmes Holzbraun (Sekundär) */
+  --color-holz-light: #8B6B54;   /* Helleres Holz */
+
+  --color-messing: #C9A34E;      /* Messing-Gold (Akzent, sparsam) */
+  --color-messing-dark: #A6862F;
+
+  --color-birke: #F5F1E8;        /* Papier / Basis-Hintergrund */
+  --color-birke-dark: #EAE4D3;   /* Panel */
+  --color-tinte: #1B1F1B;        /* Textfarbe */
+  --color-rauch: #6B6E68;        /* Sekundär-Text */
+  --color-linie: #D9D4C2;        /* Trennlinien */
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --text-display-xl: 4rem;
+  --text-display-lg: 3rem;
+  --text-display-md: 2.25rem;
+  --text-display-sm: 1.5rem;
+  --text-body-lg: 1.1875rem;
+  --text-body: 1.0625rem;
+  --text-body-sm: 0.9375rem;
+  --text-caption: 0.8125rem;
+
+  --spacing-section: 7rem;
+  --spacing-section-sm: 4.5rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--color-tinte);
+    background-color: var(--color-birke);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    font-weight: 500;
+  }
+  h1 { font-size: var(--text-display-xl); font-weight: 600; }
+  h2 { font-size: var(--text-display-lg); font-weight: 500; }
+  h3 { font-size: var(--text-display-md); font-weight: 500; }
+  h4 { font-size: var(--text-display-sm); font-weight: 500; }
+  p { max-width: 68ch; }
+  ::selection { background-color: var(--color-messing); color: var(--color-forst-dark); }
+  img { max-width: 100%; height: auto; }
+  @media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.625rem; }
+    :root { --spacing-section: 4rem; --spacing-section-sm: 2.75rem; }
+  }
+}
+
+@layer components {
+  .container-site { max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
+  .container-narrow { max-width: 760px; margin-inline: auto; padding-inline: 1.5rem; }
+  .section-padding { padding-block: var(--spacing-section); }
+  .section-padding-sm { padding-block: var(--spacing-section-sm); }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-messing-dark);
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.95rem 1.75rem;
+    background-color: var(--color-forst); color: var(--color-birke);
+    font-weight: 500; font-size: var(--text-body-sm);
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    text-decoration: none; border: none; cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-forst-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(27,42,32,.28);
+  }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.95rem 1.75rem; background-color: transparent;
+    color: var(--color-forst); font-weight: 500; font-size: var(--text-body-sm);
+    border-radius: 2px;
+    border: 1px solid var(--color-forst);
+    transition: all 0.2s ease; text-decoration: none; cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+  .btn-ghost:hover { background-color: var(--color-forst); color: var(--color-birke); }
+
+  .btn-messing {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.95rem 1.75rem; background-color: var(--color-messing);
+    color: var(--color-forst-dark); font-weight: 600; font-size: var(--text-body-sm);
+    border-radius: 2px;
+    transition: all 0.2s ease; text-decoration: none; cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+  .btn-messing:hover { background-color: var(--color-messing-dark); }
+
+  .panel {
+    background: white;
+    border: 1px solid var(--color-linie);
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+  .panel:hover {
+    border-color: var(--color-moos);
+    box-shadow: 0 12px 32px rgba(27,42,32,.06);
+  }
+
+  .panel-dark {
+    background: var(--color-forst-dark);
+    color: var(--color-birke);
+    padding: 2rem;
+  }
+
+  .rule {
+    display: block; width: 48px; height: 2px;
+    background: var(--color-messing);
+    margin-bottom: 1.5rem;
+  }
+
+  .prose { font-size: var(--text-body-lg); line-height: 1.75; color: var(--color-tinte); }
+  .prose h2 { margin-top: 3rem; margin-bottom: 1rem; font-size: 1.875rem; }
+  .prose h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.375rem; }
+  .prose p { margin-bottom: 1.25rem; }
+  .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+  .prose li { margin-bottom: 0.5rem; }
+  .prose a { color: var(--color-moos); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .prose a:hover { color: var(--color-messing-dark); }
+  .prose blockquote {
+    border-left: 2px solid var(--color-messing);
+    padding-left: 1.5rem; margin-block: 2rem;
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1.375rem; color: var(--color-forst);
+  }
+}

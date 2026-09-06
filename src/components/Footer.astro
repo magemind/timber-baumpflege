@@ -1,0 +1,57 @@
+---
+import { SITE, CONTACT, LEISTUNGEN, SATELLITEN } from '../config';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-forst-dark text-birke/80 mt-auto">
+  <div class="container-site py-16">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-2.5 mb-4">
+          <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect width="32" height="32" rx="4" fill="#C9A34E"/>
+            <path d="M16 5 L10 12 L13 12 L8 20 L12 20 L6 28 L26 28 L20 20 L24 20 L19 12 L22 12 Z" fill="#1B2A20"/>
+            <rect x="14" y="26" width="4" height="4" fill="#5C4033"/>
+          </svg>
+          <span class="font-display font-semibold text-[1.35rem] text-birke">TIMBER</span>
+        </div>
+        <p class="text-body-sm text-birke/60 leading-relaxed">Baumpflege & Baumdienst mit Sitz in Norddeutschland. Regional aufgestellt, handwerklich sauber, versichert.</p>
+        <p class="text-caption text-birke/50 mt-4">Inhaber · Jan Möller</p>
+      </div>
+
+      <div>
+        <h4 class="text-caption font-semibold uppercase tracking-widest text-messing mb-4">Leistungen</h4>
+        <ul class="space-y-2.5 text-body-sm">
+          {LEISTUNGEN.map((l) => (
+            <li><a href={`/leistungen/#${l.slug}`} class="text-birke/70 hover:text-messing no-underline transition-colors">{l.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-caption font-semibold uppercase tracking-widest text-messing mb-4">Einsatzgebiete</h4>
+        <ul class="space-y-2.5 text-body-sm">
+          {SATELLITEN.map((s) => (
+            <li><a href={`https://${s.domain}`} rel="noopener" class="text-birke/70 hover:text-messing no-underline transition-colors">{s.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-caption font-semibold uppercase tracking-widest text-messing mb-4">Kontakt</h4>
+        <ul class="space-y-2.5 text-body-sm text-birke/70">
+          <li><a href={`tel:${CONTACT.phone}`} class="text-messing font-semibold no-underline hover:text-birke transition-colors">☎ {CONTACT.phoneDisplay}</a></li>
+          <li class="text-caption">{CONTACT.hours}</li>
+          <li class="pt-3 text-caption">
+            <a href="/impressum/" class="text-birke/60 hover:text-messing no-underline mr-4">Impressum</a>
+            <a href="/datenschutz/" class="text-birke/60 hover:text-messing no-underline">Datenschutz</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-birke/10 mt-12 pt-6 text-caption text-birke/40 text-center">
+      © {year} {SITE.legalName} · Alle Rechte vorbehalten
+    </div>
+  </div>
+</footer>

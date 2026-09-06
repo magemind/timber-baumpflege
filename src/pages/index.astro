@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, CONTACT, OWNER, LEISTUNGEN, SATELLITEN, REFERENZEN } from '../config';
+---
+
+<BaseLayout title="Startseite" description={SITE.description}>
+
+  <!-- HERO -->
+  <section class="relative bg-forst-dark text-birke overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 30% 40%, #C9A34E 0%, transparent 50%);"></div>
+    <div class="container-site relative section-padding grid gap-14 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+      <div>
+        <span class="eyebrow text-messing">Baumpflege & Baumdienst · Norddeutschland</span>
+        <h1 class="mt-6 text-birke leading-[1.05]">Handwerk mit Höhe.<br/><span class="text-messing italic font-normal">Bäume, die bleiben.</span></h1>
+        <p class="mt-8 text-body-lg text-birke/75 max-w-xl leading-relaxed">
+          TIMBER ist der Baumdienst von <strong class="text-birke">Jan Möller</strong> — Fachagrarwirt Baumpflege, SKT-B, seit über zehn Jahren in norddeutschen Kronen. Wir arbeiten dort, wo kein Kran hinkommt, und pflegen Bäume so, dass sie stehen bleiben können.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+          <a href="/team/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Über TIMBER →</a>
+        </div>
+        <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-caption text-birke/60 uppercase tracking-widest">
+          <span>SKT-A/B zertifiziert</span>
+          <span>·</span>
+          <span>ZTV-Baumpflege</span>
+          <span>·</span>
+          <span>Vollversichert</span>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="aspect-[4/5] bg-gradient-to-br from-forst-light to-forst border border-birke/10 rounded-sm relative overflow-hidden">
+          <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="treegrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#C9A34E" stop-opacity="0.6"/>
+                <stop offset="1" stop-color="#5C4033" stop-opacity="0.9"/>
+              </linearGradient>
+            </defs>
+            <path d="M200 80 C170 100, 140 130, 130 180 C100 190, 80 220, 90 260 C60 280, 55 320, 90 340 C110 370, 150 380, 200 380 C250 380, 290 370, 310 340 C345 320, 340 280, 310 260 C320 220, 300 190, 270 180 C260 130, 230 100, 200 80 Z" fill="url(#treegrad)"/>
+            <rect x="190" y="380" width="20" height="80" fill="#5C4033"/>
+          </svg>
+          <div class="absolute inset-0 flex items-end p-8">
+            <blockquote class="text-birke/90 font-display italic text-2xl leading-tight">„Ein guter Baum wird nicht ersetzt — er wird gepflegt."</blockquote>
+          </div>
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-messing text-forst-dark px-5 py-3 font-display text-sm shadow-xl">
+          <div class="font-semibold">10+ Jahre</div>
+          <div class="text-caption opacity-80">in norddeutschen Kronen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS TIMBER MACHT -->
+  <section class="section-padding-sm">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Was wir machen</span>
+        <h2 class="mt-4">Fünf Kernbereiche.<br/><span class="text-moos">Ein Anspruch.</span></h2>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {LEISTUNGEN.map((l) => (
+          <a href={`/leistungen/#${l.slug}`} class="panel group no-underline">
+            <span class="rule"></span>
+            <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.5rem;">{l.name}</h3>
+            <p class="mt-3 text-rauch text-body-sm leading-relaxed">{l.short}</p>
+            <span class="mt-6 inline-block text-caption text-moos font-semibold uppercase tracking-widest group-hover:text-messing-dark transition-colors">Details →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HALTUNG / MANIFESTO -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-narrow text-center">
+      <span class="eyebrow">Unsere Haltung</span>
+      <h2 class="mt-4 text-forst">Wir sind gegen den <span class="italic">schnellen Kahlschlag</span>.</h2>
+      <p class="mt-8 text-body-lg text-tinte/75 leading-relaxed mx-auto">
+        Baumfällung ist der letzte Schritt, nicht der erste. Wo ein Baum durch Kronenpflege, Sicherungsschnitt oder ein Kronensicherungssystem gerettet werden kann, retten wir ihn. Ein Altbaum ersetzt sich nicht in einem Menschenleben. Wenn gefällt werden muss — dann sauber, versichert, mit Vollentsorgung. Sonst nicht.
+      </p>
+      <p class="mt-6 text-body text-rauch italic font-display">— Jan Möller, Inhaber</p>
+    </div>
+  </section>
+
+  <!-- EINSATZGEBIETE -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
+        <div class="max-w-xl">
+          <span class="eyebrow">Wo TIMBER arbeitet</span>
+          <h2 class="mt-4">Sechs Regional-Auftritte.<br/><span class="text-moos">Ein Team.</span></h2>
+        </div>
+        <a href="/einsatzgebiete/" class="btn-ghost">Alle Einsatzgebiete →</a>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {SATELLITEN.map((s) => (
+          <a href={`https://${s.domain}`} rel="noopener" class="group block panel no-underline">
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.375rem;">{s.name}</h3>
+              <span class="text-caption text-rauch uppercase tracking-widest">{s.region}</span>
+            </div>
+            <p class="text-body-sm text-rauch leading-relaxed">{s.description}</p>
+            <div class="mt-5 text-caption text-moos font-mono">{s.domain} →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENZ-VORSCHAU -->
+  <section class="section-padding bg-forst-dark text-birke">
+    <div class="container-site">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
+        <div>
+          <span class="eyebrow text-messing">Portfolio</span>
+          <h2 class="mt-4 text-birke">Aus der Praxis.</h2>
+        </div>
+        <a href="/referenzen/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Alle Projekte →</a>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {REFERENZEN.slice(0, 4).map((r) => (
+          <article class="border border-birke/10 p-8 hover:border-messing/40 transition-colors">
+            <div class="flex items-baseline justify-between mb-3">
+              <span class="text-caption uppercase tracking-widest text-messing">{r.location}</span>
+              <span class="text-caption text-birke/50">{r.year}</span>
+            </div>
+            <h3 class="text-birke" style="font-size: 1.5rem;">{r.title}</h3>
+            <p class="mt-4 text-birke/70 text-body-sm leading-relaxed">{r.short}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT-CTA -->
+  <section class="section-padding-sm bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst-dark">Baum-Situation prüfen lassen?</h2>
+      <p class="mt-6 text-body-lg mx-auto">Ruf einfach an. Oder schreib. Wir schauen uns Fotos vorab an — meist reicht das, um Aufwand und Kosten einzuschätzen.</p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht schreiben →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

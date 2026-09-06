@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, SATELLITEN } from '../config';
+---
+
+<BaseLayout
+  title="Einsatzgebiete"
+  description="Wo TIMBER arbeitet: Ahrensburg, Pinneberg, Norderstedt, Blankenese, Hamburg und Umland — mit eigenen regionalen Auftritten und lokalem Behörden-Wissen."
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Wo TIMBER arbeitet</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Regional statt landesweit.<br/><span class="text-messing italic font-normal">Sechs Regionen. Ein Team.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Wir betreiben für unsere Kern-Regionen eigene Regional-Auftritte. Warum? Weil die Baumschutzsatzung in Ahrensburg anders aussieht als in Hamburg, weil die Behördenwege in Pinneberg anders laufen als in Norderstedt, und weil Kunden lokale Ansprechpartner suchen. Alle Auftritte werden vom gleichen Team betrieben — TIMBER.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="grid gap-6 md:grid-cols-2">
+        {SATELLITEN.map((s) => (
+          <a href={`https://${s.domain}`} rel="noopener" class="panel group no-underline p-8">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <span class="eyebrow text-messing-dark">{s.region}</span>
+                <h2 class="mt-2 text-forst group-hover:text-messing-dark transition-colors" style="font-size: 2rem;">{s.name}</h2>
+              </div>
+              <svg class="w-6 h-6 text-rauch group-hover:text-messing-dark transition-colors shrink-0 mt-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+            <p class="text-body text-tinte/80 leading-relaxed">{s.description}</p>
+            <div class="mt-6 pt-4 border-t border-linie flex items-center justify-between">
+              <span class="text-caption text-moos font-mono">{s.domain}</span>
+              <span class="text-caption text-forst group-hover:text-messing-dark uppercase tracking-widest font-semibold transition-colors">Zur Regional-Seite →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WIE DAS ZUSAMMENHÄNGT -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-narrow">
+      <span class="eyebrow">Wie das zusammenhängt</span>
+      <h2 class="mt-4">Ein Betrieb. Sechs Adressen.</h2>
+      <div class="prose mt-10">
+        <p>
+          Baumpflege ist ein regionales Geschäft. Der Kunde sucht nicht „Baumpflege" — der Kunde sucht „Baumpflege Ahrensburg", „Baumfällung Blankenese", „Sturmdienst Pinneberg". Google und die Kunden erwarten lokal.
+        </p>
+        <p>
+          Darauf haben wir unsere Sichtbarkeit ausgerichtet: Für jede Region, in der wir regelmäßig arbeiten, gibt es eine eigene Domain mit lokal geltender Baumschutzsatzung, örtlichen Anfahrtszeiten und regional bekannten Beispielen. Anrufe laufen zentral bei TIMBER auf. Ausführung, Ausrüstung, Rechnung — alles ein Betrieb.
+        </p>
+        <p>
+          Das ist ehrlicher als eine „Wir sind überall in Norddeutschland!"-Seite mit einer generischen Preisliste. Und es ist die Struktur, die für unsere Kunden funktioniert.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTSIDE / SONSTIGE -->
+  <section class="section-padding-sm">
+    <div class="container-narrow text-center">
+      <span class="eyebrow">Nicht auf der Liste?</span>
+      <h2 class="mt-4">Wir kommen trotzdem.</h2>
+      <p class="mt-6 text-body-lg text-tinte/75 leading-relaxed mx-auto">
+        Für Orte außerhalb unserer Kern-Regionen — zum Beispiel Uetersen, Elmshorn, Quickborn oder das südliche Schleswig-Holstein — arbeiten wir nach Anfrage. Anfahrt wird transparent kalkuliert. Für größere Aufträge, Wohnungsgesellschaften oder Rahmenverträge lohnt sich das fast immer.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Anfrage senden →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

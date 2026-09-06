@@ -1,0 +1,17 @@
+---
+import { CONTACT } from '../config';
+const encoded = Buffer.from(CONTACT.email).toString('base64');
+---
+<span data-email={encoded} class="protected-email text-moos underline underline-offset-4 hover:text-messing-dark cursor-pointer">
+  [E-Mail einblenden]
+</span>
+
+<script is:inline>
+  document.querySelectorAll('.protected-email').forEach((el) => {
+    const encoded = el.getAttribute('data-email');
+    if (!encoded) return;
+    const email = atob(encoded);
+    el.textContent = email;
+    el.addEventListener('click', () => { window.location.href = 'mailto:' + email; });
+  });
+</script>

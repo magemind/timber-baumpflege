@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, LEISTUNGEN, SATELLITEN } from '../config';
+---
+
+<BaseLayout
+  title="Leistungen"
+  description="Was TIMBER macht: Baumfällung, Baumpflege, Verkehrssicherungspflicht, Sturm-Notdienst, Stubbenfräsen. Buchung erfolgt regional über unsere Einsatzgebiets-Auftritte."
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Leistungen</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Fünf Kernbereiche.<br/><span class="text-messing italic font-normal">Alles aus einer Hand.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        TIMBER bündelt Baumarbeit vom einzelnen Sicherungsschnitt bis zum Sturm-Notdienst. Diese Seite gibt einen Überblick. Für Angebote und Terminvereinbarung nutz einen unserer regionalen Auftritte am Ende der Seite — dort ist die Anfahrt kürzer und wir kennen die lokalen Regeln.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site space-y-24">
+      {LEISTUNGEN.map((l, i) => (
+        <article id={l.slug} class="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:items-start scroll-mt-24">
+          <div>
+            <div class="font-display text-7xl text-messing italic leading-none">0{i + 1}</div>
+            <h2 class="mt-4">{l.name}</h2>
+          </div>
+          <div>
+            <p class="text-body-lg text-forst leading-relaxed font-medium">{l.short}</p>
+            <p class="mt-6 text-body text-tinte/80 leading-relaxed">{l.long}</p>
+
+            {l.slug === 'baumfaellung' && (
+              <ul class="mt-8 space-y-2.5 text-body-sm text-rauch">
+                <li>· Seilklettertechnik SKT-B in engen Lagen</li>
+                <li>· Zerlegung von oben nach unten, Segment für Segment abgelassen</li>
+                <li>· MEWP-/Krananbindung nach Situation</li>
+                <li>· Ganzheitliche Entsorgung — Stamm, Krone, Schnittgut</li>
+              </ul>
+            )}
+            {l.slug === 'baumpflege' && (
+              <ul class="mt-8 space-y-2.5 text-body-sm text-rauch">
+                <li>· Kronenpflege nach ZTV-Baumpflege</li>
+                <li>· Kronenreduktion, Kronenauslichtung</li>
+                <li>· Totholzentfernung</li>
+                <li>· Dynamische Kronensicherung (Cobra, Boa)</li>
+                <li>· Obstbaumschnitt (Winter- und Sommerschnitt)</li>
+              </ul>
+            )}
+            {l.slug === 'verkehrssicherheit' && (
+              <ul class="mt-8 space-y-2.5 text-body-sm text-rauch">
+                <li>· Regelbaumkontrolle nach FLL-Richtlinie</li>
+                <li>· Baumkataster-Aufbau und -Pflege</li>
+                <li>· Gutachterliche Einschätzung bei Verdacht auf Bruchgefahr</li>
+                <li>· Rechtsfeste Dokumentation für den Haftungsfall</li>
+                <li>· Rahmenverträge für Verwaltungen und Kommunen</li>
+              </ul>
+            )}
+            {l.slug === 'sturmdienst' && (
+              <div class="mt-8 panel-dark">
+                <div class="text-caption uppercase tracking-widest text-messing">Sturm-Notdienst</div>
+                <div class="mt-3 font-display text-2xl text-birke">☎ {CONTACT.phoneDisplay}</div>
+                <p class="mt-3 text-body-sm text-birke/70">Bei Personengefährdung immer zuerst 112. Danach uns.</p>
+              </div>
+            )}
+            {l.slug === 'stubbenfraesen' && (
+              <ul class="mt-8 space-y-2.5 text-body-sm text-rauch">
+                <li>· Handgeführte Fräse für enge Zufahrten</li>
+                <li>· Radlader-Fräse für große Stubben</li>
+                <li>· Fräs-Tiefe 30–40 cm unter Rasenniveau</li>
+                <li>· Entsorgung der Frässpäne oder Verbleib vor Ort</li>
+              </ul>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- REGIONALE BUCHUNG -->
+  <section class="section-padding bg-birke-dark border-t border-linie">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Buchung & Angebot</span>
+        <h2 class="mt-4">Buchung läuft lokal.</h2>
+        <p class="mt-6 text-body-lg text-tinte/75 leading-relaxed">
+          Für Angebote und Terminvereinbarung nutz die Regional-Seite, die zu Deinem Standort passt. Dort findest Du die lokal geltende Baumschutzsatzung, ortsspezifische Preise und einen direkten Draht.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {SATELLITEN.map((s) => (
+          <a href={`https://${s.domain}`} rel="noopener" class="panel group no-underline">
+            <div class="flex items-baseline justify-between mb-2">
+              <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.25rem;">{s.name}</h3>
+              <span class="text-caption text-rauch uppercase tracking-widest">{s.region}</span>
+            </div>
+            <div class="text-caption text-moos font-mono mt-3">{s.domain} →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT-CTA -->
+  <section class="section-padding-sm bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst-dark">Direkt fragen?</h2>
+      <p class="mt-6 text-body-lg mx-auto">Wenn Du nicht sicher bist, welche Regional-Seite passt — ruf an. Wir routen intern.</p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

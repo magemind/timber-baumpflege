@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProtectedEmail from '../components/ProtectedEmail.astro';
+import { SITE, CONTACT } from '../config';
+
+const mailActionB64 = Buffer.from('mailto:' + CONTACT.email).toString('base64');
+---
+
+<BaseLayout
+  title="Kontakt"
+  description={`Kontakt zu ${SITE.legalName}: Telefon, WhatsApp, E-Mail, Adresse. Direkter Draht zum Inhaber Jan Möller.`}
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Kontakt</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Direkter Draht zum Inhaber.</h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Kein Callcenter, keine Warteschleife. Rufe an, schreibe oder nutze das Formular — wir melden uns meist innerhalb eines Werktags. Im Sturmfall sofort.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-site grid gap-14 lg:grid-cols-[1.2fr_1fr]">
+
+      <!-- CONTACT CARDS -->
+      <div class="grid gap-4 sm:grid-cols-2 self-start">
+        <a href={`tel:${CONTACT.phone}`} class="panel group no-underline">
+          <div class="text-caption uppercase tracking-widest text-messing-dark">Telefon</div>
+          <div class="mt-3 font-display text-2xl text-forst group-hover:text-messing-dark transition-colors">{CONTACT.phoneDisplay}</div>
+          <p class="mt-3 text-body-sm text-rauch">Werktags 7–18 Uhr · 24/7 Notdienst</p>
+        </a>
+        <a href={CONTACT.whatsapp} rel="noopener" class="panel group no-underline">
+          <div class="text-caption uppercase tracking-widest text-messing-dark">WhatsApp</div>
+          <div class="mt-3 font-display text-2xl text-forst group-hover:text-messing-dark transition-colors">Chat & Foto</div>
+          <p class="mt-3 text-body-sm text-rauch">Foto vom Baum reicht meist für eine erste Einschätzung</p>
+        </a>
+        <div class="panel">
+          <div class="text-caption uppercase tracking-widest text-messing-dark">E-Mail</div>
+          <div class="mt-3 font-display text-lg text-forst"><ProtectedEmail /></div>
+          <p class="mt-3 text-body-sm text-rauch">Antwort innerhalb eines Werktags</p>
+        </div>
+        <div class="panel">
+          <div class="text-caption uppercase tracking-widest text-messing-dark">Anschrift</div>
+          <div class="mt-3 font-display text-lg text-forst leading-tight">
+            {SITE.legalName}<br/>
+            {CONTACT.street}<br/>
+            {CONTACT.zip} {CONTACT.city}
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <form
+        id="contact-form"
+        method="post"
+        class="panel space-y-5"
+        data-action={mailActionB64}
+      >
+        <div>
+          <span class="eyebrow">Nachricht</span>
+          <h2 class="mt-3" style="font-size: 1.75rem;">Schreib uns.</h2>
+        </div>
+
+        <label class="block">
+          <span class="text-caption uppercase tracking-widest text-rauch">Name</span>
+          <input type="text" name="name" required class="mt-1 w-full border border-linie bg-birke px-4 py-3 text-body focus:border-moos focus:outline-none transition-colors" />
+        </label>
+
+        <label class="block">
+          <span class="text-caption uppercase tracking-widest text-rauch">Telefon oder E-Mail</span>
+          <input type="text" name="kontakt" required class="mt-1 w-full border border-linie bg-birke px-4 py-3 text-body focus:border-moos focus:outline-none transition-colors" />
+        </label>
+
+        <label class="block">
+          <span class="text-caption uppercase tracking-widest text-rauch">Standort (PLZ oder Ort)</span>
+          <input type="text" name="ort" class="mt-1 w-full border border-linie bg-birke px-4 py-3 text-body focus:border-moos focus:outline-none transition-colors" />
+        </label>
+
+        <label class="block">
+          <span class="text-caption uppercase tracking-widest text-rauch">Deine Nachricht</span>
+          <textarea name="nachricht" required rows="5" class="mt-1 w-full border border-linie bg-birke px-4 py-3 text-body focus:border-moos focus:outline-none transition-colors resize-y"></textarea>
+        </label>
+
+        <button type="submit" class="btn-primary w-full justify-center">Nachricht senden</button>
+        <p class="text-caption text-rauch">Öffnet Deine E-Mail-App mit vorausgefülltem Text.</p>
+      </form>
+    </div>
+  </section>
+
+  <script is:inline>
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const b64 = form.getAttribute('data-action');
+        if (!b64) return;
+        const mailto = atob(b64);
+        const fd = new FormData(form);
+        const body = `Name: ${fd.get('name')}\nKontakt: ${fd.get('kontakt')}\nStandort: ${fd.get('ort')}\n\n${fd.get('nachricht')}`;
+        const subject = 'Anfrage TIMBER Baumpflege';
+        window.location.href = `${mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    }
+  </script>
+
+</BaseLayout>

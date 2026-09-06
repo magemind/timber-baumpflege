@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, OWNER } from '../config';
+---
+
+<BaseLayout
+  title="Team · Jan Möller"
+  description="TIMBER wird geführt von Jan Möller — Fachagrarwirt Baumpflege, SKT-B, seit über zehn Jahren im Baum. Werdegang, Zertifikate und Haltung."
+>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Team</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Ein Betrieb. Ein Inhaber. Ein Anspruch, der nicht delegiert wird.</h1>
+    </div>
+  </section>
+
+  <!-- JAN MÖLLER -->
+  <section class="section-padding">
+    <div class="container-site grid gap-16 lg:grid-cols-[1fr_1.4fr]">
+
+      <div>
+        <div class="aspect-[3/4] bg-birke-dark border border-linie relative overflow-hidden">
+          <svg class="w-full h-full opacity-40" viewBox="0 0 300 400" aria-hidden="true">
+            <circle cx="150" cy="130" r="55" fill="#5C4033"/>
+            <rect x="90" y="180" width="120" height="180" rx="10" fill="#3F5A45"/>
+            <rect x="130" y="360" width="40" height="40" fill="#1B2A20"/>
+          </svg>
+          <div class="absolute bottom-0 left-0 right-0 bg-forst-dark/90 text-birke p-5">
+            <div class="font-display text-lg">{OWNER.name}</div>
+            <div class="text-caption text-birke/70 uppercase tracking-widest mt-1">Inhaber</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="eyebrow">Der Inhaber</span>
+        <h2 class="mt-4">{OWNER.name}</h2>
+        <p class="mt-2 text-rauch text-body">{OWNER.role}</p>
+
+        <div class="prose mt-10">
+          <p>{OWNER.bio}</p>
+          <p>Warum ich diesen Beruf mache: Weil in einer Baumkrone Physik und Biologie gleichzeitig verhandelt werden. Weil man kein zweites Mal ansetzen kann. Und weil viele Kunden erst nach dem dritten Angebot merken, wie unterschiedlich „Baumfällung" gemeint werden kann.</p>
+
+          <blockquote>Ich fälle keinen gesunden Baum. Ich fälle Bäume, die nicht mehr zu retten sind — und pflege den Rest so, dass die Frage sich lange nicht stellt.</blockquote>
+
+          <h3>Was TIMBER anders macht</h3>
+          <ul>
+            <li><strong>Ein Inhaber vor Ort.</strong> Kein Callcenter, keine Zwischenschicht. Wer anruft, spricht mit dem, der auch klettert.</li>
+            <li><strong>Regional aufgestellt, statt überall gleich schlecht.</strong> Wir betreiben eigene Regional-Auftritte für Ahrensburg, Pinneberg, Norderstedt, Blankenese und Hamburg — mit lokalem Wissen zu Satzung, Behörden und typischen Bestandslagen.</li>
+            <li><strong>Festpreis nach Ortsbesichtigung.</strong> Kein Zeit-Material-Basar. Was besprochen wurde, wird abgerechnet.</li>
+            <li><strong>Erhalt vor Ersatz.</strong> Kronenpflege, Kronensicherung, Sicherungsschnitt statt Kahlschlag. Fällung nur, wenn nichts anderes geht.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZERTIFIKATE -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Ausbildung & Nachweise</span>
+        <h2 class="mt-4">Zertifikate.</h2>
+        <p class="mt-6 text-body-lg text-tinte/75">Für den Kunden ist Baumpflege eine Vertrauensbranche — was zählt, ist was man vorlegen kann. TIMBER hält Ausbildung und Nachweise transparent.</p>
+      </div>
+
+      <div class="mt-12 grid gap-4 md:grid-cols-2">
+        {OWNER.certificates.map((c) => (
+          <div class="panel flex items-start gap-4">
+            <svg class="w-6 h-6 shrink-0 mt-1 text-messing" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-body text-forst font-medium">{c}</span>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-10 text-body-sm text-rauch max-w-2xl">Zertifikat-Nachweise werden auf Anforderung vor Auftragsstart vorgelegt — für Verwalter, Wohnungsgesellschaften und öffentliche Auftraggeber ist das ohnehin Standard.</p>
+    </div>
+  </section>
+
+  <!-- WERTE -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Was uns leitet</span>
+        <h2 class="mt-4">Drei Prinzipien.</h2>
+      </div>
+
+      <div class="mt-14 grid gap-8 md:grid-cols-3">
+        <div>
+          <div class="font-display text-6xl text-messing italic">01</div>
+          <h3 class="mt-4 text-forst" style="font-size: 1.375rem;">Erhalt vor Ersatz</h3>
+          <p class="mt-3 text-body-sm text-rauch leading-relaxed">Kronenpflege, Kronensicherung, Sicherungsschnitt zuerst. Fällung erst, wenn der Baum nicht mehr sicher gehalten werden kann. Nachhaltig — und meist auch günstiger.</p>
+        </div>
+        <div>
+          <div class="font-display text-6xl text-messing italic">02</div>
+          <h3 class="mt-4 text-forst" style="font-size: 1.375rem;">Handwerk vor Preisdumping</h3>
+          <p class="mt-3 text-body-sm text-rauch leading-relaxed">Wir sind nicht die günstigsten. Wir sind zertifiziert, versichert und arbeiten mit sauberer Ausrüstung. Dumping-Angebote ohne Nachweise fallen bei uns durch — und im Zweifel bei der Versicherung ebenfalls.</p>
+        </div>
+        <div>
+          <div class="font-display text-6xl text-messing italic">03</div>
+          <h3 class="mt-4 text-forst" style="font-size: 1.375rem;">Regional statt landesweit</h3>
+          <p class="mt-3 text-body-sm text-rauch leading-relaxed">Wir arbeiten dort, wo wir die Kommunen kennen. Kein Kolonial-Vertrieb quer durch Norddeutschland — dafür lokal verwurzelt in unseren Einsatzgebieten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section-padding-sm bg-forst-dark text-birke">
+    <div class="container-narrow text-center">
+      <h2 class="text-birke">Direkter Draht zum Inhaber.</h2>
+      <p class="mt-6 text-body-lg text-birke/75">Keine Warteschleife, kein Sekretariat. Ans Telefon geht Jan.</p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Formular →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

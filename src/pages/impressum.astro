@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProtectedEmail from '../components/ProtectedEmail.astro';
+import { SITE, CONTACT } from '../config';
+---
+
+<BaseLayout
+  title="Impressum"
+  description={`Impressum von ${SITE.legalName} — Angaben gemäß § 5 DDG.`}
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <nav class="text-caption text-birke/60 mb-4">
+        <a href="/" class="hover:text-messing no-underline">Start</a> ·
+        <span class="text-birke">Impressum</span>
+      </nav>
+      <span class="eyebrow text-messing">Rechtliches</span>
+      <h1 class="mt-4 text-birke">Impressum</h1>
+      <p class="mt-6 text-body-lg text-birke/70">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG).</p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow prose">
+      <h2>Anbieter &amp; Umsetzung gemäß § 5 DDG</h2>
+      <p>
+        Timm Kluth<br/>
+        MoinCode:Software<br/>
+        {CONTACT.street}<br/>
+        {CONTACT.zip} {CONTACT.city}<br/>
+        {CONTACT.region}, {CONTACT.country}
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: <a href={`tel:${CONTACT.phone}`}>{CONTACT.phoneDisplay}</a><br/>
+        E-Mail: <ProtectedEmail />
+      </p>
+
+      <h2>Operative Ausführung</h2>
+      <p>
+        Fäll-, Pflege- und Notdiensteinsätze werden operativ ausgeführt durch <strong>{SITE.legalName}</strong>
+        (Inh. Jan Möller). Alle Preise, Angebote und Rechnungen laufen über {SITE.legalName}.
+      </p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>Kleinunternehmer gemäß § 19 UStG – keine Ausweisung der Umsatzsteuer.</p>
+
+      <h2>Berufsbezeichnung &amp; berufsrechtliche Regelungen</h2>
+      <p>Baumpflege- und Fällarbeiten, ausgeübt in Deutschland. Es gelten die einschlägigen Vorschriften der Berufsgenossenschaft (SVLFG) sowie die ZTV-Baumpflege in der jeweils aktuellen Fassung.</p>
+
+      <h2>Berufshaftpflichtversicherung</h2>
+      <p>Berufshaftpflicht besteht über die Versicherungssumme, die für Fällbetriebe branchenüblich ist. Details werden auf Anfrage vor Auftragsvergabe schriftlich benannt.</p>
+
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>Timm Kluth, MoinCode:Software, Anschrift wie oben.</p>
+
+      <h2>EU-Streitschlichtung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.
+        Unsere E-Mail-Adresse findest Du oben (aus Spamschutz-Gründen technisch verschleiert dargestellt).
+      </p>
+
+      <h2>Verbraucherstreitbeilegung</h2>
+      <p>
+        Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>
+        Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den
+        allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch
+        nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
+        Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+      </p>
+
+      <h2>Haftung für Links</h2>
+      <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss
+        haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber
+        der Seiten verantwortlich.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+        deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung
+        außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung.
+      </p>
+
+      <h2>Bildnachweise</h2>
+      <p>Eigene Fotografie und KI-gestützte Bildkomposition, {SITE.legalName}.</p>
+    </div>
+  </section>
+
+</BaseLayout>

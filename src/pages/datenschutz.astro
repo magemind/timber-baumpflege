@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProtectedEmail from '../components/ProtectedEmail.astro';
+import { SITE, CONTACT } from '../config';
+---
+
+<BaseLayout
+  title="Datenschutz"
+  description={`Datenschutzerklärung von ${SITE.legalName} nach DSGVO / TDDDG.`}
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <nav class="text-caption text-birke/60 mb-4">
+        <a href="/" class="hover:text-messing no-underline">Start</a> ·
+        <span class="text-birke">Datenschutz</span>
+      </nav>
+      <span class="eyebrow text-messing">Rechtliches</span>
+      <h1 class="mt-4 text-birke">Datenschutzerklärung</h1>
+      <p class="mt-6 text-body-lg text-birke/70">Nach DSGVO und TDDDG.</p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow prose">
+      <h2>Verantwortlicher</h2>
+      <p>
+        Timm Kluth, MoinCode:Software<br/>
+        {CONTACT.street}, {CONTACT.zip} {CONTACT.city}<br/>
+        E-Mail: <ProtectedEmail /><br/>
+        Telefon: <a href={`tel:${CONTACT.phone}`}>{CONTACT.phoneDisplay}</a>
+      </p>
+
+      <h2>Erhebung und Verarbeitung personenbezogener Daten</h2>
+      <p>
+        Diese Website erhebt personenbezogene Daten nur, wenn Du sie uns aktiv mitteilst — konkret über
+        das Kontaktformular oder per E-Mail bzw. Telefon. Wir nutzen diese Daten ausschließlich zur
+        Beantwortung Deiner Anfrage und zur Auftragsabwicklung.
+      </p>
+
+      <h2>Kontaktformular</h2>
+      <p>
+        Das Kontaktformular sendet Deine Nachricht direkt an Deine eigene E-Mail-App — es wird nichts
+        auf einem Server gespeichert. Die Angaben, die Du in Deiner E-Mail an uns schickst, werden bei
+        uns zur Bearbeitung Deiner Anfrage verarbeitet und danach nach den gesetzlichen Fristen
+        gelöscht.
+      </p>
+
+      <h2>Server-Logfiles</h2>
+      <p>
+        Beim Aufruf dieser Website erhebt unser Hosting-Anbieter (Vercel Inc., 340 S Lemon Ave #4133,
+        Walnut, CA 91789, USA) technisch notwendige Server-Logfiles: IP-Adresse in gekürzter Form,
+        Datum und Uhrzeit, aufgerufene URL, Referrer, User-Agent. Rechtsgrundlage ist Art. 6 Abs. 1
+        lit. f DSGVO (berechtigtes Interesse an der technischen Bereitstellung der Website). Die Daten
+        werden nach 30 Tagen anonymisiert.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        Diese Website setzt <strong>keine Cookies</strong> und keine Tracking-Technologien. Es werden
+        keine Nutzungsdaten an Dritte weitergegeben (kein Google Analytics, kein Facebook-Pixel etc.).
+      </p>
+
+      <h2>Externe Schriftarten</h2>
+      <p>
+        Wir laden Schriftarten (Fraunces, Inter) lokal von unserem eigenen Server — keine Übertragung an
+        Google Fonts oder andere Drittanbieter.
+      </p>
+
+      <h2>Verlinkung auf Regional-Auftritte</h2>
+      <p>
+        Diese Website verlinkt auf unsere regionalen Auftritte (z. B. baumfaellung-ahrensburg.de,
+        baumfaellung-pinneberg.com). Diese haben eigene Datenschutzerklärungen — es gelten die dort
+        genannten Bestimmungen, sobald Du die verlinkte Website aufrufst.
+      </p>
+
+      <h2>Deine Rechte</h2>
+      <p>
+        Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17),
+        Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21). Wende Dich
+        dafür an die oben genannten Kontaktdaten. Zusätzlich hast Du das Recht, Dich bei einer
+        Datenschutz-Aufsichtsbehörde zu beschweren.
+      </p>
+
+      <h2>SSL-Verschlüsselung</h2>
+      <p>
+        Diese Seite nutzt SSL-Verschlüsselung. Erkennbar am Schloss-Symbol in der Adresszeile und am
+        „https://" vor der URL.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
