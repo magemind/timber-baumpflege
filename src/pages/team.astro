@@ -1,70 +1,61 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { CONTACT, OWNER, TEAM_QUALIFIKATIONEN } from '../config';
+import { CONTACT, TEAM, TEAM_QUALIFIKATIONEN } from '../config';
 ---
 
 <BaseLayout
-  title="Team · Jan Möller und Fachpartner"
-  description="TIMBER wird geführt von Jan Möller. Zusammen mit einem festen Kreis freier Fachpartner deckt das Team SKT-A/B, Fachagrarwirt Baumpflege und alle motorsägenrelevanten Nachweise ab."
+  title="Team · Kernteam und Fachpartner"
+  description="TIMBER ist ein festes Kernteam mit SKT-A-Kletterei plus ein eingespielter Kreis freier Fachpartner (SKT-B, Fachagrarwirt Baumpflege, Motorsägenlehrgänge). Nachweise der eingesetzten Fachkräfte auf Anforderung."
 >
 
   <!-- HERO -->
   <section class="bg-forst-dark text-birke">
     <div class="container-site section-padding-sm">
       <span class="eyebrow text-messing">Team</span>
-      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Ein Inhaber. Ein Team von Fachpartnern. Ein Anspruch.</h1>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">{TEAM.headline}</h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">{TEAM.intro}</p>
     </div>
   </section>
 
-  <!-- JAN MÖLLER -->
+  <!-- MODELL -->
   <section class="section-padding">
-    <div class="container-site grid gap-16 lg:grid-cols-[1fr_1.4fr]">
+    <div class="container-site grid gap-14 lg:grid-cols-[1fr_1.3fr]">
 
       <div>
-        <div class="aspect-[3/4] bg-birke-dark border border-linie relative overflow-hidden">
-          <svg class="w-full h-full opacity-40" viewBox="0 0 300 400" aria-hidden="true">
-            <circle cx="150" cy="130" r="55" fill="#5C4033"/>
-            <rect x="90" y="180" width="120" height="180" rx="10" fill="#3F5A45"/>
-            <rect x="130" y="360" width="40" height="40" fill="#1B2A20"/>
-          </svg>
-          <div class="absolute bottom-0 left-0 right-0 bg-forst-dark/90 text-birke p-5">
-            <div class="font-display text-lg">{OWNER.name}</div>
-            <div class="text-caption text-birke/70 uppercase tracking-widest mt-1">Inhaber</div>
-          </div>
-        </div>
+        <span class="eyebrow">Warum kein Solo-Betrieb</span>
+        <h2 class="mt-4">Baum­pflege ist Teamarbeit.</h2>
       </div>
 
-      <div>
-        <span class="eyebrow">Der Inhaber</span>
-        <h2 class="mt-4">{OWNER.name}</h2>
-        <p class="mt-2 text-rauch text-body">{OWNER.role}</p>
-
-        <div class="prose mt-10">
-          <p>{OWNER.bio}</p>
-          <p>Warum dieser Beruf? Weil in einer Baumkrone Physik und Biologie gleichzeitig verhandelt werden. Weil man kein zweites Mal ansetzen kann. Und weil viele Kunden erst nach dem dritten Angebot merken, wie unterschiedlich „Baumfällung" gemeint werden kann.</p>
-
-          <blockquote>Wir fällen keinen gesunden Baum. Wir fällen Bäume, die nicht mehr zu retten sind — und pflegen den Rest so, dass die Frage sich lange nicht stellt.</blockquote>
-
-          <h3>Was TIMBER anders macht</h3>
-          <ul>
-            <li><strong>Ein Inhaber vor Ort.</strong> Kein Callcenter, keine Zwischenschicht. Wer anruft, spricht mit dem, der auch mit auf die Baustelle geht.</li>
-            <li><strong>Regional aufgestellt, statt überall gleich schlecht.</strong> Wir betreiben eigene Regional-Auftritte für Ahrensburg, Pinneberg, Norderstedt, Blankenese und Hamburg — mit lokalem Wissen zu Satzung, Behörden und typischen Bestandslagen.</li>
-            <li><strong>Festpreis nach Ortsbesichtigung.</strong> Kein Zeit-Material-Basar. Was besprochen wurde, wird abgerechnet.</li>
-            <li><strong>Erhalt vor Ersatz.</strong> Kronenpflege, Kronensicherung, Sicherungsschnitt statt Kahlschlag. Fällung nur, wenn nichts anderes geht.</li>
-          </ul>
-        </div>
+      <div class="prose">
+        <p>
+          Auf jedem seriösen Einsatz stehen mindestens zwei Fachkräfte: einer im Baum, einer
+          am Boden mit Kommunikation, Absicherung und Bergung. Für schwierige Fällungen kommen
+          Kran- oder MEWP-Führer dazu, für Gutachten der Fachagrarwirt, für großflächige
+          Aufarbeitung der Trecker- oder Rückefahrzeug-Führer.
+        </p>
+        <p>
+          Ein einzelner Baumpfleger — auch mit sämtlichen Zertifikaten — kann das nicht
+          leisten. Deshalb arbeitet TIMBER mit einem festen Kernteam plus einem eingespielten
+          Kreis freier Fachpartner, die zusammen die vollständige Qualifikations-Bandbreite
+          abdecken. Wer aufs Grundstück kommt, hat für die konkrete Aufgabe die passenden
+          Nachweise dabei.
+        </p>
+        <p>{TEAM.fokus}</p>
       </div>
     </div>
   </section>
 
-  <!-- TEAM & FACHPARTNER -->
+  <!-- QUALIFIKATIONEN -->
   <section class="section-padding bg-birke-dark border-y border-linie">
     <div class="container-site">
       <div class="max-w-2xl">
-        <span class="eyebrow">Team & Fachpartner</span>
-        <h2 class="mt-4">Zertifizierte Baum-Fachkräfte<br/>für jeden Einsatz.</h2>
+        <span class="eyebrow">Qualifikationen</span>
+        <h2 class="mt-4">Was im Team vorhanden ist.</h2>
         <p class="mt-6 text-body-lg text-tinte/75 leading-relaxed">
-          Baumpflege ist Teamarbeit — Kletterer im Baum, Bodenteam, Absicherung, oft Kran- oder MEWP-Führer. TIMBER arbeitet mit einem festen Kreis freier Fachpartner, die die vollständige Qualifikations-Bandbreite abdecken. Auf jedem Einsatz wird das Team so zusammengestellt, dass die geforderten Nachweise vor Ort sind.
+          Die folgenden Nachweise werden je nach Einsatz aus Kernteam und Fachpartnern
+          abgerufen. Zertifikat-Nachweise der jeweils eingesetzten Fachkräfte werden auf
+          Anforderung vor Auftragsstart vorgelegt — für Verwalter, Wohnungsgesellschaften
+          und öffentliche Auftraggeber ist das ohnehin Standard.
         </p>
       </div>
 
@@ -81,8 +72,6 @@ import { CONTACT, OWNER, TEAM_QUALIFIKATIONEN } from '../config';
           ))}
         </div>
       </div>
-
-      <p class="mt-10 text-body-sm text-rauch max-w-2xl">Zertifikat-Nachweise der jeweils eingesetzten Fachkräfte werden auf Anforderung vor Auftragsstart vorgelegt — für Verwalter, Wohnungsgesellschaften und öffentliche Auftraggeber ist das ohnehin Standard.</p>
     </div>
   </section>
 
@@ -117,8 +106,8 @@ import { CONTACT, OWNER, TEAM_QUALIFIKATIONEN } from '../config';
   <!-- KONTAKT -->
   <section class="section-padding-sm bg-forst-dark text-birke">
     <div class="container-narrow text-center">
-      <h2 class="text-birke">Direkter Draht zum Inhaber.</h2>
-      <p class="mt-6 text-body-lg text-birke/75">Keine Warteschleife, kein Sekretariat. Ans Telefon geht Jan.</p>
+      <h2 class="text-birke">Direkter Draht ins Team.</h2>
+      <p class="mt-6 text-body-lg text-birke/75">Keine Warteschleife, keine Vermittlung. Kurzer Draht in die Krone.</p>
       <div class="mt-10 flex flex-wrap gap-4 justify-center">
         <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
         <a href="/kontakt/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Formular →</a>

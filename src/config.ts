@@ -4,7 +4,7 @@ export const SITE = {
   url: 'https://timber-baumpflege.de',
   tagline: 'Baumpflege aus dem Norden. Handwerk mit Höhe.',
   description:
-    'TIMBER Baumpflege & Baumdienst — Jan Möller und Team. Seilklettertechnik SKT-A/B, Baumpflege nach ZTV, Verkehrssicherheit und Sturm-Notdienst in ganz Norddeutschland. Regional aufgestellt in Hamburg, Ahrensburg, Pinneberg, Norderstedt, Blankenese.',
+    'TIMBER Baumpflege & Baumdienst — ein Team aus zertifizierten Baumkletterern und Fachpartnern für Norddeutschland. Seilklettertechnik SKT-A/B, Baumpflege nach ZTV, Verkehrssicherheit und Sturm-Notdienst. Regional aufgestellt in Hamburg, Ahrensburg, Pinneberg, Norderstedt, Blankenese.',
 };
 
 export const CONTACT = {
@@ -21,11 +21,14 @@ export const CONTACT = {
   geo: { lat: 53.7089, lng: 10.1928 },
 };
 
-// Inhaber-Persona
-export const OWNER = {
-  name: 'Jan Möller',
-  role: 'Inhaber · SKT-A',
-  bio: 'Jan Möller führt TIMBER als Inhaber. Er hält die SKT-A-Zertifizierung (Seilklettertechnik Grundstufe) und arbeitet mit einem festen Kreis freier Fachpartner, die die weiteren Qualifikationen abdecken. Sein Fokus: schwierige Fällungen in engen Lagen und langfristige Baumpflege statt Kahlschlag.',
+// Team-Beschreibung (Marke bleibt bewusst namenlos personifiziert -
+// § 5 DDG regelt der Impressums-Eintrag, im Content bleibt es "wir/das Team")
+export const TEAM = {
+  headline: 'Ein Team. Ein Anspruch.',
+  intro:
+    'TIMBER ist kein Ein-Mann-Betrieb und keine Kette. TIMBER ist ein festes Kernteam mit SKT-A-Kletterei plus ein eingespielter Kreis freier Fachpartner, die die weiteren Nachweise abdecken. Auf jeden Einsatz kommt das Team so, dass die geforderten Qualifikationen vor Ort sind — nicht auf einer Website versprochen, sondern in der Krone.',
+  fokus:
+    'Unser Fokus: schwierige Fällungen in engen Lagen, Kronensicherung statt Kahlschlag, langfristige Baumpflege statt Notfall-Kaskade.',
 };
 
 // Qualifikationen im Team (Inhaber + feste freie Fachpartner)
@@ -199,7 +202,6 @@ export const ORG_SCHEMA = {
   logo: `${SITE.url}/logo.svg`,
   telephone: CONTACT.phone,
   email: CONTACT.email,
-  founder: { '@type': 'Person', name: OWNER.name, jobTitle: OWNER.role },
   address: {
     '@type': 'PostalAddress',
     streetAddress: CONTACT.street,
