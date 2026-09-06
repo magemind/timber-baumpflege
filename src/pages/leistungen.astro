@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { CONTACT, LEISTUNGEN, SATELLITEN } from '../config';
+import { CONTACT, LEISTUNGEN } from '../config';
 ---
 
 <BaseLayout
@@ -13,7 +13,7 @@ import { CONTACT, LEISTUNGEN, SATELLITEN } from '../config';
       <span class="eyebrow text-messing">Leistungen</span>
       <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Fünf Kernbereiche.<br/><span class="text-messing italic font-normal">Alles aus einer Hand.</span></h1>
       <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
-        TIMBER bündelt Baumarbeit vom einzelnen Sicherungsschnitt bis zum Sturm-Notdienst. Diese Seite gibt einen Überblick. Für Angebote und Terminvereinbarung nutz einen unserer regionalen Auftritte am Ende der Seite — dort ist die Anfahrt kürzer und wir kennen die lokalen Regeln.
+        TIMBER bündelt Baumarbeit vom einzelnen Sicherungsschnitt bis zum Sturm-Notdienst. Diese Seite gibt einen Überblick — für Angebot oder Termin ruf an oder schreib. Wir arbeiten in ganz Norddeutschland.
       </p>
     </div>
   </section>
@@ -77,36 +77,14 @@ import { CONTACT, LEISTUNGEN, SATELLITEN } from '../config';
     </div>
   </section>
 
-  <!-- REGIONALE BUCHUNG -->
-  <section class="section-padding bg-birke-dark border-t border-linie">
-    <div class="container-site">
-      <div class="max-w-2xl">
-        <span class="eyebrow">Buchung & Angebot</span>
-        <h2 class="mt-4">Buchung läuft lokal.</h2>
-        <p class="mt-6 text-body-lg text-tinte/75 leading-relaxed">
-          Für Angebote und Terminvereinbarung nutz die Regional-Seite, die zu Deinem Standort passt. Dort findest Du die lokal geltende Baumschutzsatzung, ortsspezifische Preise und einen direkten Draht.
-        </p>
-      </div>
-
-      <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {SATELLITEN.map((s) => (
-          <a href={`https://${s.domain}`} rel="noopener" class="panel group no-underline">
-            <div class="flex items-baseline justify-between mb-2">
-              <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.25rem;">{s.name}</h3>
-              <span class="text-caption text-rauch uppercase tracking-widest">{s.region}</span>
-            </div>
-            <div class="text-caption text-moos font-mono mt-3">{s.domain} →</div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- KONTAKT-CTA -->
-  <section class="section-padding-sm bg-messing text-forst-dark">
+  <section class="section-padding bg-messing text-forst-dark">
     <div class="container-narrow text-center">
-      <h2 class="text-forst-dark">Direkt fragen?</h2>
-      <p class="mt-6 text-body-lg mx-auto">Wenn Du nicht sicher bist, welche Regional-Seite passt — ruf an. Wir routen intern.</p>
+      <span class="eyebrow text-forst-dark/70">Angebot & Termin</span>
+      <h2 class="mt-4 text-forst-dark">Kurzer Draht. Ohne Umweg.</h2>
+      <p class="mt-6 text-body-lg mx-auto max-w-xl">
+        Ruf an, schreib per WhatsApp oder E-Mail. Wir schauen uns den Baum entweder vor Ort an oder anhand Deiner Fotos — Angebot in der Regel binnen 24 Stunden.
+      </p>
       <div class="mt-10 flex flex-wrap gap-4 justify-center">
         <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
         <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
