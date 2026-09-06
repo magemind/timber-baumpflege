@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE, CONTACT, LEISTUNGEN, SATELLITEN, EINSATZTYPEN } from '../config';
+import { SITE, CONTACT, LEISTUNGEN, EINSATZTYPEN, WISSEN } from '../config';
 ---
 
 <BaseLayout title="Startseite" description={SITE.description}>
@@ -85,26 +85,24 @@ import { SITE, CONTACT, LEISTUNGEN, SATELLITEN, EINSATZTYPEN } from '../config';
     </div>
   </section>
 
-  <!-- EINSATZGEBIETE -->
+  <!-- WISSEN -->
   <section class="section-padding">
     <div class="container-site">
       <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
         <div class="max-w-xl">
-          <span class="eyebrow">Wo TIMBER arbeitet</span>
-          <h2 class="mt-4">Sechs Regional-Auftritte.<br/><span class="text-moos">Ein Team.</span></h2>
+          <span class="eyebrow">Wissen aus der Krone</span>
+          <h2 class="mt-4">Was Du vor dem Anruf wissen solltest.<br/><span class="text-moos">Ehrlich, ohne Verkaufsspin.</span></h2>
         </div>
-        <a href="/einsatzgebiete/" class="btn-ghost">Alle Einsatzgebiete →</a>
+        <a href="/wissen/" class="btn-ghost">Alle Ratgeber →</a>
       </div>
 
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {SATELLITEN.map((s) => (
-          <a href={`https://${s.domain}`} rel="noopener" class="group block panel no-underline">
-            <div class="flex items-baseline justify-between mb-3">
-              <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.375rem;">{s.name}</h3>
-              <span class="text-caption text-rauch uppercase tracking-widest">{s.region}</span>
-            </div>
-            <p class="text-body-sm text-rauch leading-relaxed">{s.description}</p>
-            <div class="mt-5 text-caption text-moos font-mono">{s.domain} →</div>
+      <div class="grid gap-6 md:grid-cols-2">
+        {WISSEN.map((w) => (
+          <a href={`/wissen/${w.slug}/`} class="group block panel no-underline">
+            <span class="rule"></span>
+            <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.375rem;">{w.title}</h3>
+            <p class="mt-4 text-body-sm text-rauch leading-relaxed">{w.short}</p>
+            <span class="mt-6 inline-block text-caption text-moos font-semibold uppercase tracking-widest group-hover:text-messing-dark transition-colors">Weiterlesen →</span>
           </a>
         ))}
       </div>

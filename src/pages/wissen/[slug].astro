@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CONTACT, WISSEN } from '../../config';
+
+export async function getStaticPaths() {
+  return WISSEN.map((w) => ({ params: { slug: w.slug } }));
+}
+
+const { slug } = Astro.params;
+const article = WISSEN.find((w) => w.slug === slug)!;
+
+// Artikel-Inhalte (deutsch, sachlich, ohne Verkaufsspin)
+const CONTENT: Record<string, { intro: string; sections: { h: string; p: string[] }[]; fazit: string }> = {
+  'skt-b-was-heisst-das': {
+    intro:
+      'SKT steht für Seilklettertechnik. Die A-Stufe (SKT-A) ist der Grundschein — Aufstieg, Positionierung, Selbstrettung im Baum. Die B-Stufe (SKT-B) ist die Aufbaustufe: Arbeiten mit der Motorsäge in der Krone, gezieltes Ablassen von Schnittgut, Rettung eines verletzten Kollegen aus großer Höhe. Wer SKT-B hat, darf im Baum sägen. Wer nur SKT-A hat, darf hoch — aber nicht arbeiten. Der Unterschied klingt formal, ist im Alltag aber entscheidend.',
+    sections: [
+      {
+        h: 'Warum das die wichtigste Zertifikatsfrage ist',
+        p: [
+          'Baumpflege- und Fällarbeiten in der Krone gehören zu den unfallträchtigsten Tätigkeiten überhaupt. Die Berufsgenossenschaft (SVLFG) fordert für Arbeiten am hängenden Seil im Baum eine ausdrückliche Qualifikation. Ohne SKT-B ist die Arbeit nicht versichert — weder für den Kletterer noch für den Auftraggeber.',
+          'Für Dich als Auftraggeber heißt das: wenn ein Anbieter „klettert auch" nebenbei anbietet, ohne SKT-B nachweisen zu können, ist das im Schadensfall Dein Problem. Die Versicherung wird prüfen, und wenn der Auftrag nicht fachgerecht ausgeführt wurde, greift die Berufshaftpflicht des Anbieters gegebenenfalls nicht.',
+        ],
+      },
+      {
+        h: 'Wie man einen Nachweis erkennt',
+        p: [
+          'Ein SKT-B-Nachweis ist ein bebilderter Ausweis oder ein Zertifikat mit Name, Ausbildungsstätte, Datum und in der Regel einer Fortbildungspflicht (Auffrischung alle paar Jahre). Wer eine Kletter-Zertifizierung hat, zeigt sie normalerweise unaufgefordert. Wer die Vorlage vor Auftragsstart verweigert, hat sie meistens nicht.',
+          'Bei TIMBER ist SKT-A im Kernteam vorhanden, SKT-B über feste freie Fachpartner. Auf jedem Einsatz wird die konkrete Ausführung so besetzt, dass die jeweils nötige Qualifikation vor Ort ist. Nachweise werden auf Anforderung vor Auftragsstart vorgelegt.',
+        ],
+      },
+      {
+        h: 'Was SKT nicht abdeckt',
+        p: [
+          'Seilklettertechnik ist die Aufstiegs- und Arbeitsmethode. Sie ersetzt keine baumfachliche Beurteilung — dafür braucht es zusätzlich Fachagrarwirt Baumpflege oder eine vergleichbare gutachterliche Qualifikation. Und sie ersetzt keinen Motorsägen-Grundlehrgang (AS Baum I und II) für die Handhabung der Säge in der Krone selbst.',
+          'Ein vollständig aufgestellter Betrieb bringt also mehrere Qualifikationen mit: SKT-A/B für die Kletterei, Motorsägenlehrgänge für die Säge, Ersthelfer im Baum für die Sicherheit, und mindestens einen Fachagrarwirt Baumpflege oder einen geprüften Baumkontrolleur für die fachliche Einschätzung.',
+        ],
+      },
+    ],
+    fazit:
+      'Frag im Angebot nicht „Habt Ihr SKT?" sondern „Wer im Team hat SKT-B, und kann ich den Nachweis vor Auftragsstart sehen?". Ein seriöser Betrieb legt vor. Wer ausweicht, spart am falschen Ende.',
+  },
+  'winterschnitt-vs-sommerschnitt': {
+    intro:
+      'Der beste Schnittzeitpunkt hängt vom Ziel ab, nicht vom Kalender. Trotzdem lohnt sich der grobe Rahmen: Winterschnitt (November bis Anfang März) ist ideal für starke Formschnitte und Kronenreduktionen, Sommerschnitt (Juni bis August) für sanfte Nachkorrekturen und Wachstumsbremsung. Zwischendrin — März bis Mai — ist in Deutschland die geschützte Vegetationszeit, in der große Schnitte grundsätzlich nicht mehr erlaubt sind.',
+    sections: [
+      {
+        h: '§ 39 BNatSchG — die Vegetationszeit',
+        p: [
+          'Das Bundesnaturschutzgesetz verbietet zwischen dem 1. März und dem 30. September, Bäume abzuschneiden, auf den Stock zu setzen oder zu beseitigen. Erlaubt sind in diesem Zeitraum ausschließlich schonende Form- und Pflegeschnitte, die zur gesunden Weiterentwicklung des Baumes beitragen und die Brut- und Aufzuchtzeit von Vögeln nicht stören.',
+          'Für Verkehrssicherungsschnitte gilt eine Ausnahme, ebenso für unaufschiebbare Gefahrenabwehr. Aber: „Wir haben keine Lust, bis November zu warten" ist keine Ausnahme. Wer im Sommer eine ganze Krone reduziert, riskiert Bußgelder bis in den fünfstelligen Bereich.',
+        ],
+      },
+      {
+        h: 'Was der Winterschnitt kann',
+        p: [
+          'Ohne Laub sieht man die Kronenstruktur klar — Fehlstellungen, Reibäste, Konkurrenzstämmlinge werden sichtbar. Der Baum verliert im Winter weniger Wasser über die Schnittstelle. Große Schnitte heilen tendenziell besser aus.',
+          'Winterschnitt ist die Zeit für: Kronenreduktion an Obstbäumen, Formschnitte an Alleebäumen, Fällungen, Aufastungen. Wer im November plant, hat bis Ende Februar Zeit für sauberes Arbeiten.',
+        ],
+      },
+      {
+        h: 'Was der Sommerschnitt kann',
+        p: [
+          'Sommerschnitt bremst Wachstum. An Obstbäumen wird dadurch die Fruchtholzbildung gefördert. An Zierbäumen kann man mit Sommerschnitt gezielt kleiner halten. Kleine Nachkorrekturen an Formschnitten sind im Sommer ebenfalls möglich.',
+          'Größere Eingriffe ins Kronengerüst sind im Sommer aber weder erlaubt (§ 39 BNatSchG) noch fachlich sinnvoll — der Baum verliert Wasser über die Wunde, die Ausheilung ist schlechter, das Wundholz reagiert oft mit Wasserreiser-Explosion.',
+        ],
+      },
+      {
+        h: 'Notfall bleibt Notfall',
+        p: [
+          'Bruchgefährdete Äste über einem Kinderspielplatz, Sturmschaden auf dem Dach, akut absterbende Bäume mit Riesenporling am Wurzelanlauf — das sind Verkehrssicherungsschnitte, und die dürfen und müssen sofort erfolgen. Der 24/7-Notdienst kennt keinen Winterschnitt-Kalender.',
+        ],
+      },
+    ],
+    fazit:
+      'Wer plant, wartet auf November. Wer Notfall hat, ruft heute an. Wer im Juli eine ganze Krone reduzieren lassen möchte, sollte den Anbieter fragen, wie er das mit § 39 BNatSchG vereinbaren will — die Antwort ist aufschlussreich.',
+  },
+  'verkehrssicherungspflicht-baum': {
+    intro:
+      'Wer einen Baum besitzt, muss dafür sorgen, dass er niemanden verletzt. Das ist die Verkehrssicherungspflicht. Sie gilt für Privatgrundstücke ebenso wie für Wohnungsgesellschaften, Kommunen und Firmengelände. Bricht ein Ast ab und verletzt jemanden, muss der Eigentümer nachweisen, dass er den Baum regelmäßig und sachgerecht kontrolliert hat — sonst haftet er.',
+    sections: [
+      {
+        h: 'FLL-Baumkontrollrichtlinie als Maßstab',
+        p: [
+          'Die Baumkontrollrichtlinie der Forschungsgesellschaft Landschaftsentwicklung Landschaftsbau (FLL) ist in der Rechtsprechung der anerkannte fachliche Standard. Sie beschreibt, wie eine Regelkontrolle abläuft: Sichtprüfung vom Boden aus, Beurteilung nach VTA-Methode (Visual Tree Assessment), Dokumentation der Ergebnisse, Empfehlung für Folgemaßnahmen.',
+          'Wer sich an die FLL-Richtlinie hält und das dokumentieren kann, hat im Schadensfall gute Karten. Wer sich nicht daran hält oder gar nichts dokumentiert, hat ein Problem.',
+        ],
+      },
+      {
+        h: 'Wie oft kontrolliert werden muss',
+        p: [
+          'Faustregel aus der Rechtsprechung: zweimal jährlich — einmal im belaubten Zustand (Mai bis Oktober), einmal unbelaubt (November bis April). Der belaubte Termin zeigt Vitalitätsprobleme, der unbelaubte die Gerüststruktur.',
+          'Bei erkennbaren Vorschäden, hohen Verkehrsströmen oder Bäumen mit statisch kritischer Position (Straßenrand, Kinderspielplatz, Parkplatz) sind kürzere Intervalle nötig. Bei einem gesunden Baum im Innenhof reicht in vielen Fällen jährlich.',
+        ],
+      },
+      {
+        h: 'Was in ein Baumkataster gehört',
+        p: [
+          'Ein Baumkataster ist die schriftliche Dokumentation aller Bäume auf einem Grundstück mit ihrem Zustand. Es enthält: Standort, Art, ungefähres Alter, Höhe, Kronendurchmesser, Vitalitätsstufe, Auffälligkeiten, empfohlene Maßnahmen, Datum der letzten Kontrolle, Kontrolleur.',
+          'Für Wohnungsgesellschaften, Verwalter und Kommunen ist ein Kataster praktisch Pflicht — es ist der einzige belastbare Nachweis im Haftungsfall. Für Privateigentümer mit wenigen Bäumen reicht oft ein einfaches Kontrollprotokoll pro Baum und Kontrolltermin.',
+        ],
+      },
+      {
+        h: 'Grenzen der Sichtkontrolle',
+        p: [
+          'Nicht jeder Schaden ist von außen erkennbar. Innere Fäulnis, Wurzelschäden oder Windbruchdispositionen können auch bei unauffälliger Krone vorliegen. Bei begründetem Verdacht ist eine eingehende Untersuchung (Schall-Tomographie, Zugversuch) angezeigt — das gehört dann aber nicht mehr zur Regelkontrolle, sondern zu einer beauftragten Sonderuntersuchung.',
+        ],
+      },
+    ],
+    fazit:
+      'Zweimal im Jahr, dokumentiert, nach FLL-Standard — dann ist die Verkehrssicherungspflicht sauber erfüllt. Ohne Dokumentation ist auch die beste Kontrolle im Streitfall wertlos.',
+  },
+  'sturmschaden-checkliste': {
+    intro:
+      'Nach einem Sturm zählen die ersten Stunden. Was Du in welcher Reihenfolge tun solltest — und was Du auf keinen Fall selbst anfassen darfst.',
+    sections: [
+      {
+        h: '1. Personengefahr sofort prüfen — 112',
+        p: [
+          'Liegt ein Ast oder Baum auf einem Auto mit Menschen darin? Ist ein Baum aufs Haus gefallen und Verletzte im Innern? Sofort 112. Erst danach alles andere.',
+          'Auch: sind Stromleitungen betroffen? Nicht anfassen, nicht darunter durchgehen, Abstand halten (mindestens ein Baumlänge), Stromversorger anrufen (Notruf-Nummer steht auf dem Zählerkasten oder auf jeder Stromrechnung).',
+        ],
+      },
+      {
+        h: '2. Absichern, wenn gefahrlos möglich',
+        p: [
+          'Absperrband, Warndreieck, Passanten abhalten — aber nur, wenn Du Dich selbst nicht in Gefahr bringst. Schaulustige weg vom Baum halten. Kinder rein.',
+        ],
+      },
+      {
+        h: '3. Fotografieren, bevor irgendetwas bewegt wird',
+        p: [
+          'Für die Versicherung: Fotos aus mehreren Perspektiven, Übersichtsaufnahme + Detail. Wenn möglich mit Datum/Zeit-Stempel (Handy macht das automatisch in den Metadaten).',
+          'Auch fotografieren: Schadensbild am Gebäude, am Zaun, am Auto — alles, was betroffen ist. Bevor die erste Motorsäge angeht.',
+        ],
+      },
+      {
+        h: '4. Baumpfleger anrufen — nicht selbst sägen',
+        p: [
+          'Umgestürzte Bäume stehen unter Spannung. Wer als Laie mit der Motorsäge anfängt, riskiert schwere Verletzungen — der Stamm kann beim Anschneiden schlagartig zurückschnellen. Windwurf-Aufarbeitung ist Fachhandwerk, nicht Heimwerken.',
+          `Für den Sturm-Notdienst: ${CONTACT.phoneDisplay}. Rund um die Uhr. Foto vom Schaden per WhatsApp reicht meist für eine erste Einschätzung.`,
+        ],
+      },
+      {
+        h: '5. Versicherung informieren',
+        p: [
+          'Gebäudeversicherung bei Dachschaden. Kaskoversicherung bei Autoschaden. Haftpflicht des Baumeigentümers, wenn ein fremder Baum auf Dein Grundstück gefallen ist (dann brauchst Du Kontakt zum Eigentümer). Fotos beilegen, Vorgangsnummer notieren, Kostenvoranschlag der Fachfirma abwarten.',
+        ],
+      },
+      {
+        h: '6. Nachbarbaum? Wer haftet?',
+        p: [
+          'Grundregel: der Eigentümer des Baumes haftet nur, wenn er die Verkehrssicherungspflicht verletzt hat (siehe eigener Ratgeber). Ein gesunder Baum, der bei einem Jahrhundertsturm umfällt, ist „höhere Gewalt" — dann greift die eigene Gebäude- oder Kaskoversicherung. Ein erkennbar morscher Baum, den der Nachbar hat stehen lassen, ist sein Problem.',
+        ],
+      },
+    ],
+    fazit:
+      'Ruhe bewahren, absichern, fotografieren, anrufen. In dieser Reihenfolge. Nicht selbst mit der Säge ran — nicht wegen Feigheit, sondern wegen Physik.',
+  },
+};
+
+const c = CONTENT[slug];
+---
+
+<BaseLayout title={article.title} description={article.short}>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-narrow section-padding-sm">
+      <nav class="text-caption text-birke/60 mb-4">
+        <a href="/" class="hover:text-messing no-underline">Start</a> ·
+        <a href="/wissen/" class="hover:text-messing no-underline">Wissen</a> ·
+        <span class="text-birke">{article.title}</span>
+      </nav>
+      <span class="eyebrow text-messing">Ratgeber</span>
+      <h1 class="mt-4 text-birke leading-[1.05]">{article.title}</h1>
+      <p class="mt-8 text-body-lg text-birke/75 leading-relaxed">{article.short}</p>
+    </div>
+  </section>
+
+  <!-- ARTIKEL -->
+  <article class="section-padding">
+    <div class="container-narrow prose">
+      <p class="lead">{c.intro}</p>
+
+      {c.sections.map((s) => (
+        <>
+          <h2>{s.h}</h2>
+          {s.p.map((para) => <p>{para}</p>)}
+        </>
+      ))}
+
+      <h2>Fazit</h2>
+      <p><strong>{c.fazit}</strong></p>
+    </div>
+  </article>
+
+  <!-- KONTAKT-CTA -->
+  <section class="section-padding-sm bg-birke-dark border-y border-linie">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst">Frage zum Thema?</h2>
+      <p class="mt-6 text-body-lg text-tinte/75">Direkter Draht ins Team — kein Callcenter, keine Warteschleife.</p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht schreiben →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEITERE ARTIKEL -->
+  <section class="section-padding">
+    <div class="container-site">
+      <span class="eyebrow">Weiter im Wissen</span>
+      <h2 class="mt-4">Andere Ratgeber-Artikel</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {WISSEN.filter((w) => w.slug !== slug).map((w) => (
+          <a href={`/wissen/${w.slug}/`} class="group block panel no-underline">
+            <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.25rem;">{w.title}</h3>
+            <p class="mt-3 text-body-sm text-rauch leading-relaxed">{w.short}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

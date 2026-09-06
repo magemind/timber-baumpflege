@@ -4,7 +4,7 @@ export const SITE = {
   url: 'https://timber-baumpflege.de',
   tagline: 'Baumpflege aus dem Norden. Handwerk mit Höhe.',
   description:
-    'TIMBER Baumpflege & Baumdienst — ein Team aus zertifizierten Baumkletterern und Fachpartnern für Norddeutschland. Seilklettertechnik SKT-A/B, Baumpflege nach ZTV, Verkehrssicherheit und Sturm-Notdienst. Regional aufgestellt in Hamburg, Ahrensburg, Pinneberg, Norderstedt, Blankenese.',
+    'TIMBER Baumpflege & Baumdienst — ein Team aus zertifizierten Baumkletterern und Fachpartnern für Norddeutschland. Seilklettertechnik SKT-A/B, Baumpflege nach ZTV-Baumpflege, Kronensicherung, Verkehrssicherungspflicht und Sturm-Notdienst. Handwerk, Haltung, Wissen — der Marken-Hub.',
 };
 
 export const CONTACT = {
@@ -211,5 +211,7 @@ export const ORG_SCHEMA = {
     addressCountry: CONTACT.country,
   },
   areaServed: SATELLITEN.map((s) => ({ '@type': 'City', name: s.name })),
-  sameAs: SATELLITEN.map((s) => `https://${s.domain}`),
+  // Bewusst KEIN sameAs auf die Regional-Domains - das würde Google als
+  // Doorway-Netzwerk-Signal werten. Regional-Auftritte verlinken einseitig
+  // zum Hub, nicht umgekehrt.
 };

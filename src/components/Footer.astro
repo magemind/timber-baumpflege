@@ -1,5 +1,5 @@
 ---
-import { SITE, CONTACT, LEISTUNGEN, SATELLITEN } from '../config';
+import { SITE, CONTACT, LEISTUNGEN, WISSEN } from '../config';
 const year = new Date().getFullYear();
 ---
 
@@ -29,10 +29,10 @@ const year = new Date().getFullYear();
       </div>
 
       <div>
-        <h4 class="text-caption font-semibold uppercase tracking-widest text-messing mb-4">Einsatzgebiete</h4>
+        <h4 class="text-caption font-semibold uppercase tracking-widest text-messing mb-4">Wissen</h4>
         <ul class="space-y-2.5 text-body-sm">
-          {SATELLITEN.map((s) => (
-            <li><a href={`https://${s.domain}`} rel="noopener" class="text-birke/70 hover:text-messing no-underline transition-colors">{s.name}</a></li>
+          {WISSEN.map((w) => (
+            <li><a href={`/wissen/${w.slug}/`} class="text-birke/70 hover:text-messing no-underline transition-colors">{w.title}</a></li>
           ))}
         </ul>
       </div>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CONTACT, WISSEN } from '../../config';
+---
+
+<BaseLayout
+  title="Wissen · Ratgeber zu Baumpflege, Fällung, Recht und Handwerk"
+  description="Fachliche Ratgeber-Artikel von TIMBER Baumpflege & Baumdienst — Seilklettertechnik, Verkehrssicherungspflicht, Kronensicherung, Sturmschaden und mehr. Aus der Krone, nicht aus der Broschüre."
+>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Wissen</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Aus der Krone, nicht aus der Broschüre.</h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Was ein Kunde vor dem Anruf wissen sollte — was SKT-B eigentlich heißt,
+        wann Winterschnitt Pflicht ist, wer bei einem herabfallenden Ast haftet.
+        Kein Verkaufsgeschwätz. Was in der Praxis gilt.
+      </p>
+    </div>
+  </section>
+
+  <!-- ARTIKEL-LISTE -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="grid gap-6 md:grid-cols-2">
+        {WISSEN.map((w) => (
+          <a href={`/wissen/${w.slug}/`} class="group block panel no-underline">
+            <span class="rule"></span>
+            <h2 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.5rem;">{w.title}</h2>
+            <p class="mt-4 text-body text-rauch leading-relaxed">{w.short}</p>
+            <span class="mt-6 inline-block text-caption text-moos font-semibold uppercase tracking-widest group-hover:text-messing-dark transition-colors">Weiterlesen →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ZWECK-ERKLÄRUNG -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-narrow">
+      <span class="eyebrow">Warum diese Seite</span>
+      <h2 class="mt-4">Baumpflege ist erklärungsbedürftig.</h2>
+      <div class="prose mt-8">
+        <p>
+          Die meisten Kunden hören zum ersten Mal von „SKT-A", „Kronensicherung"
+          oder „FLL-Baumkontrollrichtlinie" genau dann, wenn ein Baum ein Problem geworden
+          ist — und dann muss es schnell gehen. In der Eile werden Angebote verglichen, die
+          nicht vergleichbar sind, weil die dahinter liegenden Leistungen fundamental
+          unterschiedlich sind.
+        </p>
+        <p>
+          Deshalb schreiben wir das hier auf. Nicht als Werbung, sondern als das, was wir
+          jedem Kunden am Telefon ohnehin erklären. Wenn Du danach noch Fragen hast:
+          direkter Draht ins Team, {CONTACT.phoneDisplay}.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
