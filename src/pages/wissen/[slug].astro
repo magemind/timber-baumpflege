@@ -157,6 +157,177 @@ const CONTENT: Record<string, { intro: string; sections: { h: string; p: string[
     fazit:
       'Ruhe bewahren, absichern, fotografieren, anrufen. In dieser Reihenfolge. Nicht selbst mit der Säge ran — nicht wegen Feigheit, sondern wegen Physik.',
   },
+  'baumschutzsatzung-grundlagen': {
+    intro:
+      'Eine Baumschutzsatzung ist eine kommunale Verordnung — jede Stadt und jede Gemeinde entscheidet selbst, ob und wie streng sie Bäume auf Privatgrundstücken schützt. Trotz aller lokalen Unterschiede folgen fast alle Satzungen im Bundesgebiet demselben Grundmuster: ab einem bestimmten Stammumfang ist ein Baum geschützt, Fällung braucht einen Antrag, illegales Fällen kostet Bußgeld und Ersatzpflanzung. Wer das Grundmuster kennt, versteht auch die Satzung der eigenen Kommune schneller.',
+    sections: [
+      {
+        h: 'Was geschützt ist — die Stammumfang-Schwelle',
+        p: [
+          'Der klassische Wert liegt bei 80 cm Stammumfang, gemessen in 1 m Höhe über dem Boden. Bei mehrstämmigen Bäumen wird meist jeder Stamm einzeln gezählt, wenn er die Schwelle erreicht. Manche Kommunen setzen die Schwelle niedriger (60 cm) oder höher (100 cm) — der Blick in die eigene Satzung ist immer der erste Schritt.',
+          'Langsam wachsende Arten (Eibe, Ilex, Buchsbaum) werden häufig schon ab 40 cm geschützt, weil sie für 40 cm ähnlich lange brauchen wie eine Buche für 80 cm. Bei Alleen und Solitärbäumen an prominenter Stelle können Kommunen zusätzlich einen pauschalen Schutz aussprechen, unabhängig vom Umfang.',
+        ],
+      },
+      {
+        h: 'Was fast überall nicht geschützt ist',
+        p: [
+          'Obstbäume (Apfel, Birne, Kirsche, Pflaume, Aprikose) sind fast bundesweit von Baumschutzsatzungen ausgenommen — mit der stillen Ausnahme Walnuss und Esskastanie, die vielerorts wieder geschützt sind. Nadelbäume sind in vielen Satzungen frei, außer Eibe. Ziersträucher, Hecken und Bambus sind praktisch immer frei.',
+          'Wichtig: Was die Baumschutzsatzung freistellt, ist damit noch nicht komplett frei. Bundesnaturschutzgesetz § 39 (Vegetationszeit 1. März bis 30. September) gilt trotzdem für alle Gehölze. Und Naturdenkmäler, Biotope oder gesetzlich geschützte Alleen unterliegen zusätzlichem Schutz — jenseits der kommunalen Satzung.',
+        ],
+      },
+      {
+        h: 'Der Antragsweg — was ins Formular gehört',
+        p: [
+          'Antrag geht an das Bauamt oder das Umweltamt der Kommune. Enthalten sind meist: Angaben zum Grundstück und Eigentümer, Lageplan mit eingezeichneter Position des Baumes, Art und Stammumfang, Fällbegründung, Vorschlag für Ersatzpflanzung. Fotos aus mehreren Perspektiven sind kein Muss, beschleunigen die Bearbeitung aber deutlich.',
+          'Bearbeitungszeit im Normalfall 4–8 Wochen, Gebühr meist 30–150 €. Bei akuter Verkehrsgefahr (Bruchgefahr durch Pilzbefall, Sturmschaden, Standsicherheitsverlust) gibt es das Eilverfahren — Bearbeitung dann oft innerhalb weniger Werktage, wenn Fotos und ggf. gutachterliche Einschätzung beigefügt sind.',
+        ],
+      },
+      {
+        h: 'Ersatzpflanzung — der eigentliche Preis der Fällung',
+        p: [
+          'Für jeden gefällten geschützten Baum verlangen fast alle Satzungen eine Ersatzpflanzung. Verhältnis üblicherweise 1:1, bei größeren oder ökologisch wertvollen Bäumen 1:2 oder mehr. Vorgegeben sind meist heimische Laubbäume in Baumschul-Qualität (Hochstamm, dreimal verpflanzt, 16–18 cm Stammumfang) — der Fällpreis von 800 € kann schnell auf 1.500 € insgesamt anwachsen, wenn Nachpflanzung mitgerechnet wird.',
+          'Wenn Ersatzpflanzung auf dem Grundstück nicht möglich ist (zu klein, zu schattig, keine Fläche), kann statt Pflanzung eine Ausgleichszahlung an einen Baumfonds der Kommune fällig werden. Beträge zwischen 300 € und 1.500 € pro nicht gepflanztem Baum sind üblich.',
+        ],
+      },
+      {
+        h: 'Bußgeld bei illegaler Fällung',
+        p: [
+          'Wer ohne Genehmigung fällt, riskiert Bußgeld — der übliche Rahmen liegt zwischen 500 € und 50.000 € pro Baum, in Härtefällen (Alteichen, denkmalgeschützte Alleen) auch darüber. Und: die Ersatzpflanzungspflicht bleibt bestehen, das Bußgeld kommt oben drauf.',
+          'Ein häufig übersehener Punkt: Wer eine Firma beauftragt und die illegal fällen lässt, ist als Auftraggeber mitverantwortlich. Ein seriöser Betrieb fragt vor Auftragsstart nach der Fällgenehmigung — wer das ignoriert, riskiert das Bußgeld gleich zweimal (einmal für den Auftraggeber, einmal für den Ausführenden).',
+        ],
+      },
+    ],
+    fazit:
+      'Vor dem Sägen in die Satzung schauen, Umfang messen, im Zweifel Antrag stellen. Die Genehmigung ist meist eine Formalie, das Bußgeld ohne sie ist es nicht.',
+  },
+  'baumkontrolle-fll': {
+    intro:
+      'Wer für die Verkehrssicherheit von Bäumen verantwortlich ist, kommt an der FLL-Baumkontrolle nicht vorbei. Die Forschungsgesellschaft Landschaftsentwicklung Landschaftsbau (FLL) hat den Standard gesetzt, an dem sich Gerichte, Versicherungen und Fachbetriebe orientieren. Was die Richtlinie konkret verlangt und wer sie überhaupt anwenden darf, ist überregional identisch — anders als die Baumschutzsatzung.',
+    sections: [
+      {
+        h: 'Was VTA heißt — die Methode',
+        p: [
+          'VTA steht für Visual Tree Assessment, entwickelt von Claus Mattheck. Die Grundidee: Bäume signalisieren mechanische Schwächen durch Wuchsanomalien, bevor sie brechen — Rippen, Beulen, Rissbildungen, Zwiesel-Verwachsungen. Ein geschulter Kontrolleur liest diese Zeichen von außen ab und beurteilt, ob eine Gefahr droht.',
+          'VTA ist eine Sichtkontrolle vom Boden aus. Der Kontrolleur nutzt keine Motorsäge, meist auch keine Leiter. Was er einsetzt: Klangprobe mit dem Kunststoffhammer, Sondage mit dem Sondierstab in verdächtigen Stammfußbereichen, Fernglas für die Krone. Alles zerstörungsfrei.',
+        ],
+      },
+      {
+        h: 'Wer die Kontrolle durchführen darf',
+        p: [
+          'Rechtlich gibt es keine Berufsausübungsschranke — im Grundsatz darf jeder eine Baumkontrolle machen. Im Haftungsfall zählt aber die Qualifikation des Kontrolleurs. Anerkannt sind vor allem: FLL-zertifizierter Baumkontrolleur (Prüfung nach FLL-Kompetenzrahmen), Fachagrarwirt Baumpflege und Baumsanierung, ETW (European Tree Worker), ETT (European Tree Technician) mit Baumkontroll-Zusatzmodul.',
+          'Wer als Wohnungsverwalter oder Kommunalvertreter jemanden ohne diese Qualifikation kontrollieren lässt und es passiert ein Schaden, muss vor Gericht begründen, warum diese Wahl fachlich vertretbar war. Das ist eine sportliche Aufgabe.',
+        ],
+      },
+      {
+        h: 'Regelkontrolle vs. eingehende Untersuchung',
+        p: [
+          'Die Regelkontrolle ist die planmäßige Sichtprüfung — zweimal jährlich bei Straßen- und Publikumsbäumen, mindestens jährlich bei niedrigem Risiko. Ergibt sie einen Verdacht auf innere Schäden (Fäulnis, Höhlung, Windbruchdisposition), wird eine eingehende Untersuchung nötig.',
+          'Eingehende Untersuchung heißt: Schall-Tomographie (Klanganalyse mit Sensor-Ring am Stamm, ergibt eine Querschnittskarte der Fäulniszonen), Bohrwiderstandsmessung (dünne Nadel wird gebohrt, gemessen wird der Widerstand über die Bohrtiefe), Zugversuch (statistische Prüfung der Standsicherheit unter simulierter Windlast). Kosten pro Baum: 150–800 € — deutlich mehr als die Fällung eines kleinen Baumes, aber dramatisch weniger als ein Personenschaden.',
+        ],
+      },
+      {
+        h: 'Was die Dokumentation können muss',
+        p: [
+          'Ohne Dokumentation ist die Kontrolle im Streitfall wertlos. Mindestinhalt pro Baum und Termin: Datum, Kontrolleur mit Qualifikation, Baumnummer oder Position (GPS oder Baumkataster-ID), Art, Höhe, Stammumfang, Vitalitätsstufe (1–4), Auffälligkeiten mit Foto, empfohlene Maßnahme, Frist.',
+          'Für größere Bestände lohnt sich ein digitales Baumkataster (Software oder GIS-basiert), für Privateigentümer mit wenigen Bäumen reicht ein einfaches Protokoll pro Termin. Wichtig ist die lückenlose Zeitreihe: sechs Jahre ohne Kontrolle sind schwerer zu verteidigen als vier Kontrollen mit dokumentierter Regelmäßigkeit.',
+        ],
+      },
+      {
+        h: 'Häufige Irrtümer',
+        p: [
+          '„Der Gärtner schaut immer mal drüber" ist keine Baumkontrolle. Wer regelmäßig auf dem Grundstück ist und keine Schäden bemerkt, hat trotzdem keine dokumentierte Kontrolle nach FLL — im Haftungsfall zählt das nicht.',
+          '„Der Baum sieht gesund aus" ist keine Diagnose. Innere Fäulnis kann bei völlig unauffälliger Krone vorliegen. Die Klangprobe am Stammfuß hat mehr Aussagekraft als der Blick in die Krone — und ist Teil jeder ordentlichen Regelkontrolle.',
+        ],
+      },
+    ],
+    fazit:
+      'FLL-Standard, dokumentiert, zwei Termine im Jahr — dann ist die Kontrolle im Streitfall belastbar. Ohne Nachweis der Qualifikation und ohne Protokoll ist der aufwendigste Rundgang juristisch nicht viel wert.',
+  },
+  'kronensicherung-dynamisch-statisch': {
+    intro:
+      'Ein alter Baum mit Zwiesel-Riss, ein absterbender Kronenteil, eine kernfaule Solitäreiche: früher hieß das Fällung, heute oft Kronensicherung. Die Technik ist in den letzten 25 Jahren erwachsen geworden — vor allem durch dynamische Systeme wie Cobra. Wann welche Sicherung sinnvoll ist und wann sie ihre Grenzen erreicht, ist selten eindeutig, aber immer entscheidbar.',
+    sections: [
+      {
+        h: 'Statische Sicherung — was sie tut',
+        p: [
+          'Statische Sicherungen sind starre Verbindungen zwischen zwei Kronenteilen — meist Stahlseile mit Klemmen oder Gewindestangen. Sie halten die verbundenen Äste in Position und verhindern, dass ein Kronenteil bei Wind seitlich auswandert.',
+          'Nachteil: Die statische Verbindung nimmt dem Baum die natürliche Bewegung. Kronenteile, die nicht mehr schwingen dürfen, entwickeln kein Reaktionsholz — sie werden mit der Zeit schwächer statt stärker. Für lebende, gesunde Kronen ist statische Sicherung deshalb selten die richtige Wahl. Für abgestorbene Kronenteile, die als Habitat erhalten bleiben sollen (Höhlenbäume, Fledermausquartiere), kann sie sinnvoll sein.',
+        ],
+      },
+      {
+        h: 'Dynamische Sicherung — Cobra und Verwandte',
+        p: [
+          'Dynamische Systeme wie Cobra bestehen aus einem hochfesten Polypropylen-Seil mit integriertem Ruckdämpfer. Das Seil lässt normale Kronenbewegung zu — Ziel ist nur, den Ausschlag im Extremfall zu begrenzen. Der Baum kann weiterhin schwingen, Reaktionsholz bilden, sich mechanisch anpassen. Erst wenn der Ausschlag über das gesunde Maß hinausgeht (Sturm, Bruchansatz), greift die Sicherung.',
+          'Standardsysteme sind für Zugkräfte bis 2, 4 oder 8 Tonnen erhältlich. Auslegung erfolgt nach Baumart, Kronengröße, Ausschlaglänge — Faustregel: eine Nummer größer als rein rechnerisch nötig. Einbauhöhe zwei Drittel bis drei Viertel der zu sichernden Astlänge über dem kritischen Punkt (Zwiesel oder Bruchansatz).',
+        ],
+      },
+      {
+        h: 'Wann Sicherung, wann Fällung',
+        p: [
+          'Sinnvoll ist Kronensicherung, wenn der Baum als Ganzes noch tragfähig ist, aber ein einzelnes strukturelles Risiko besteht: Zwiesel mit Rindeneinwuchs, Ast mit Ansatzriss, absterbender Kronenteil in einem sonst vitalen Baum. Ökologische und ortsprägende Solitärbäume rechtfertigen den Aufwand fast immer.',
+          'Grenzen sind erreicht, wenn: der Stammfuß Fäulnis zeigt (dann steht der ganze Baum, keine Krone), wenn mehrere Sicherungen nötig wären, wenn die Statik des Wurzeltellers versagt oder wenn die Kosten die Fällung plus Nachpflanzung um mehr als das Doppelte übersteigen und der ökologische Wert nicht deutlich überwiegt.',
+        ],
+      },
+      {
+        h: 'Kosten und Wartung',
+        p: [
+          'Eine dynamische Kronensicherung kostet — je nach Baumhöhe, Seilstärke und Zugänglichkeit — 400–1.200 € für das erste eingebaute System, weitere im selben Baum je 300–800 €. Statische Sicherungen sind ähnlich, aber wartungsintensiver.',
+          'Wartung: Sichtprüfung jährlich, Ersatz des Cobra-Seils spätestens nach 8–12 Jahren (Herstellerangabe, UV-Alterung). Bei statischen Systemen zusätzlich alle 3–5 Jahre Prüfung auf Einwachsen, Klemmenzustand, Korrosion. Wartung ohne Dokumentation ist bei einer sicherungsrelevanten Krone genauso wertlos wie eine unerledigte Regelkontrolle.',
+        ],
+      },
+      {
+        h: 'Was Kronensicherung nicht kann',
+        p: [
+          'Kein System der Welt macht einen instabilen Baum sicher. Kronensicherung ist eine Ergänzung, keine Reparatur. Wenn der Baumkontrolleur einen Ast als bruchgefährdet einstuft, ist die Frage nicht „Sicherung oder Fällung?", sondern „Sicherung mit welcher Restrisiko-Bewertung?". Bei Restrisiko im Publikumsbereich (Kindergarten, Spielplatz, Gehweg) reicht Sicherung fast nie — dort führt der Weg zur Kronenreduktion oder Fällung.',
+        ],
+      },
+    ],
+    fazit:
+      'Dynamische Sicherung, sauber ausgelegt und gewartet, hält einen ökologisch wertvollen Baum oft ein bis zwei Jahrzehnte länger im Bestand. Statische Sicherung ist eine Nischenlösung. Und Sicherung ersetzt nie eine Fachdiagnose des Baumzustands.',
+  },
+  'wurzelschaeden-am-haus': {
+    intro:
+      'Terrassenplatten heben sich, das Kellerabflussrohr ist zu, ein Riss läuft die Fassade hoch — und im Vorgarten steht eine ausgewachsene Birke oder Robinie. Der Verdacht liegt nahe. Ob er stimmt, ist die eine Frage. Was rechtlich und technisch dagegen hilft, die andere.',
+    sections: [
+      {
+        h: 'Wann Wurzeln wirklich das Problem sind',
+        p: [
+          'Nicht jeder Setzriss ist ein Wurzelschaden. Häuser setzen sich aus zwanzig Gründen: schlechte Gründung, Grundwasserabsenkung, Trockenrisse in bindigen Böden, alte Sanierung. Ein Baum in der Nähe erklärt nicht automatisch den Riss — erst der Beweis, dass Wurzeln unter der Gründung wachsen oder dass der Baum den Boden austrocknet.',
+          'Klassische Symptome, die tatsächlich auf Wurzeln zeigen: gehobene Pflasterflächen, Risse in Terrassenplatten oder Bordsteinkanten in einer Linie vom Stamm weg, verstopfte oder eingedrückte Abwasserrohre (Wurzelbohrung wird in der Rohrkamera sichtbar), sichtbar oberflächlich wachsende Starkwurzeln bis unter die Hauskante. Ein Riss im Putz allein ist selten diagnostisch.',
+        ],
+      },
+      {
+        h: 'Wurzelbild verstehen',
+        p: [
+          'Wurzeln wachsen dorthin, wo Wasser, Sauerstoff und Nährstoffe verfügbar sind. Sie wachsen nicht durch massiven Beton, aber sie folgen jeder Fuge, jeder Sanierungslinie, jedem verdichteten Boden entlang seiner Ränder. Ein undichter Kanalanschluss ist ein Wurzelmagnet — nicht umgekehrt.',
+          'Faustregel für den durchschnittlichen Wurzelbereich: etwa der Kronenradius, oft aber weiter. Flachwurzler (Birke, Robinie, Fichte) verteilen sich horizontal, Tiefwurzler (Eiche, Kiefer) gehen weniger in die Fläche. Der Fußweg der Wurzeln endet nicht an der Grundstücksgrenze und nicht an der Hauskante.',
+        ],
+      },
+      {
+        h: 'Was rechtlich gilt',
+        p: [
+          'Nachbarrechtsgesetze der Länder regeln Mindestabstände von Bäumen zur Grundstücksgrenze — meist 4 m für stark wachsende, 2 m für schwach wachsende Arten, gemessen vom Stammfuß. Wer den Abstand nicht einhält, kann vom Nachbarn zur Beseitigung verpflichtet werden — solange die Verjährungsfrist (meist fünf Jahre nach Pflanzung) nicht abgelaufen ist. Bei Bestandsbäumen älter als die Verjährung greift der Abstandsanspruch nicht mehr.',
+          'Bei tatsächlichem Wurzelschaden am Gebäude: Wenn der geschädigte Nachbar den Baumeigentümer belangen will, muss er nachweisen, dass genau diese Wurzeln den Schaden verursacht haben, und dass der Baumeigentümer die Verletzung der Verkehrssicherungspflicht (unterlassener Rückschnitt trotz erkennbarer Gefahr) zu vertreten hat. Das ist beweisrechtlich anspruchsvoll — meist läuft es über gutachterliche Rohrkamera, Wurzelanalytik und Zeitreihen der Schadensentwicklung.',
+        ],
+      },
+      {
+        h: 'Wurzelvorhang statt Fällung',
+        p: [
+          'In vielen Fällen ist Fällung nicht nötig. Ein Wurzelvorhang — eine vertikale Kunststoffbahn oder eine Sichtbeton-Schürze, in Grabentiefe von 60–120 cm eingelassen — trennt das Wurzelsystem vom geschützten Bereich (Terrasse, Fundament, Rohrleitung). Vor dem Einbau werden die vorhandenen Wurzeln sauber (mit Schere oder Säge, nicht mit Reißen) durchtrennt und der Baum überwacht.',
+          'Wurzelvorhang funktioniert gut bei mittleren Bäumen und Flachwurzlern. Bei sehr großen Solitären oder Tiefwurzlern kann die statische Verletzung durch Wurzeltrennung die Standsicherheit gefährden — dann braucht es eine gutachterliche Bewertung, ob der Baum die Reduktion verträgt.',
+        ],
+      },
+      {
+        h: 'Rohrsanierung als eigenständige Baustelle',
+        p: [
+          'Wenn das Problem im Abwasserrohr sitzt, hat man selten ein reines Wurzelproblem. Wurzeln wachsen erst in undichte Rohre ein — die Ursache ist die Undichtigkeit, der Baum nur der Nutznießer. Sanierung erfolgt fast immer per Inliner-Verfahren (aufgeblasener Kunststoffstrumpf, aushärtend), die Wurzeln werden vorher gefräst. Der Baum bleibt stehen.',
+          'Ist der Rohrverlauf grundsätzlich falsch (zu nah am Baum ohne Wurzelschutz), lohnt der Neubau mit Wurzelvorhang gleich mit. Kosten für eine typische Rohrsanierung: 200–500 € pro laufenden Meter, plus Wurzelfräsung 150–400 €.',
+        ],
+      },
+    ],
+    fazit:
+      'Erst diagnostizieren, dann entscheiden. Wurzelvorhang und Rohrsanierung lösen die meisten Fälle ohne Fällung. Und im Rechtsstreit hat Bestand vor Beweispflicht: alte Bäume kippen selten aus der Verjährungsfrist.',
+  },
 };
 
 const c = CONTENT[slug];

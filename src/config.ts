@@ -189,6 +189,26 @@ export const WISSEN = [
     title: 'Sturmschaden — die 10-Punkte-Checkliste',
     short: 'Was tun, wenn der Baum liegt: Reihenfolge, Fotos, Versicherung.',
   },
+  {
+    slug: 'baumschutzsatzung-grundlagen',
+    title: 'Baumschutzsatzung — was schützt sie eigentlich?',
+    short: 'Stammumfang, Ersatzpflanzung, Bußgeld: was jede kommunale Baumschutzsatzung im Kern regelt.',
+  },
+  {
+    slug: 'baumkontrolle-fll',
+    title: 'Baumkontrolle nach FLL — Ablauf und Qualifikation',
+    short: 'Was ein FLL-Baumkontrolleur macht, was VTA heißt, und wann eine Sonderuntersuchung nötig wird.',
+  },
+  {
+    slug: 'kronensicherung-dynamisch-statisch',
+    title: 'Kronensicherung — dynamisch oder statisch?',
+    short: 'Cobra vs. Stahlseil: welche Sicherung wann greift und was die Alternative zur Fällung leistet.',
+  },
+  {
+    slug: 'wurzelschaeden-am-haus',
+    title: 'Wurzelschäden am Haus — Ursachen, Recht, Sanierung',
+    short: 'Terrasse hebt, Rohr wächst zu, Riss im Fundament: was tatsächlich hilft und wer haftet.',
+  },
 ];
 
 // Organization-Schema (nicht LocalBusiness, TIMBER ist überregional)
