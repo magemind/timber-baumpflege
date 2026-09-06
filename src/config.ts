@@ -167,6 +167,47 @@ export const EINSATZTYPEN = [
   },
 ];
 
+// Wissen-Hub Kategorien (Topical Authority für den Marken-Hub).
+// Jede Kategorie hat eine eigene Landing-Seite + Deep-Dive-Artikel.
+// status: 'live' = klickbar, 'bald' = Coming-Soon-Kachel.
+export const WISSEN_KATEGORIEN = [
+  {
+    slug: 'baumkrankheiten',
+    name: 'Baumkrankheiten & Schädlinge',
+    kurz: 'Was den Bestand in Norddeutschland wirklich bedroht — Pilze, Insekten, Klimastress.',
+    icon: 'fungus',
+    status: 'live',
+  },
+  {
+    slug: 'baumarten',
+    name: 'Baumarten Norddeutschland',
+    kurz: 'Rotbuche, Eiche, Linde, Hainbuche — was welche Art braucht und was ihr fehlt.',
+    icon: 'tree',
+    status: 'bald',
+  },
+  {
+    slug: 'recht',
+    name: 'Recht & Genehmigung',
+    kurz: 'Baumschutzsatzung, Vogelschutzfrist, Fällantrag — was Auftraggeber wissen müssen.',
+    icon: 'scale',
+    status: 'bald',
+  },
+  {
+    slug: 'werkzeug-technik',
+    name: 'Werkzeug & Technik',
+    kurz: 'SKT, Kronensicherung, Motorsägen für Kletterer — Handwerks-Standards erklärt.',
+    icon: 'saw',
+    status: 'bald',
+  },
+  {
+    slug: 'szene',
+    name: 'Szene & Wettkampf',
+    kurz: 'ITCC, ETCC, DM Baumklettern — die Fachszene, in der Baumpflege stattfindet.',
+    icon: 'trophy',
+    status: 'bald',
+  },
+];
+
 // Wissen-Artikel (überregionale Themen)
 export const WISSEN = [
   {

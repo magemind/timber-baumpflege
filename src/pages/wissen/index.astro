@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { CONTACT, WISSEN } from '../../config';
+import { CONTACT, WISSEN, WISSEN_KATEGORIEN } from '../../config';
 ---
 
 <BaseLayout
@@ -21,14 +21,54 @@ import { CONTACT, WISSEN } from '../../config';
     </div>
   </section>
 
-  <!-- ARTIKEL-LISTE -->
+  <!-- KATEGORIEN-HUB -->
   <section class="section-padding">
     <div class="container-site">
-      <div class="grid gap-6 md:grid-cols-2">
+      <span class="eyebrow text-moos">Themen-Cluster</span>
+      <h2 class="mt-4 text-forst max-w-3xl">Fünf große Felder — vertieft statt überflogen.</h2>
+      <p class="mt-6 text-body-lg text-rauch max-w-2xl leading-relaxed">
+        Für jede Kategorie eine eigene Landing mit fachlichen Deep-Dive-Artikeln. Baumkrankheiten
+        steht als erste Kategorie komplett — die anderen vier folgen in den nächsten Wochen.
+      </p>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {WISSEN_KATEGORIEN.map((k) => (
+          k.status === 'live' ? (
+            <a href={`/wissen/${k.slug}/`} class="group block panel no-underline">
+              <span class="rule"></span>
+              <span class="text-caption text-moos font-semibold uppercase tracking-widest">Cluster</span>
+              <h3 class="mt-3 text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.35rem;">{k.name}</h3>
+              <p class="mt-4 text-body text-rauch leading-relaxed">{k.kurz}</p>
+              <span class="mt-6 inline-block text-caption text-moos font-semibold uppercase tracking-widest group-hover:text-messing-dark transition-colors">Zum Cluster →</span>
+            </a>
+          ) : (
+            <div class="block panel opacity-60" style="border-style: dashed;">
+              <span class="text-caption text-rauch font-semibold uppercase tracking-widest">In Vorbereitung</span>
+              <h3 class="mt-3 text-forst" style="font-size: 1.35rem;">{k.name}</h3>
+              <p class="mt-4 text-body text-rauch leading-relaxed">{k.kurz}</p>
+              <span class="mt-6 inline-block text-caption text-rauch font-semibold uppercase tracking-widest">Folgt in Kürze</span>
+            </div>
+          )
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EINZELRATGEBER -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-site">
+      <span class="eyebrow text-moos">Einzelratgeber</span>
+      <h2 class="mt-4 text-forst max-w-3xl">Kurze Antworten auf die häufigsten Fragen.</h2>
+      <p class="mt-6 text-body-lg text-rauch max-w-2xl leading-relaxed">
+        Was SKT-B heißt, wann Winterschnitt Pflicht ist, wer bei einem herabfallenden Ast haftet —
+        die überregionalen Basis-Ratgeber.
+      </p>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
         {WISSEN.map((w) => (
           <a href={`/wissen/${w.slug}/`} class="group block panel no-underline">
             <span class="rule"></span>
-            <h2 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.5rem;">{w.title}</h2>
+            <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.5rem;">{w.title}</h3>
             <p class="mt-4 text-body text-rauch leading-relaxed">{w.short}</p>
             <span class="mt-6 inline-block text-caption text-moos font-semibold uppercase tracking-widest group-hover:text-messing-dark transition-colors">Weiterlesen →</span>
           </a>
