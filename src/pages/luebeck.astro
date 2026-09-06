@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, STAEDTE, localBusinessSchema } from '../config';
+
+const stadt = STAEDTE.find((s) => s.slug === 'luebeck')!;
+const schema = localBusinessSchema(stadt);
+---
+
+<BaseLayout
+  title="Baumpflege Lübeck — Baumfällung, Kronensicherung, Sturmdienst"
+  description="Baumdienst in Lübeck und Umland — St. Gertrud, Travemünde, Bad Schwartau, Ratzeburg. Seilklettertechnik, ZTV-Baumpflege, FLL-Kontrolle für Verwaltungen, 24/7 Sturm-Notdienst."
+  schema={schema}
+>
+
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Einsatzgebiet · Lübeck</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Lübeck.<br/><span class="text-messing italic font-normal">Hansestadt, alter Bestand, feuchte Böden.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Lübeck ist Baumsubstanz auf feuchtem Grund. Große Bestände in St. Gertrud und um die Wakenitz, Alleen in Travemünde, Villen­gärten in St. Jürgen. Wir arbeiten in Lübeck bei Fällungen mit Genehmigungs­aufwand, bei Kronen­pflege an Alt­bäumen und bei Sturmschäden nach den regel­mäßigen Ost­see­tiefs.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Lübeck & Umland</span>
+      <h2 class="mt-4">Stadtteile und Einzugsgebiet.</h2>
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Innerhalb Lübecks arbeiten wir in <strong>St. Gertrud</strong>, <strong>St. Jürgen</strong>, <strong>Marli</strong>, <strong>Schlutup</strong>, <strong>Travemünde</strong> und in der Altstadt-Randlage. Umland: Bad Schwartau, Ratzeburg, Mölln, Groß­grönau. Die typische Auftrags­struktur reicht vom Einzel­baum im Reihenhaus-Garten bis zur Baum­kontroll­runde für Wohnungs­gesellschaften.
+      </p>
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Baumschutz in Lübeck:</strong> Die Hansestadt hat eine Baumschutz­satzung. Geschützt sind Laubbäume ab einem bestimmten Stamm­umfang (Werte prüfen wir im Einzelfall) sowie besondere Bestände. Für Fällungen und starke Kronen­eingriffe brauchst Du eine Genehmigung — wir kümmern uns.
+      </p>
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Bodenverhältnisse:</strong> Feuchte, teilweise anmoorige Untergründe rund um die Wakenitz und in Randlagen. Wurzel­fäulen sind bei alten Weiden, Erlen und Birken ein häufiges Bild — genau der Fall, für den regel­mäßige VTA-Kontrolle da ist.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-narrow text-center">
+      <span class="eyebrow">Für Verwaltungen und Wohnungs­gesellschaften</span>
+      <h2 class="mt-4">FLL-Kontrolle mit rechtsfester Dokumentation.</h2>
+      <p class="mt-8 text-body-lg text-tinte/80 leading-relaxed">
+        Für Lübecker Hausverwaltungen und WEG-Bestände bieten wir Rahmen­verträge an: einmal jährliche Regel­kontrolle nach FLL-Baumkontroll­richtlinie, Kataster­aufbau, digital dokumentiert mit Fotos und Handlungs­empfehlung. Im Haftungs­fall ist die Dokumentation Dein wichtigster Nachweis.
+      </p>
+      <a href="/wissen/baumkontrolle-fll/" class="mt-8 inline-block text-caption text-moos font-semibold uppercase tracking-widest hover:text-messing-dark">Zum Ratgeber FLL-Baumkontrolle →</a>
+    </div>
+  </section>
+
+  <section class="section-padding bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst-dark">Hansestadt Lübeck — Kurzer Draht.</h2>
+      <p class="mt-6 text-body-lg mx-auto max-w-xl">
+        Anfahrt Lübeck: rund 90 Minuten von unserem Standort in Nahe. Termin­einsätze planen wir mit Vorlauf, Notfall so schnell wie möglich.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

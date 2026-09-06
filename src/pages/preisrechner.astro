@@ -1,0 +1,334 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT } from '../config';
+---
+
+<BaseLayout
+  title="Preisrechner Baumfällung — was kostet meine Baumfällung?"
+  description="Kostenlose Preisschätzung für Baumfällung, Baumpflege, Kronensicherung und Stubbenfräsen. Baumhöhe, Zugänglichkeit, Entsorgung — Preisrange in unter einer Minute. Ohne Anmeldung, ohne Datenübermittlung."
+>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Kostenrechner · TIMBER</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Was kostet meine Baumarbeit?<br/><span class="text-messing italic font-normal">In einer Minute geschätzt.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Der Rechner unten liefert eine <strong>Preisrange</strong> für die häufigsten Baumarbeiten. Er ersetzt kein verbindliches Angebot — dafür braucht es Fotos oder einen Ortstermin — gibt Dir aber eine ehrliche Vorstellung, worauf Du Dich einstellst. Keine Anmeldung, keine Daten­übermittlung. Alles rechnet lokal in Deinem Browser.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start">
+
+        <!-- FORM -->
+        <div class="border border-linie p-6 md:p-10 bg-birke space-y-8">
+
+          <div>
+            <h2 class="text-forst" style="font-size: 1.5rem;">1 · Was soll gemacht werden?</h2>
+            <div class="mt-5 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Leistungsart">
+              <label class="rc-opt">
+                <input type="radio" name="job" value="faellung" checked />
+                <span>Baumfällung</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="job" value="pflege" />
+                <span>Baumpflege / Kronen­schnitt</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="job" value="sicherung" />
+                <span>Kronen­sicherung (Cobra)</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="job" value="stubben" />
+                <span>Stubben­fräsen</span>
+              </label>
+            </div>
+          </div>
+
+          <div id="hoehe-group">
+            <h2 class="text-forst" style="font-size: 1.5rem;">2 · Baumhöhe</h2>
+            <div class="mt-5 grid gap-3 sm:grid-cols-3" role="radiogroup" aria-label="Baumhöhe">
+              <label class="rc-opt">
+                <input type="radio" name="hoehe" value="klein" checked />
+                <span>bis 10 m</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="hoehe" value="mittel" />
+                <span>10–15 m</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="hoehe" value="gross" />
+                <span>15–25 m</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="hoehe" value="riesig" />
+                <span>über 25 m</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-forst" style="font-size: 1.5rem;">3 · Zugänglichkeit</h2>
+            <div class="mt-5 grid gap-3 sm:grid-cols-3" role="radiogroup" aria-label="Zugänglichkeit">
+              <label class="rc-opt">
+                <input type="radio" name="zugang" value="kran" checked />
+                <span>Kran / MEWP möglich</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="zugang" value="normal" />
+                <span>Garten mit Zufahrt</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="zugang" value="eng" />
+                <span>Enge Lage / Innenhof</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-forst" style="font-size: 1.5rem;">4 · Was passiert mit Holz und Schnittgut?</h2>
+            <div class="mt-5 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Entsorgung">
+              <label class="rc-opt">
+                <input type="radio" name="entsorgung" value="voll" checked />
+                <span>Vollentsorgung durch uns</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="entsorgung" value="stamm" />
+                <span>Stamm bleibt (Brennholz)</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="entsorgung" value="alles-bleibt" />
+                <span>Alles bleibt vor Ort</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-forst" style="font-size: 1.5rem;">5 · Genehmigung</h2>
+            <div class="mt-5 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Genehmigung">
+              <label class="rc-opt">
+                <input type="radio" name="antrag" value="nein" checked />
+                <span>Keine Genehmigung nötig</span>
+              </label>
+              <label class="rc-opt">
+                <input type="radio" name="antrag" value="ja" />
+                <span>Antrag durch uns stellen</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RESULT -->
+        <aside class="lg:sticky lg:top-24 space-y-6">
+          <div class="bg-forst-dark text-birke p-8 border border-linie">
+            <span class="eyebrow text-messing">Geschätzte Preisspanne</span>
+            <div id="rc-range" class="mt-4 font-display text-4xl md:text-5xl text-birke leading-none">— €</div>
+            <p id="rc-note" class="mt-5 text-body-sm text-birke/70 leading-relaxed">Wähle die Optionen links.</p>
+            <div class="mt-6 pt-6 border-t border-birke/10 text-caption text-birke/50 uppercase tracking-widest">
+              Netto · zzgl. MwSt.
+            </div>
+          </div>
+
+          <div class="border border-linie p-6 bg-birke-dark">
+            <h3 class="text-forst" style="font-size: 1.1rem;">Verbindliches Angebot?</h3>
+            <p class="mt-3 text-body-sm text-rauch leading-relaxed">Schick uns 2–3 Fotos per WhatsApp oder E-Mail — meist reicht das für ein Fest­angebot binnen 24 Stunden. Ansonsten: kostenloser Ortstermin.</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a href={`tel:${CONTACT.phone}`} class="btn-primary text-sm">☎ {CONTACT.phoneDisplay}</a>
+              <a href="/kontakt/" class="btn-ghost text-sm">Nachricht →</a>
+            </div>
+          </div>
+
+          <p class="text-caption text-rauch leading-relaxed">
+            Die Schätzung basiert auf Erfahrungs­werten aus Hamburg, Norderstedt und Umland. Fels­haltiger Untergrund, außergewöhnliche Statik oder benachbarte Bebauung können den Preis verändern.
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HINWEISE -->
+  <section class="section-padding bg-birke-dark border-t border-linie">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Was den Preis wirklich treibt</span>
+      <h2 class="mt-4">Fünf Faktoren, die einen Baum teurer machen.</h2>
+
+      <ol class="mt-8 space-y-6 counter-reset-list">
+        <li class="flex gap-5">
+          <span class="font-display text-2xl text-messing italic flex-none w-8">01</span>
+          <div>
+            <h3 class="text-forst" style="font-size: 1.15rem;">Höhe und Krone.</h3>
+            <p class="mt-2 text-body-sm text-rauch leading-relaxed">Faust­formel: doppelte Höhe heißt vier­fache Arbeit. Krone im oberen Drittel ist Kern­aufwand, weil sie Segment für Segment abgelassen werden muss.</p>
+          </div>
+        </li>
+        <li class="flex gap-5">
+          <span class="font-display text-2xl text-messing italic flex-none w-8">02</span>
+          <div>
+            <h3 class="text-forst" style="font-size: 1.15rem;">Zugänglichkeit.</h3>
+            <p class="mt-2 text-body-sm text-rauch leading-relaxed">Kran- oder MEWP-fähige Lage ist am günstigsten. Reihenhaus-Hinterhof mit Kletter­einsatz kann den Preis verdoppeln, weil Zeit und Personal steigen.</p>
+          </div>
+        </li>
+        <li class="flex gap-5">
+          <span class="font-display text-2xl text-messing italic flex-none w-8">03</span>
+          <div>
+            <h3 class="text-forst" style="font-size: 1.15rem;">Nachbarschaft.</h3>
+            <p class="mt-2 text-body-sm text-rauch leading-relaxed">Wenn Bebauung, Zaun und Straße den Fallraum blockieren, wird jeder Ast einzeln gesetzt. Das ist der klassische Fall für Seilkletter­technik.</p>
+          </div>
+        </li>
+        <li class="flex gap-5">
+          <span class="font-display text-2xl text-messing italic flex-none w-8">04</span>
+          <div>
+            <h3 class="text-forst" style="font-size: 1.15rem;">Entsorgung.</h3>
+            <p class="mt-2 text-body-sm text-rauch leading-relaxed">Stamm und Krone haben Gewicht. Vollentsorgung heißt: Container, Fahrt, Abgabe­kosten. Wer den Stamm behält, spart einen Teil.</p>
+          </div>
+        </li>
+        <li class="flex gap-5">
+          <span class="font-display text-2xl text-messing italic flex-none w-8">05</span>
+          <div>
+            <h3 class="text-forst" style="font-size: 1.15rem;">Genehmigung.</h3>
+            <p class="mt-2 text-body-sm text-rauch leading-relaxed">In Hamburg, Norderstedt, Kiel und Lübeck geschützt ab 60–80 cm Stamm­umfang. Antrag beim Bezirks-/Stadtamt inkl. Gutachten fließt in den Preis ein.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .rc-opt {
+    display: block;
+    position: relative;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid rgb(214 208 199);
+    background: #fff;
+    cursor: pointer;
+    transition: border-color .15s ease, background .15s ease;
+    font-size: 0.95rem;
+    color: rgb(50 46 40);
+  }
+  .rc-opt:hover { border-color: #A98544; }
+  .rc-opt input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .rc-opt:has(input:checked) {
+    background: #1B2A20;
+    color: #F5EFE1;
+    border-color: #1B2A20;
+  }
+  .rc-opt span::before {
+    content: '○';
+    margin-right: .55rem;
+    color: rgb(156 148 136);
+  }
+  .rc-opt:has(input:checked) span::before {
+    content: '●';
+    color: #C9A34E;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const priceTable = {
+      faellung: {
+        klein: [280, 550],
+        mittel: [500, 950],
+        gross: [1100, 2400],
+        riesig: [2200, 4800],
+      },
+      pflege: {
+        klein: [180, 380],
+        mittel: [350, 750],
+        gross: [700, 1500],
+        riesig: [1500, 3200],
+      },
+      sicherung: {
+        klein: [220, 450],
+        mittel: [420, 850],
+        gross: [850, 1800],
+        riesig: [1600, 3400],
+      },
+      stubben: {
+        klein: [120, 280],
+        mittel: [220, 480],
+        gross: [420, 900],
+        riesig: [800, 1600],
+      },
+    };
+
+    const zugangFactor = { kran: 1.0, normal: 1.15, eng: 1.6 };
+    const entsorgungFactor = { voll: 1.0, stamm: 0.9, 'alles-bleibt': 0.8 };
+    const antragFlat = { nein: 0, ja: 180 };
+
+    const rangeEl = document.getElementById('rc-range');
+    const noteEl = document.getElementById('rc-note');
+    const hoeheGroup = document.getElementById('hoehe-group');
+
+    function getVal(name) {
+      const el = document.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : null;
+    }
+
+    function fmt(n) {
+      return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+    }
+
+    function recalc() {
+      const job = getVal('job');
+      const hoehe = getVal('hoehe');
+      const zugang = getVal('zugang');
+      const entsorgung = getVal('entsorgung');
+      const antrag = getVal('antrag');
+
+      if (job === 'stubben' && hoeheGroup) {
+        hoeheGroup.querySelector('h2').textContent = '2 · Stumpfdurchmesser';
+        [['klein', 'bis 30 cm'], ['mittel', '30–50 cm'], ['gross', '50–80 cm'], ['riesig', 'über 80 cm']].forEach(([v, label]) => {
+          const inp = hoeheGroup.querySelector('input[value="' + v + '"]');
+          if (inp && inp.parentElement) {
+            inp.parentElement.querySelector('span').textContent = label;
+          }
+        });
+      } else if (hoeheGroup) {
+        hoeheGroup.querySelector('h2').textContent = '2 · Baumhöhe';
+        [['klein', 'bis 10 m'], ['mittel', '10–15 m'], ['gross', '15–25 m'], ['riesig', 'über 25 m']].forEach(([v, label]) => {
+          const inp = hoeheGroup.querySelector('input[value="' + v + '"]');
+          if (inp && inp.parentElement) {
+            inp.parentElement.querySelector('span').textContent = label;
+          }
+        });
+      }
+
+      if (!job || !hoehe || !zugang || !entsorgung || !antrag) return;
+
+      const [low, high] = priceTable[job][hoehe];
+      const zf = zugangFactor[zugang];
+      const ef = entsorgungFactor[entsorgung];
+      const ext = antragFlat[antrag];
+
+      const rangeLow = Math.round((low * zf * ef + ext) / 10) * 10;
+      const rangeHigh = Math.round((high * zf * ef + ext) / 10) * 10;
+
+      rangeEl.textContent = fmt(rangeLow) + ' – ' + fmt(rangeHigh);
+
+      const notes = [];
+      if (zugang === 'eng') notes.push('Enge Lage: Kletter­einsatz einkalkuliert.');
+      if (entsorgung === 'alles-bleibt') notes.push('Alles bleibt: Preis ohne Container/Fahrt.');
+      if (antrag === 'ja') notes.push('Antrag inkl. Gutachten pauschal 180 €.');
+      if (job === 'sicherung') notes.push('Kronensicherung schließt Statik und System­material ein.');
+      if (job === 'stubben') notes.push('Stubbenfräse bis 30–40 cm unter Rasenniveau.');
+      if (notes.length === 0) notes.push('Standardfall — Fotos für verbindliches Angebot senden.');
+
+      noteEl.innerHTML = notes.map((n) => '· ' + n).join('<br/>');
+    }
+
+    document.querySelectorAll('input[type="radio"]').forEach((el) => el.addEventListener('change', recalc));
+    recalc();
+  })();
+</script>

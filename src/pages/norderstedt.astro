@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, STAEDTE, localBusinessSchema } from '../config';
+
+const stadt = STAEDTE.find((s) => s.slug === 'norderstedt')!;
+const schema = localBusinessSchema(stadt);
+
+const stadtteile = [
+  { name: 'Garstedt', kurz: 'Villen­lage, große Grundstücke, alte Buchen und Eichen.' },
+  { name: 'Harksheide', kurz: 'Einfamilien­haus-Gebiet, gemischter Bestand aus den 70ern.' },
+  { name: 'Friedrichsgabe', kurz: 'Randlage zum Himmelmoor, viele Birken und Kiefern.' },
+  { name: 'Glashütte', kurz: 'Neubaugebiete plus Alt­bestand, häufig Nadel­holz.' },
+];
+
+const leistungen = [
+  { titel: 'Fällung im Kreis Segeberg', punkte: ['Genehmigungs­fähigkeit prüfen (Norderstedt hat Baumschutz­satzung)', 'Seilkletter­technik in engen Reihenhaus-Gärten', 'MEWP/Kran wo Zufahrt möglich', 'Vollentsorgung Stamm bis Schnittgut'] },
+  { titel: 'Baumpflege privat', punkte: ['Kronen­pflege nach ZTV', 'Obstbaum­schnitt (Winter- und Sommer­schnitt)', 'Totholz­entfernung', 'Kronen­sicherung Cobra/Boa'] },
+  { titel: 'Für Verwaltungen & Kommunen', punkte: ['FLL-Baum­kontrolle', 'Kataster-Aufbau und -Pflege', 'Rahmen­vertrag für regel­mäßige Rundgänge', 'Gutachterliche Einschätzung bei Verdacht'] },
+  { titel: 'Sturm-Notdienst', punkte: ['24/7 erreichbar', 'Priorisierung nach Personen­gefährdung', 'Freischneiden von Zufahrten', 'Sicherung angerissener Kronen'] },
+];
+---
+
+<BaseLayout
+  title="Baumpflege Norderstedt — Baumfällung, Kronensicherung, Sturmdienst"
+  description="Baumpflege und Baumfällung in Norderstedt. Seilklettertechnik SKT-A/B, ZTV-Baumpflege, Baumschutzsatzung, FLL-Kontrolle. Von Garstedt bis Glashütte, Kreis Segeberg. Sturm-Notdienst 24/7."
+  schema={schema}
+>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Einsatzgebiet · Norderstedt</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Norderstedt.<br/><span class="text-messing italic font-normal">Direkt vor der Haustür.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Norderstedt ist unser direktes Einzugs­gebiet — wir sitzen wenige Kilometer nördlich in der Segeberger Straße. Von Garstedt über Harksheide, Friedrichs­gabe bis Glashütte sind wir schnell da, kennen die Wege, die Böden und den typischen Baumbestand aus den 70er-Jahre-Siedlungen und den älteren Villen­lagen.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section-padding">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Wer ruft in Norderstedt an?</span>
+      <h2 class="mt-4">Privat­kunden, Verwalter, WEG, Stadt.</h2>
+
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Der typische Norderstedter Auftrag: ein 15-Meter-Baum im hinteren Garten­teil, hinter Reihenhäusern zugänglich nur durch schmale Wege oder gar nicht. Kein Kran, keine Fahr­spur, dafür Nachbarn links und rechts. Das ist unser Alltag — Seilkletter­technik ist Standard, nicht Ausnahme. Wir zerlegen von oben, lassen Segment für Segment kontrolliert ab, arbeiten mit Bodenmatten wo nötig und räumen bis zum Grasnarben-Niveau auf.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        Für Hausverwaltungen und Wohnungsbau­gesellschaften in Norderstedt übernehmen wir die <strong>Verkehrs­sicherungs­pflicht­kontrollen nach FLL</strong>. Regel­kontrolle mindestens einmal jährlich, Kataster­aufbau, Dokumentation mit Fotos und Handlungs­empfehlung — rechtsfest, verfügbar im Haftungs­fall. Wer das versäumt, haftet persönlich.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Baumschutz­satzung Norderstedt:</strong> Norderstedt hat eine eigene Satzung. Geschützt sind Laubbäume ab einem Stamm­umfang von 60 cm (gemessen in 1 m Höhe) sowie ausgewiesene Nadel­gehölze. Für Fällungen und starke Kronen­eingriffe brauchst Du eine Genehmigung. Ausnahmen sind eng: Obstbäume in Klein­gärten, akute Gefahr, bestimmte Baustellen­fälle. Wir übernehmen die Antrag­stellung bei der Stadt.
+      </p>
+    </div>
+  </section>
+
+  <!-- STADTTEILE -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Wo wir arbeiten</span>
+        <h2 class="mt-4">Norderstedt und Umland.</h2>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {stadtteile.map((st) => (
+          <div class="panel">
+            <span class="rule"></span>
+            <h3 class="text-forst" style="font-size: 1.15rem;">{st.name}</h3>
+            <p class="mt-3 text-body-sm text-rauch leading-relaxed">{st.kurz}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-12 text-caption text-rauch">
+        Auch: Henstedt-Ulzburg, Kaltenkirchen, Quickborn, Bad Bramstedt — auf dem Weg von unserem Standort.
+      </p>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Was wir hier machen</span>
+        <h2 class="mt-4">Leistungen in Norderstedt.</h2>
+      </div>
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        {leistungen.map((l) => (
+          <div class="border border-linie p-8">
+            <h3 class="text-forst" style="font-size: 1.35rem;">{l.titel}</h3>
+            <ul class="mt-6 space-y-2.5 text-body-sm text-rauch">
+              {l.punkte.map((p) => <li>· {p}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ANFAHRT -->
+  <section class="section-padding bg-forst-dark text-birke">
+    <div class="container-narrow text-center">
+      <span class="eyebrow text-messing">Anfahrt</span>
+      <h2 class="mt-4 text-birke">Norderstedt ist praktisch nebenan.</h2>
+      <p class="mt-8 text-body-lg text-birke/75 leading-relaxed">
+        Unser Standort in Nahe (23866, Segeberger Straße) liegt rund 20 Minuten nördlich von Norderstedt — je nach Tages­zeit über die A7 oder die B432. Für Termin­einsätze planen wir ein bis drei Wochen Vorlauf, in ruhigen Phasen kürzer. Bei <strong>Sturm-Notfällen</strong> priorisieren wir nach Gefährdung und sind meist innerhalb weniger Stunden vor Ort.
+      </p>
+      <p class="mt-6 text-body text-birke/60">
+        Personen­gefährdung: immer zuerst 112, danach uns.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2 class="mt-4">Was Norderstedter Kunden fragen.</h2>
+      <div class="mt-12 space-y-6">
+        <details class="border border-linie p-6">
+          <summary class="font-display font-medium text-forst cursor-pointer">Was kostet eine Baum­fällung in Norderstedt?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Grobrichtwerte: 10–15 m gut zugänglich zwischen 400 und 900 € netto; enge Innen­lagen mit Kletter­einsatz höher, 25 m in schwieriger Lage schnell über 2.000 €. Für eine erste Einordnung: <a href="/preisrechner/" class="text-moos underline">Preisrechner</a>.</p>
+        </details>
+        <details class="border border-linie p-6">
+          <summary class="font-display font-medium text-forst cursor-pointer">Genehmigung in Norderstedt nötig?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ab 60 cm Stamm­umfang in 1 m Höhe bei Laubbäumen und geschützten Nadel­gehölzen: ja. Antrag stellen wir gern für Dich.</p>
+        </details>
+        <details class="border border-linie p-6">
+          <summary class="font-display font-medium text-forst cursor-pointer">Nur ein Baum — lohnt sich Anfahrt?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ja. Wir haben keine Mindest­auftrags­größe. Für einen Sicherungs­schnitt oder einen Obstbaum­schnitt kommen wir gern.</p>
+        </details>
+        <details class="border border-linie p-6">
+          <summary class="font-display font-medium text-forst cursor-pointer">Rahmen­vertrag für unsere Hausverwaltung?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ja — inklusive FLL-Kontroll­rundgang, Kataster­pflege und rechtsfester Dokumentation. Schreib eine Mail, wir setzen ein Angebot auf.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <span class="eyebrow text-forst-dark/70">Baumpflege Norderstedt</span>
+      <h2 class="mt-4 text-forst-dark">Kurzer Draht. Ohne Umweg.</h2>
+      <p class="mt-6 text-body-lg mx-auto max-w-xl">
+        Ruf an, schreib per WhatsApp oder E-Mail. Angebot in der Regel binnen 24 Stunden — mit Fotos meist ohne Ortstermin.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

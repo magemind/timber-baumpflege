@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, LEISTUNGEN, STAEDTE, localBusinessSchema } from '../config';
+
+const stadt = STAEDTE.find((s) => s.slug === 'hamburg')!;
+const schema = localBusinessSchema(stadt);
+
+const stadtteile = [
+  { name: 'Altona', kurz: 'Ottensen, Bahrenfeld, Othmarschen — dichte Villenlagen, viele Alleebäume.' },
+  { name: 'Eimsbüttel', kurz: 'Eppendorf, Hoheluft, Rotherbaum — hohe Straßenbäume, enge Hinterhöfe.' },
+  { name: 'Hamburg-Nord', kurz: 'Winterhude, Uhlenhorst, Alsterdorf — Parkgrundstücke am Alsterlauf.' },
+  { name: 'Wandsbek', kurz: 'Bergstedt, Volksdorf, Rahlstedt — großflächige Einfamilienhaus-Gärten.' },
+  { name: 'Bergedorf', kurz: 'Vier- und Marschlande — Obstbäume, Alleen, ländlicher Charakter.' },
+  { name: 'Harburg', kurz: 'Süderelbe, Neugraben — großzügige Grundstücke, Baumbestand aus den 60ern.' },
+  { name: 'Blankenese', kurz: 'Treppenviertel, Elbhang — schwierigste Zugänge in ganz Hamburg.' },
+  { name: 'Wellingsbüttel & Poppenbüttel', kurz: 'Villenkolonien, alte Eichen, Buchen und Rotbuchen.' },
+];
+
+const baumarten = [
+  { art: 'Rotbuche (Fagus sylvatica)', hinweis: 'Häufigster Großbaum in HH-Villenlagen. Anfällig für Riesenporling — regelmäßige VTA-Kontrolle Pflicht.' },
+  { art: 'Stiel- und Traubeneiche', hinweis: 'Dominante Baumart in Wandsbek und den Walddörfern. Hohe Standsicherheit, aber Astabbruch bei Sommer­trockenheit.' },
+  { art: 'Bergahorn & Spitzahorn', hinweis: 'Straßenbaumbestand in Eimsbüttel und Nord. Rußrindenkrankheit bei Wärme­jahren beobachten.' },
+  { art: 'Linde (Sommer-/Winterlinde)', hinweis: 'Klassischer Alleebaum, u. a. an der Elbchaussee. Neigt zu Fäulnis­taschen im Kronen­ansatz.' },
+  { art: 'Rosskastanie', hinweis: 'Minier­motten flächig. Meist keine Fällung nötig — Kronen­sicherung genügt.' },
+  { art: 'Birke, Kirsche, Apfel', hinweis: 'Häufig in Hinterhof- und Familien­gärten. Obstbaum­schnitt ist eine eigene Disziplin.' },
+];
+
+const leistungenHH = [
+  { titel: 'Baumfällung in Hamburg', punkte: ['Seilklettertechnik in engen Innenhöfen', 'MEWP und Kran nach Zugänglichkeit', 'Segment-Ablass Stück für Stück', 'Vollentsorgung inkl. Schnittgut'] },
+  { titel: 'Baumpflege nach ZTV', punkte: ['Kronen­pflege, Kronen­reduktion', 'Totholz­entfernung', 'Kronen­sicherung dynamisch (Cobra, Boa)', 'Obstbaum­schnitt Winter/Sommer'] },
+  { titel: 'Verkehrs­sicherungs­pflicht', punkte: ['Sichtkontrolle nach FLL', 'Baum­kataster für Eigentümer, Hausverwaltungen, WEG', 'Gutachterliche Einschätzung bei Verdacht', 'Rechtsfeste Dokumentation'] },
+  { titel: 'Sturm-Notdienst 24/7', punkte: ['Priorisierung nach Personen­gefährdung', 'Freischneiden von Zufahrten', 'Sicherung angerissener Kronen', 'Bei Personen­gefährdung immer zuerst 112'] },
+];
+---
+
+<BaseLayout
+  title="Baumpflege Hamburg — Baumfällung, Kronensicherung, Sturm-Notdienst"
+  description="Baumpflege und Baumfällung in Hamburg. Seilklettertechnik SKT-A/B, ZTV-Baumpflege, Verkehrssicherungspflicht, 24/7 Sturm-Notdienst — für Villenlagen, Innenhöfe, WEG und Kommunen. Vollversichertes Fachteam."
+  schema={schema}
+>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <span class="eyebrow text-messing">Einsatzgebiet · Hamburg</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Baumpflege in Hamburg.<br/><span class="text-messing italic font-normal">Vom Elbhang bis zu den Walddörfern.</span></h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Hamburg ist eine Baumstadt. Über 245.000 Straßenbäume, dazu die privaten Bestände in den Villen­lagen an der Alster, am Elbhang und in den Wald­dörfern. Wir arbeiten seit Jahren im Hamburger Stadtgebiet — mit Seilkletter­technik dort, wo kein Kran hinkommt, und mit Kronen­sicherung, wenn ein Baum stehen bleiben kann.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={`tel:${CONTACT.phone}`} class="btn-messing">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/preisrechner/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Preis schätzen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / CONTEXT -->
+  <section class="section-padding">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Was Hamburg besonders macht</span>
+      <h2 class="mt-4">Enge Zugänge, alter Bestand, hohe Anforderungen.</h2>
+
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Hamburger Grundstücke sind selten quadratisch und offen. Innenhöfe in Eimsbüttel, Treppen­grundstücke in Blankenese, dicht gepflasterte Zufahrten in Ottensen — die Regel ist: der Baum steht mitten drin, ringsum ist Bebauung, und ein 40-Tonner-Kran hat keinen Stellplatz. Genau dafür sind wir aufgestellt. Unsere Kernkompetenz ist Seilkletter­technik (SKT-A und SKT-B), mit der ein Baum von oben zerlegt und Segment für Segment abgelassen wird — ohne Bodenbelastung, ohne Sperr­fläche, ohne Schaden am Bestand.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        Der zweite Punkt: Hamburg hat eine <strong>Baumschutz­verordnung</strong>. Bäume mit einem Stamm­umfang ab 80 cm (gemessen in einem Meter Höhe) sind geschützt. Fällung ohne Genehmigung ist eine Ordnungs­widrigkeit mit empfindlichem Bußgeld. Wir kennen den Weg über das Bezirksamt und übernehmen — falls gewünscht — die komplette Antragstellung inklusive Baum­gutachten und Ersatz­pflanzungs­plan. Nicht jeder Baum darf gefällt werden. Aber jeder darf gepflegt werden.
+      </p>
+
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        Und der dritte Punkt: <strong>Verkehrs­sicherungs­pflicht</strong>. Als Grundstücks­eigentümer bist Du dafür verantwortlich, dass Deine Bäume niemanden gefährden. Nach FLL-Baumkontroll­richtlinie muss der Bestand regelmäßig — mindestens einmal jährlich — durch qualifizierte Baum­kontrolleure gesichtet und dokumentiert werden. Passiert etwas und die Kontrolle fehlt, haftest Du persönlich. Für Hausverwaltungen, WEGs und Wohnungs­gesellschaften bieten wir Rahmen­verträge mit strukturierter Kataster­pflege an.
+      </p>
+    </div>
+  </section>
+
+  <!-- STADTTEILE -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Wo wir arbeiten</span>
+        <h2 class="mt-4">Hamburger Stadtteile.<br/><span class="text-moos">Wir kommen überall hin, wo ein Baum steht.</span></h2>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {stadtteile.map((st) => (
+          <div class="panel">
+            <span class="rule"></span>
+            <h3 class="text-forst" style="font-size: 1.15rem;">{st.name}</h3>
+            <p class="mt-3 text-body-sm text-rauch leading-relaxed">{st.kurz}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-12 text-caption text-rauch">
+        Die Liste ist nicht abschließend. Wir fahren jeden Hamburger Stadtteil an — von Neuenfelde bis Duvenstedt.
+      </p>
+    </div>
+  </section>
+
+  <!-- BAUMBESTAND -->
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Baumbestand Hamburg</span>
+        <h2 class="mt-4">Welche Bäume bei uns anrufen — und was das Problem ist.</h2>
+        <p class="mt-6 text-body text-tinte/75 leading-relaxed">
+          Hamburgs Baumbestand ist geprägt vom norddeutschen Klima: viel Regen, wenig Frost, milde Winter. Die häufigsten Anfragen betreffen diese Arten:
+        </p>
+      </div>
+      <div class="mt-12 space-y-5">
+        {baumarten.map((b) => (
+          <article class="border border-linie p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-10">
+            <div class="md:w-1/3">
+              <h3 class="text-forst" style="font-size: 1.2rem;">{b.art}</h3>
+            </div>
+            <div class="md:w-2/3">
+              <p class="text-body-sm text-rauch leading-relaxed">{b.hinweis}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN IM HAMBURGER KONTEXT -->
+  <section class="section-padding bg-forst-dark text-birke">
+    <div class="container-site">
+      <div class="max-w-2xl">
+        <span class="eyebrow text-messing">Leistungen in Hamburg</span>
+        <h2 class="mt-4 text-birke">Was wir für Dich machen.</h2>
+      </div>
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        {leistungenHH.map((l) => (
+          <div class="border border-birke/10 p-8 hover:border-messing/40 transition-colors">
+            <h3 class="text-birke" style="font-size: 1.35rem;">{l.titel}</h3>
+            <ul class="mt-6 space-y-2.5 text-body-sm text-birke/70">
+              {l.punkte.map((p) => <li>· {p}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="mt-14 text-center">
+        <a href="/leistungen/" class="btn-ghost border-birke/40 text-birke hover:bg-birke hover:text-forst">Alle Leistungen im Detail →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SATZUNG & GENEHMIGUNG -->
+  <section class="section-padding">
+    <div class="container-narrow prose-longform">
+      <span class="eyebrow">Baumschutz in Hamburg</span>
+      <h2 class="mt-4">Muss ich einen Antrag stellen?</h2>
+
+      <p class="mt-8 text-body-lg text-tinte/85 leading-relaxed">
+        Kurz: Ja, wenn Dein Baum einen Stamm­umfang ab 80 cm in 1 m Höhe hat und keine der Ausnahmen aus der Hamburger Baumschutz­verordnung greift. Geschützt sind Laubbäume, Nadel­bäume ab bestimmten Größen, Groß­sträucher wie Rhododendron ab Stamm­umfang.
+      </p>
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        Ausnahmen — meist genehmigungs­frei — sind zum Beispiel Obstbäume auf Klein­gärten (nicht überall), akute Gefahr im Verzug (mit Nachweis), oder bestimmte Neubau­fälle. Verlass Dich aber nicht auf Hörensagen — jeder Fall ist einzeln zu prüfen. Wir übernehmen die Prüfung, die Antrag­stellung beim Bezirks­amt, das Baum­gutachten (bei Bedarf) und, wenn eine Ersatz­pflanzung angeordnet wird, auch die.
+      </p>
+      <p class="mt-6 text-body text-tinte/80 leading-relaxed">
+        <strong>Bußgeld­rahmen:</strong> Von einigen hundert bis mehreren tausend Euro pro Baum, im Wieder­holungsfall deutlich mehr. Es lohnt sich nicht, hier zu improvisieren.
+      </p>
+
+      <div class="mt-10 panel">
+        <span class="rule"></span>
+        <h3 class="text-forst">Vertiefung im Wissens­bereich</h3>
+        <p class="mt-4 text-body-sm text-rauch">Zum Thema Baumschutz­satzung, FLL-Kontrolle und Kronen­sicherung findest Du bei uns ausführliche Erklärungen ohne Verkaufsspin.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/wissen/baumschutzsatzung-grundlagen/" class="text-caption text-moos font-semibold uppercase tracking-widest hover:text-messing-dark">Baumschutz­satzung →</a>
+          <span class="text-linie">·</span>
+          <a href="/wissen/verkehrssicherungspflicht-baum/" class="text-caption text-moos font-semibold uppercase tracking-widest hover:text-messing-dark">Verkehrs­sicherungs­pflicht →</a>
+          <span class="text-linie">·</span>
+          <a href="/wissen/kronensicherung-dynamisch-statisch/" class="text-caption text-moos font-semibold uppercase tracking-widest hover:text-messing-dark">Kronen­sicherung →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANFAHRT & BEREITSCHAFT -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-narrow text-center">
+      <span class="eyebrow">Anfahrt & Bereitschaft</span>
+      <h2 class="mt-4">Wie schnell sind wir da?</h2>
+      <p class="mt-8 text-body-lg text-tinte/80 leading-relaxed">
+        Unser Team ist im norddeutschen Raum stationiert (Segeberger Straße 100, 23866 Nahe). Von dort erreichen wir Hamburg in der Regel in unter einer Stunde. Für <strong>terminierte Baum­pflege­einsätze</strong> planen wir mit Vorlauf, meist ein bis drei Wochen — in ruhigen Phasen kürzer. Bei <strong>Sturm-Notfällen</strong> priorisieren wir nach Personen­gefährdung und sind so schnell wie möglich vor Ort.
+      </p>
+      <p class="mt-4 text-body text-tinte/70">
+        Personen­gefährdung: immer zuerst die 112, danach uns.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2 class="mt-4">Was Hamburger Kunden meistens fragen.</h2>
+      <div class="mt-12 space-y-6">
+        <details class="border border-linie p-6 group">
+          <summary class="font-display font-medium text-forst cursor-pointer">Was kostet eine Baumfällung in Hamburg?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Grobrichtwerte: Ein 10–15-Meter-Baum in gut zugänglicher Lage liegt netto oft zwischen 400 und 900 €. In engen Innenhöfen, mit Kletter­einsatz und Segment­ablass, verdoppelt sich das schnell. Ein 25-Meter-Baum in Villen­lage kann 2.500 € und mehr kosten. Belastbare Zahl gibt es nach einem Foto oder Ortstermin — nutz gern unseren <a href="/preisrechner/" class="text-moos underline">Preisrechner</a> für eine erste Einordnung.</p>
+        </details>
+        <details class="border border-linie p-6 group">
+          <summary class="font-display font-medium text-forst cursor-pointer">Braucht mein Baum eine Genehmigung?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">In Hamburg ab 80 cm Stamm­umfang in 1 m Höhe: ja. Ausnahmen sind eng gefasst. Wir prüfen den Fall, übernehmen den Antrag beim zuständigen Bezirks­amt und, falls nötig, das Baum­gutachten.</p>
+        </details>
+        <details class="border border-linie p-6 group">
+          <summary class="font-display font-medium text-forst cursor-pointer">Kommt Ihr auch für einen einzelnen Baum?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ja. Wir haben keine Mindest­auftrags­größe. Auch einzelne Sicherungs­schnitte, ein Obstbaum­schnitt im Herbst oder eine Kronen­sicherung sind Aufträge, die wir gern übernehmen.</p>
+        </details>
+        <details class="border border-linie p-6 group">
+          <summary class="font-display font-medium text-forst cursor-pointer">Arbeitet Ihr auch für Hausverwaltungen und WEG?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ja. Für Verwaltungen bieten wir Rahmen­verträge mit strukturierter Baum­kataster-Pflege nach FLL an — inklusive rechtsfester Dokumentation für den Haftungs­fall.</p>
+        </details>
+        <details class="border border-linie p-6 group">
+          <summary class="font-display font-medium text-forst cursor-pointer">Was passiert nach der Fällung mit dem Holz?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Standard ist Vollentsorgung — Stamm, Krone, Schnittgut sind mit im Preis. Wer den Stamm als Brennholz behalten möchte, sagt vorher Bescheid; wir lassen ihn auf Wunsch in gewünschter Länge vor Ort.</p>
+        </details>
+        <details class="border border-linie p-6 group">
+          <summary class="font-display font-medium text-forst cursor-pointer">Seid Ihr versichert?</summary>
+          <p class="mt-4 text-body-sm text-rauch leading-relaxed">Ja. Betriebs­haftpflicht mit Deckung für Baum­arbeiten inklusive Schäden an umgebender Bebauung. Nachweis reichen wir vor Auftrags­annahme gern ein.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT-CTA -->
+  <section class="section-padding bg-messing text-forst-dark">
+    <div class="container-narrow text-center">
+      <span class="eyebrow text-forst-dark/70">Baumpflege Hamburg — Angebot</span>
+      <h2 class="mt-4 text-forst-dark">Kurzer Draht. Ohne Umweg.</h2>
+      <p class="mt-6 text-body-lg mx-auto max-w-xl">
+        Ruf an, schreib per WhatsApp oder E-Mail. Wir schauen uns den Baum entweder vor Ort in Hamburg an oder anhand Deiner Fotos — Angebot in der Regel binnen 24 Stunden.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

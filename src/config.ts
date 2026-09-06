@@ -211,6 +211,48 @@ export const WISSEN = [
   },
 ];
 
+// Einsatzgebiete für TIMBER — echte Kern-Städte mit ausformuliertem Content.
+// Anders als SATELLITEN (die auf eigener Domain sitzen) sind das TIMBER-eigene
+// Landings mit unique Content pro Ort — kein Template-Doorway.
+export const STAEDTE = [
+  {
+    slug: 'hamburg',
+    name: 'Hamburg',
+    region: 'Hansestadt Hamburg',
+    lat: 53.5511,
+    lng: 9.9937,
+    kurz: 'Baumpflege, Fällung und Sturm-Notdienst im Hamburger Stadtgebiet — von Blankenese bis Bergedorf.',
+    keyword: 'Baumpflege Hamburg',
+  },
+  {
+    slug: 'norderstedt',
+    name: 'Norderstedt',
+    region: 'Kreis Segeberg',
+    lat: 53.7085,
+    lng: 9.9998,
+    kurz: 'Baumdienst im gesamten Norderstedter Stadtgebiet und Umland — Garstedt, Harksheide, Friedrichsgabe, Glashütte.',
+    keyword: 'Baumpflege Norderstedt',
+  },
+  {
+    slug: 'kiel',
+    name: 'Kiel',
+    region: 'Landeshauptstadt Schleswig-Holstein',
+    lat: 54.3233,
+    lng: 10.1228,
+    kurz: 'Baumpflege und Fällung in Kiel und Umland — Förde, Düsternbrook, Wik, Elmschenhagen.',
+    keyword: 'Baumpflege Kiel',
+  },
+  {
+    slug: 'luebeck',
+    name: 'Lübeck',
+    region: 'Hansestadt Lübeck',
+    lat: 53.8655,
+    lng: 10.6866,
+    kurz: 'Baumdienst im Lübecker Stadtgebiet und Umland — Altstadt, St. Gertrud, Travemünde, Bad Schwartau.',
+    keyword: 'Baumpflege Lübeck',
+  },
+];
+
 // Organization-Schema (nicht LocalBusiness, TIMBER ist überregional)
 export const ORG_SCHEMA = {
   '@context': 'https://schema.org',
@@ -230,8 +272,42 @@ export const ORG_SCHEMA = {
     addressRegion: CONTACT.region,
     addressCountry: CONTACT.country,
   },
-  areaServed: SATELLITEN.map((s) => ({ '@type': 'City', name: s.name })),
+  areaServed: [
+    { '@type': 'State', name: 'Schleswig-Holstein' },
+    { '@type': 'State', name: 'Hamburg' },
+    { '@type': 'State', name: 'Niedersachsen' },
+    ...STAEDTE.map((s) => ({ '@type': 'City', name: s.name })),
+  ],
   // Bewusst KEIN sameAs auf die Regional-Domains - das würde Google als
   // Doorway-Netzwerk-Signal werten. Regional-Auftritte verlinken einseitig
   // zum Hub, nicht umgekehrt.
 };
+
+// LocalBusiness-Schema-Factory für Ortsseiten
+export function localBusinessSchema(stadt: { name: string; lat: number; lng: number; slug: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${SITE.url}/${stadt.slug}/#local`,
+    name: `${SITE.legalName} — ${stadt.name}`,
+    alternateName: `TIMBER Baumpflege ${stadt.name}`,
+    url: `${SITE.url}/${stadt.slug}/`,
+    telephone: CONTACT.phone,
+    email: CONTACT.email,
+    priceRange: '€€',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: CONTACT.street,
+      postalCode: CONTACT.zip,
+      addressLocality: CONTACT.city,
+      addressRegion: CONTACT.region,
+      addressCountry: CONTACT.country,
+    },
+    areaServed: { '@type': 'City', name: stadt.name },
+    geo: { '@type': 'GeoCoordinates', latitude: stadt.lat, longitude: stadt.lng },
+    openingHoursSpecification: [
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '00:00', closes: '23:59' },
+    ],
+    serviceType: ['Baumpflege', 'Baumfällung', 'Kronensicherung', 'Verkehrssicherungspflicht', 'Sturm-Notdienst'],
+  };
+}
