@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { CONTACT } from '../../../config';
+import { BAUMARTEN } from '../../../content/baumarten';
+
+export async function getStaticPaths() {
+  return BAUMARTEN.map((b) => ({ params: { slug: b.slug } }));
+}
+
+const { slug } = Astro.params;
+const article = BAUMARTEN.find((b) => b.slug === slug)!;
+const others = BAUMARTEN.filter((b) => b.slug !== slug);
+---
+
+<BaseLayout title={`${article.title} — TIMBER Baumpflege`} description={article.meta}>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-narrow section-padding-sm">
+      <nav class="text-caption text-birke/60 mb-4">
+        <a href="/" class="hover:text-messing no-underline">Start</a> ·
+        <a href="/wissen/" class="hover:text-messing no-underline">Wissen</a> ·
+        <a href="/wissen/baumarten/" class="hover:text-messing no-underline">Baumarten</a> ·
+        <span class="text-birke">{article.title}</span>
+      </nav>
+      <span class="eyebrow text-messing">Deep-Dive · Baumarten Norddeutschland</span>
+      <h1 class="mt-4 text-birke leading-[1.05]">{article.title}</h1>
+      <p class="mt-8 text-body-lg text-birke/75 leading-relaxed">{article.short}</p>
+    </div>
+  </section>
+
+  <!-- STECKBRIEF -->
+  <section class="bg-forst border-y border-birke/10">
+    <div class="container-narrow py-8">
+      <dl class="grid gap-3 md:grid-cols-2 text-caption text-birke/85">
+        <div>
+          <dt class="text-messing font-semibold uppercase tracking-widest text-[0.7rem]">Botanik</dt>
+          <dd class="mt-1">{article.hero.botanik}</dd>
+        </div>
+        <div>
+          <dt class="text-messing font-semibold uppercase tracking-widest text-[0.7rem]">Höhe</dt>
+          <dd class="mt-1">{article.hero.hoehe}</dd>
+        </div>
+        <div>
+          <dt class="text-messing font-semibold uppercase tracking-widest text-[0.7rem]">Lebensalter</dt>
+          <dd class="mt-1">{article.hero.alter}</dd>
+        </div>
+        <div>
+          <dt class="text-messing font-semibold uppercase tracking-widest text-[0.7rem]">Standort</dt>
+          <dd class="mt-1">{article.hero.standort}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ARTIKEL -->
+  <article class="section-padding">
+    <div class="container-narrow prose">
+      <p class="lead">{article.intro}</p>
+
+      {article.sections.map((s) => (
+        <>
+          <h2>{s.h}</h2>
+          {s.p.map((para) => <p>{para}</p>)}
+        </>
+      ))}
+
+      <h2>Fazit</h2>
+      <p><strong>{article.fazit}</strong></p>
+    </div>
+  </article>
+
+  <!-- KONTAKT-CTA -->
+  <section class="section-padding-sm bg-birke-dark border-y border-linie">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst">Fragen zum eigenen Bestand?</h2>
+      <p class="mt-6 text-body-lg text-tinte/75">Direkter Draht ins Team — kein Callcenter, keine Warteschleife.</p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht schreiben →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEITERE BAUMARTEN -->
+  <section class="section-padding">
+    <div class="container-site">
+      <span class="eyebrow text-moos">Weiter im Cluster</span>
+      <h2 class="mt-4 text-forst">Andere Baumarten</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {others.map((b) => (
+          <a href={`/wissen/baumarten/${b.slug}/`} class="group block panel no-underline">
+            <h3 class="text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.25rem; line-height: 1.2;">{b.title}</h3>
+            <p class="mt-3 text-body-sm text-rauch leading-relaxed">{b.short}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

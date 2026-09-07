@@ -181,9 +181,9 @@ export const WISSEN_KATEGORIEN = [
   {
     slug: 'baumarten',
     name: 'Baumarten Norddeutschland',
-    kurz: 'Rotbuche, Eiche, Linde, Hainbuche — was welche Art braucht und was ihr fehlt.',
+    kurz: 'Rotbuche, Stieleiche, Bergahorn, Winterlinde — was jede Art in unseren Beständen fordert.',
     icon: 'tree',
-    status: 'bald',
+    status: 'live',
   },
   {
     slug: 'recht',

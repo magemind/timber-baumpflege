@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { CONTACT } from '../../../config';
+import { BAUMARTEN } from '../../../content/baumarten';
+---
+
+<BaseLayout
+  title="Baumarten in Norddeutschland — Rotbuche, Stieleiche, Bergahorn, Winterlinde"
+  description="Die vier Baumarten, die den norddeutschen Bestand prägen — was jede Art in Baumpflege und Baumdienst fordert, und wo sie heute ins Kippen gerät. Fachlicher Deep-Dive-Cluster von TIMBER Baumpflege."
+>
+
+  <!-- HERO -->
+  <section class="bg-forst-dark text-birke">
+    <div class="container-site section-padding-sm">
+      <nav class="text-caption text-birke/60 mb-4">
+        <a href="/" class="hover:text-messing no-underline">Start</a> ·
+        <a href="/wissen/" class="hover:text-messing no-underline">Wissen</a> ·
+        <span class="text-birke">Baumarten</span>
+      </nav>
+      <span class="eyebrow text-messing">Cluster · Baumarten Norddeutschland</span>
+      <h1 class="mt-4 text-birke max-w-3xl leading-[1.05]">Was jede Art in unseren Beständen wirklich fordert.</h1>
+      <p class="mt-8 text-body-lg text-birke/70 max-w-2xl leading-relaxed">
+        Rotbuche, Stieleiche, Bergahorn, Winterlinde — vier Baumarten, die zusammen den
+        Kern jedes norddeutschen Alt-Bestandes ausmachen. Für unsere Baumpflege und den
+        Baumdienst im Norden sind das nicht "die vier häufigsten" — das sind die vier Arten,
+        an denen die aktuellen Themen zwischen Klimastress, Verkehrssicherungspflicht und
+        Pflegeplanung sich zuspitzen. Wer den Bestand versteht, versteht die Aufgabe.
+      </p>
+    </div>
+  </section>
+
+  <!-- PILLAR-EINLEITUNG -->
+  <section class="section-padding">
+    <div class="container-narrow prose">
+      <p class="lead">
+        Der Cluster besteht aus vier ausführlichen Fach-Artikeln, jeweils zu einer der
+        prägenden norddeutschen Baumarten. Perspektive: aus der Krone, nicht aus dem
+        botanischen Lehrbuch. Standortbedürfnisse, aktuelle Krisenbilder, was sinnvolle
+        Baumpflege leistet, wann Fällung unvermeidlich wird, was rechtlich zu beachten ist.
+      </p>
+
+      <h2>Warum diese vier Arten</h2>
+      <p>
+        Rotbuche, Stieleiche, Bergahorn und Winterlinde bilden zusammen den Löwenanteil
+        unserer Einsatz-Historie in Schleswig-Holstein, Hamburg und dem nördlichen
+        Niedersachsen. Wer als Baumpflege-Betrieb hier arbeitet, hat es fast täglich mit
+        einer dieser vier Arten zu tun — in Alleen, in Kirchgärten, in Villenviertel-Gärten,
+        in Kommunalen Grünflächen, in privaten Alt-Baum-Beständen. Die Auswahl folgt der
+        Realität in unserer Arbeit, nicht einer akademischen Vollständigkeit.
+      </p>
+
+      <h2>Ein gemeinsamer Nenner: die Baumart erklärt den Fall</h2>
+      <p>
+        Jede der vier Arten hat einen eigenen Krisen-Modus. Die Rotbuche kollabiert unter
+        Trockenstress. Die Stieleiche ist widerstandsfähig, aber das Eichensterben und der
+        Eichenprozessionsspinner haben ihre Grenzen sichtbar gemacht. Der Bergahorn wird
+        seit den Hitzejahren zur Standardadresse der Rußrindenkrankheit. Die Winterlinde
+        ist der Verlässlichkeitsanker — aber auch bei ihr müssen wir bei alten Höhlungs-
+        und Kappungssituationen genau hinschauen. Wer als Auftraggeber weiß, welche Art
+        im eigenen Bestand steht, kann die Diagnose und den Pflegebedarf einordnen — statt
+        einer Empfehlung ausgeliefert zu sein, die man nicht überprüfen kann.
+      </p>
+
+      <h2>Für welche Zielgruppe die Artikel gedacht sind</h2>
+      <p>
+        Für Verwalter, Grundstückseigentümer, Kommunalvertreter und Wohnungsgesellschaften,
+        die verstehen wollen, was hinter unseren Empfehlungen steht. Für Menschen, die nicht
+        einfach "einen Baumpfleger holen" wollen, sondern verstehen möchten, warum eine
+        Alt-Buche heute anders bewertet wird als vor zehn Jahren, warum eine Stieleiche
+        zusätzliche Kontrolle braucht, wieso ein Bergahorn plötzlich zum Arbeitsschutz-Thema
+        wird, und warum eine Winterlinde in Höhlungssituation stabiler sein kann als sie
+        aussieht. Die Artikel sind so geschrieben, dass Du sie einmal lesen und danach das
+        Gespräch mit dem Baumdienst inhaltlich mitführen kannst.
+      </p>
+    </div>
+  </section>
+
+  <!-- DEEP-DIVE-GRID -->
+  <section class="section-padding bg-birke-dark border-y border-linie">
+    <div class="container-site">
+      <span class="eyebrow text-moos">Deep-Dives</span>
+      <h2 class="mt-4 text-forst max-w-3xl">Vier Arten, vier Artikel.</h2>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {BAUMARTEN.map((b) => (
+          <a href={`/wissen/baumarten/${b.slug}/`} class="group block panel no-underline">
+            <span class="rule"></span>
+            <span class="text-caption text-moos font-semibold uppercase tracking-widest">Deep-Dive</span>
+            <h3 class="mt-3 text-forst group-hover:text-messing-dark transition-colors" style="font-size: 1.5rem; line-height: 1.15;">{b.title}</h3>
+            <p class="mt-4 text-body text-rauch leading-relaxed">{b.short}</p>
+            <div class="mt-6 pt-6 border-t border-linie">
+              <dl class="text-caption text-rauch grid gap-1">
+                <div><dt class="inline font-semibold text-forst">Botanik:</dt> <dd class="inline">{b.hero.botanik}</dd></div>
+                <div><dt class="inline font-semibold text-forst">Höhe:</dt> <dd class="inline">{b.hero.hoehe}</dd></div>
+              </dl>
+            </div>
+            <span class="mt-6 inline-block text-caption text-moos font-semibold uppercase tracking-widest group-hover:text-messing-dark transition-colors">Zum Artikel →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT-CTA -->
+  <section class="section-padding-sm">
+    <div class="container-narrow text-center">
+      <h2 class="text-forst">Alt-Baum im Bestand?</h2>
+      <p class="mt-6 text-body-lg text-tinte/75">
+        Fachliche Erst-Einschätzung durch einen qualifizierten Baumpflege-Betrieb —
+        direkter Draht ins Team, keine Warteschleife.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${CONTACT.phone}`} class="btn-primary">☎ {CONTACT.phoneDisplay}</a>
+        <a href="/kontakt/" class="btn-ghost">Nachricht schreiben →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
