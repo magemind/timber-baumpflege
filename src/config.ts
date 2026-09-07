@@ -188,9 +188,9 @@ export const WISSEN_KATEGORIEN = [
   {
     slug: 'recht',
     name: 'Recht & Genehmigung',
-    kurz: 'Baumschutzsatzung, Vogelschutzfrist, Fällantrag — was Auftraggeber wissen müssen.',
+    kurz: 'Verkehrssicherung, Baumschutzsatzung, Vogelschutzfrist, Fällantrag — der komplette Rahmen.',
     icon: 'scale',
-    status: 'bald',
+    status: 'live',
   },
   {
     slug: 'werkzeug-technik',
