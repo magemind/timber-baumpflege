@@ -641,8 +641,8 @@
       </div>
       <div class="stat">
         <p class="label">Sites mit 0 Rankings</p>
-        <p class="value">2</p>
-        <p class="note">timber · pinneberg — Diagnose fällig</p>
+        <p class="value">1</p>
+        <p class="note">timber — Diagnose fällig · pinneberg war Tracker-TLD-Fehler</p>
       </div>
       <div class="stat">
         <p class="label">NAP identisch</p>
@@ -793,7 +793,7 @@
       <div class="anomaly warn">
         <span class="badge">Anomalie #3 · Diagnose fällig</span>
         <h3>Timber + Pinneberg ranken für NICHTS</h3>
-        <p>timber-baumpflege.de rankt nicht mal auf den eigenen Brand „TIMBER Baumpflege". baumfaellung-pinneberg.de auf 18 geprüften KWs → 0 Rankings. Entweder Indexierungsproblem, zu jung oder fehlendes Content-Signal — <b>muss zuerst geklärt werden</b>.</p>
+        <p>timber-baumpflege.de rankt nicht mal auf den eigenen Brand „TIMBER Baumpflege" — echtes Indexierungs- oder Signal-Problem. Bei pinneberg lief der Tracker auf falscher TLD (.de statt .com) — die Live-Site auf .com muss neu getrackt werden. <b>Timber-Diagnose bleibt Prio.</b></p>
         <span class="anchor">Sofort: GSC Coverage-Check + Sitemap-Status</span>
       </div>
     </div>
@@ -862,12 +862,12 @@
             <td>keine · Diagnose fällig</td>
           </tr>
           <tr>
-            <td class="domain-cell">baumfaellung-pinneberg.de</td>
-            <td><span class="pos none">0</span></td>
-            <td><span class="pos none">0</span></td>
+            <td class="domain-cell">baumfaellung-pinneberg.com</td>
+            <td><span class="pos none">?</span></td>
+            <td><span class="pos none">?</span></td>
             <td>Baumfällung Pinneberg</td>
-            <td><span class="pos none">—</span></td>
-            <td>keine · nicht aufgesetzt</td>
+            <td><span class="pos none">?</span></td>
+            <td>Tracker lief auf .de · neu tracken</td>
           </tr>
         </tbody>
       </table>
@@ -1126,27 +1126,28 @@
       </div>
 
       <!-- 10 -->
-      <div class="card dormant">
+      <div class="card tier-2">
         <div class="top">
           <div>
-            <div class="domain">baumfaellung-pinneberg.de</div>
-            <div class="tier-tag"><strong>—</strong>Umland-Satellit (geplant)</div>
+            <div class="domain">baumfaellung-pinneberg.com</div>
+            <div class="tier-tag"><strong>T2</strong>Umland-Satellit Pinneberg</div>
           </div>
-          <div class="status dormant"><span class="led"></span>DNS only</div>
+          <div class="status live"><span class="led"></span>Live</div>
         </div>
-        <div class="intent">Intent: geplant <b>transactional-lokal</b></div>
+        <div class="intent">Intent: <b>transactional-lokal</b> · 60-Sek-Widget als USP</div>
         <div class="metrics">
-          <div class="metric"><span class="k">0</span><span class="v">URLs</span></div>
-          <div class="metric"><span class="k">—</span><span class="v">—</span></div>
-          <div class="metric"><span class="k">IONOS</span><span class="v">Vercel-DNS</span></div>
+          <div class="metric"><span class="k">35 KB</span><span class="v">Home</span></div>
+          <div class="metric"><span class="k">Astro</span><span class="v">Vercel</span></div>
+          <div class="metric"><span class="k">6</span><span class="v">Orte</span></div>
         </div>
         <div class="kws">
-          <span class="kw">Baumfällung Pinneberg</span>
-          <span class="kw">Schenefeld · Halstenbek · Rellingen · Elmshorn</span>
+          <span class="kw primary">Baumfällung Pinneberg</span>
+          <span class="kw">Schenefeld · Halstenbek · Rellingen · Wedel · Elmshorn</span>
+          <span class="kw">80cm Stammumfang · Baumschutzsatzung 2024</span>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:6px">
-          <span class="chip crit">0 Rankings · nicht aufgesetzt</span>
-          <span class="chip warn">Aufsetzen</span>
+          <span class="chip warn">Rank-Tracker auf falsche TLD (.de) · umstellen</span>
+          <span class="chip crit">NAP identisch</span>
         </div>
       </div>
 
@@ -1547,8 +1548,8 @@
       <div class="action">
         <div class="num">12</div>
         <div class="body">
-          <h4>baumfaellung-pinneberg.de aufsetzen</h4>
-          <p>Selbes Template wie -ahrensburg / -norderstedt, angepasste Ortsteile: Pinneberg, Schenefeld, Halstenbek, Rellingen, Elmshorn, Wedel. 25–30 URLs, 1200–1500 W Homepage.</p>
+          <h4>baumfaellung-pinneberg.com Rank-Tracker umstellen</h4>
+          <p>Live-Site liegt auf .com (nicht .de wie im ersten CSV). Tracker war auf falsche TLD gesetzt. Alle 18 Pinneberger KWs auf .com umtracken. Die .com-Site hat das 60-Sek-Widget als USP — der Content ist bereits stark, nur die Sichtbarkeit fehlt in der Messung.</p>
         </div>
         <div class="lane mid">Q1</div>
       </div>
@@ -1965,7 +1966,7 @@ Vogelschutzfrist Hamburg</textarea>
 
       <div class="kw-block">
         <div class="kw-block-head">
-          <h3>baumfaellung-pinneberg.de <span class="count">geplant · 18 KWs</span></h3>
+          <h3>baumfaellung-pinneberg.com <span class="count">live · 18 KWs</span></h3>
           <button class="copy-btn" data-target="kw-pin">kopieren</button>
         </div>
         <textarea id="kw-pin" readonly rows="14">Baumfällung Pinneberg
