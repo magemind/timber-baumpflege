@@ -608,6 +608,7 @@
       <h1>Baumpflege-<em>Netzwerk</em></h1>
       <nav class="jump" aria-label="Sprungmarken">
         <a href="#overview">Übersicht</a>
+        <a href="#rankings">Rankings</a>
         <a href="#domains">Domains</a>
         <a href="#nap">NAP-Fingerprint</a>
         <a href="#konflikte">KW-Konflikte</a>
@@ -634,14 +635,14 @@
         <p class="note">4 Registrare · 3 Hoster</p>
       </div>
       <div class="stat">
-        <p class="label">Live</p>
-        <p class="value">8</p>
-        <p class="note">7 Vercel · 1 Apache</p>
+        <p class="label">Top-10-Rankings</p>
+        <p class="value">61</p>
+        <p class="note">davon 20× Position 1</p>
       </div>
       <div class="stat">
-        <p class="label">Draft / Dormant</p>
-        <p class="value">4</p>
-        <p class="note">1 Hostinger-Draft · 3 nur DNS</p>
+        <p class="label">Sites mit 0 Rankings</p>
+        <p class="value">2</p>
+        <p class="note">timber · pinneberg — Diagnose fällig</p>
       </div>
       <div class="stat">
         <p class="label">NAP identisch</p>
@@ -651,8 +652,230 @@
     </div>
 
     <div class="callout">
-      <p class="icon-label">Wichtigste Erkenntnis</p>
-      <p><b>webdesign-norderstedt.com</b> ist keine „Nebendomain" — auf Apache/WordPress liegt dort die content-tiefste Baumpflege-Site des Portfolios (3.622 W Homepage). Sie zielt auf dieselben Hamburger Head-KWs wie baumpfleger-hamburg.de. <b>Vermutlich der eigentliche Ranking-Anker</b> — Domain-Alter checken (WHOIS), dann Strategie um sie herum bauen.</p>
+      <p class="icon-label">Bestätigt durch Live-Ranking-Daten</p>
+      <p><b>webdesign-norderstedt.com</b> ist bestätigt der versteckte Ranking-Gigant: <b>17 Top-10-Positionen für Hamburg-KWs</b>, davon 5× Position 1 (Kronenauslichtung, Kronensicherung, Jungbaumpflege, Grundstücksrodung, Baumpflege Eppendorf). Die Site rankt für „Baumfällung Hamburg" Pos 18 — <b>timber-baumpflege.de rankt gar nicht</b>, obwohl als Marken-Hub geplant. Zweite kritische Anomalie: <b>baumfaellung-ahrensburg.de</b> rankt Ortsteile alle Pos 1–5, aber der Head-KW „Baumfällung Ahrensburg" nur Pos 17 — reines Onpage-Problem, in Wochen fixbar.</p>
+    </div>
+  </section>
+
+  <svg class="ring-divider" viewBox="0 0 60 20" aria-hidden="true">
+    <path d="M2 10 Q30 4 58 10"/>
+    <path d="M4 10 Q30 8 56 10"/>
+    <path d="M8 10 Q30 12 52 10"/>
+  </svg>
+
+  <!-- ═══════ LIVE RANKINGS ═══════ -->
+  <style>
+    .anomaly-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 24px 0 40px;
+    }
+    .anomaly {
+      padding: 20px 22px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--crit);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .anomaly.chance { border-left-color: var(--accent); }
+    .anomaly.warn { border-left-color: var(--warn); }
+    .anomaly .badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--crit);
+    }
+    .anomaly.chance .badge { color: var(--accent); }
+    .anomaly.warn .badge { color: var(--warn); }
+    .anomaly h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+    .anomaly p {
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+    .anomaly .anchor {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 500;
+      padding: 6px 10px;
+      background: var(--surface-alt);
+      border-radius: 3px;
+      align-self: flex-start;
+    }
+
+    .rank-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      margin-top: 8px;
+    }
+    .rank-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 640px;
+    }
+    .rank-table th, .rank-table td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      vertical-align: middle;
+    }
+    .rank-table th {
+      font-family: var(--font-body);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-low);
+      font-weight: 600;
+      background: var(--surface-sunk);
+      white-space: nowrap;
+    }
+    .rank-table tr:last-child td { border-bottom: none; }
+    .rank-table .domain-cell {
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .rank-table .pos {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 26px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-weight: 600;
+      background: var(--surface-alt);
+      color: var(--text-mid);
+      font-size: 12.5px;
+    }
+    .rank-table .pos.top1 { background: var(--ok-soft); color: var(--ok); }
+    .rank-table .pos.top10 { background: var(--warn-soft); color: var(--warn); }
+    .rank-table .pos.deep, .rank-table .pos.none { background: var(--crit-soft); color: var(--crit); }
+    .rank-table td small { color: var(--text-low); font-size: 11.5px; margin-left: 4px; font-family: var(--font-body); }
+  </style>
+
+  <section id="rankings">
+    <p class="eyebrow">Sektion 2</p>
+    <h2>Live-Rankings · Snapshot 12. September</h2>
+    <p class="lede">Sechs Sites gescannt, 174 Keywords geprüft in google.de. Drei Anomalien ordnen den bisherigen Aktionsplan neu.</p>
+
+    <div class="anomaly-grid">
+      <div class="anomaly">
+        <span class="badge">Anomalie #1 · Kritisch</span>
+        <h3>Ahrensburg-Head-KW hängt auf Seite 2</h3>
+        <p>Acht Ortsteile ranken Pos 1–5 (Reesenbüttel, Gartenholz, Wulfsdorf, Ahrensburg-West, Stadtzentrum, Wurzelentfernung). Der Head-Term <b>„Baumfällung Ahrensburg" liegt auf Pos 17</b>. Klassisches Onpage-Signal-Problem: Homepage optimiert breit auf Ortsteile statt fokussiert auf den Head.</p>
+        <span class="anchor">Fix: 6–10 Wochen · nur Onpage · keine neue Domain</span>
+      </div>
+      <div class="anomaly chance">
+        <span class="badge">Anomalie #2 · Chance</span>
+        <h3>webdesign dominiert — mit falscher Marke</h3>
+        <p>17 Top-10-Rankings für Hamburg-Baum-KWs, davon <b>5× Position 1</b> (Kronenauslichtung, Kronensicherung, Jungbaumpflege, Grundstücksrodung, Baumpflege Eppendorf). Die Site trägt echten Ranking-Wert — nur der Domain-Name „webdesign" signalisiert Nutzern das Falsche.</p>
+        <span class="anchor">Strategie: 2-Phasen-Migration nach Q1-Push</span>
+      </div>
+      <div class="anomaly warn">
+        <span class="badge">Anomalie #3 · Diagnose fällig</span>
+        <h3>Timber + Pinneberg ranken für NICHTS</h3>
+        <p>timber-baumpflege.de rankt nicht mal auf den eigenen Brand „TIMBER Baumpflege". baumfaellung-pinneberg.de auf 18 geprüften KWs → 0 Rankings. Entweder Indexierungsproblem, zu jung oder fehlendes Content-Signal — <b>muss zuerst geklärt werden</b>.</p>
+        <span class="anchor">Sofort: GSC Coverage-Check + Sitemap-Status</span>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:36px;font-size:15px">Rankings pro Domain — die Zahlen die zählen</p>
+
+    <div class="rank-table-wrap">
+      <table class="rank-table">
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Top 10</th>
+            <th>Pos 1</th>
+            <th>Head-KW</th>
+            <th>Head-Pos</th>
+            <th>Stärkste Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="domain-cell">baumfaellung-blankenese.de</td>
+            <td><span class="pos top1">16</span></td>
+            <td><span class="pos top1">6</span></td>
+            <td>Baumfällung Blankenese</td>
+            <td><span class="pos top1">1</span></td>
+            <td>Baumpflege Treppenviertel<small>Pos 1</small></td>
+          </tr>
+          <tr>
+            <td class="domain-cell">webdesign-norderstedt.com</td>
+            <td><span class="pos top1">17</span></td>
+            <td><span class="pos top1">5</span></td>
+            <td>Baumfällung Hamburg</td>
+            <td><span class="pos deep">18</span></td>
+            <td>Kronensicherung Hamburg<small>Pos 1</small></td>
+          </tr>
+          <tr>
+            <td class="domain-cell">baumfaellung-ahrensburg.de</td>
+            <td><span class="pos top1">14</span></td>
+            <td><span class="pos top1">5</span></td>
+            <td>Baumfällung Ahrensburg</td>
+            <td><span class="pos deep">17</span></td>
+            <td>Baumfällung Reesenbüttel<small>Pos 1</small></td>
+          </tr>
+          <tr>
+            <td class="domain-cell">baumfaellung-norderstedt.de</td>
+            <td><span class="pos top1">12</span></td>
+            <td><span class="pos top1">4</span></td>
+            <td>Baumfällung Norderstedt</td>
+            <td><span class="pos top10">7</span></td>
+            <td>Baumfällung Garstedt<small>Pos 1</small></td>
+          </tr>
+          <tr>
+            <td class="domain-cell">baumfaellung-hamburg.com</td>
+            <td><span class="pos top10">2</span></td>
+            <td><span class="pos none">0</span></td>
+            <td>Baumfällung Hamburg</td>
+            <td><span class="pos none">—</span></td>
+            <td>Baumfällung Wandsbek<small>Pos 3</small></td>
+          </tr>
+          <tr>
+            <td class="domain-cell">timber-baumpflege.de</td>
+            <td><span class="pos none">0</span></td>
+            <td><span class="pos none">0</span></td>
+            <td>TIMBER Baumpflege</td>
+            <td><span class="pos none">—</span></td>
+            <td>keine · Diagnose fällig</td>
+          </tr>
+          <tr>
+            <td class="domain-cell">baumfaellung-pinneberg.de</td>
+            <td><span class="pos none">0</span></td>
+            <td><span class="pos none">0</span></td>
+            <td>Baumfällung Pinneberg</td>
+            <td><span class="pos none">—</span></td>
+            <td>keine · nicht aufgesetzt</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:32px">
+      <p class="icon-label">Was diese Daten am Aktionsplan ändern</p>
+      <p><b>Neue Prio 1:</b> Ahrensburg-Head-KW auf Pos 5 pushen — nur Onpage, keine neuen Domains nötig. <b>Prio 2:</b> Timber + Pinneberg diagnostizieren (Indexierung, Sitemap, GSC). <b>Prio 3:</b> Blankenese Baumpflege-Cluster ausbauen — 6 Ortsteil-Seiten fehlen, Domain-Autorität ist bereits da. <b>Prio 4:</b> webdesign-Migration erst NACH Onpage-Push in Q2 — die Site verliert temporär 20–40% Rankings, bei aktuellen Pos 1–5 zu wertvoll um blind zu migrieren.</p>
     </div>
   </section>
 
@@ -664,7 +887,7 @@
 
   <!-- ═══════ DOMAIN GRID ═══════ -->
   <section id="domains">
-    <p class="eyebrow">Sektion 2</p>
+    <p class="eyebrow">Sektion 3</p>
     <h2>Domain-Netzwerk</h2>
     <p class="lede">Karten sortiert nach Priorität. Farb-Balken links zeigen die Rolle in der Pyramide: <span style="color:var(--accent);font-weight:600">Tier 1</span> = Money · <span style="color:var(--line-strong);font-weight:600">Tier 2</span> = Satellit · <span style="color:var(--ok);font-weight:600">Tier 3</span> = Content-Hub.</p>
 
@@ -717,7 +940,10 @@
           <span class="kw">Kronensicherung</span>
           <span class="kw">Jungbaumpflege</span>
         </div>
-        <span class="chip warn">NAP-Status prüfen</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip ok">17 Top-10 · 5× Pos 1</span>
+          <span class="chip warn">NAP-Status prüfen</span>
+        </div>
       </div>
 
       <!-- 3 -->
@@ -741,7 +967,10 @@
           <span class="kw">Norderstedt · Kaltenkirchen · Bad Segeberg</span>
           <span class="kw">Wissen-Cluster (17)</span>
         </div>
-        <span class="chip crit">NAP identisch</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip crit">0 Rankings · Diagnose fällig</span>
+          <span class="chip crit">NAP identisch</span>
+        </div>
       </div>
 
       <!-- 4 -->
@@ -789,7 +1018,10 @@
           <span class="kw">Genehmigung Hamburg</span>
           <span class="kw">7 Bezirke ×7 Services</span>
         </div>
-        <span class="chip crit">NAP identisch</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip warn">2 Top-10 · Head-KW ohne Ranking</span>
+          <span class="chip crit">NAP identisch</span>
+        </div>
       </div>
 
       <!-- 6 -->
@@ -813,7 +1045,10 @@
           <span class="kw">Nienstedten · Iserbrook · Rissen</span>
           <span class="kw">Kronensicherung Blankenese</span>
         </div>
-        <span class="chip ok">Local-Diff. sauber</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip ok">16 Top-10 · 6× Pos 1</span>
+          <span class="chip ok">Local-Diff. sauber</span>
+        </div>
       </div>
 
       <!-- 7 -->
@@ -836,7 +1071,10 @@
           <span class="kw">8 Ortsteile · Ahrensfelde · Gartenholz · Wulfsdorf</span>
           <span class="kw">Fällgenehmigung Ahrensburg</span>
         </div>
-        <span class="chip ok">Local-Diff. sauber</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip ok">14 Top-10 · 5× Pos 1</span>
+          <span class="chip crit">Head-KW Pos 17 · Anomalie</span>
+        </div>
       </div>
 
       <!-- 8 -->
@@ -859,7 +1097,10 @@
           <span class="kw">Garstedt · Glashütte · Harksheide · Friedrichsgabe</span>
           <span class="kw">Henstedt-Ulzburg · Kaltenkirchen · Quickborn</span>
         </div>
-        <span class="chip warn">Content-Ausbau nötig</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip ok">12 Top-10 · 4× Pos 1 · Head Pos 7</span>
+          <span class="chip warn">Content-Ausbau nötig</span>
+        </div>
       </div>
 
       <!-- 9 -->
@@ -903,7 +1144,10 @@
           <span class="kw">Baumfällung Pinneberg</span>
           <span class="kw">Schenefeld · Halstenbek · Rellingen · Elmshorn</span>
         </div>
-        <span class="chip warn">Aufsetzen</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip crit">0 Rankings · nicht aufgesetzt</span>
+          <span class="chip warn">Aufsetzen</span>
+        </div>
       </div>
 
       <!-- 11 -->
@@ -961,7 +1205,7 @@
 
   <!-- ═══════ NAP FINGERPRINT ═══════ -->
   <section id="nap">
-    <p class="eyebrow">Sektion 3</p>
+    <p class="eyebrow">Sektion 4</p>
     <h2>NAP-Fingerprint — was Google gerade sieht</h2>
     <p class="lede">Google kennt kein „Owner-Register", aber es liest identische Business-Signale mit. Jede Zeile ist ein Fingerabdruck, der Deine Sites als eine Entität ausweist. Ziel: mindestens drei dieser Zeilen ↓ pro Site diversifizieren — dann behandelt SpamBrain sie als separate Anbieter.</p>
 
@@ -1059,7 +1303,7 @@
 
   <!-- ═══════ KW-KONFLIKT-MATRIX ═══════ -->
   <section id="konflikte">
-    <p class="eyebrow">Sektion 4</p>
+    <p class="eyebrow">Sektion 5</p>
     <h2>KW-Konflikt-Matrix</h2>
     <p class="lede">Wo zielen mehrere Sites auf dasselbe KW? Entscheidend ist <b>nicht</b> die Anzahl, sondern die <b>Intent-Differenz</b>. Ist der Intent unterschiedlich (Info vs. Tool vs. Beauftragen), können mehrere Sites gleichzeitig ranken — Google zeigt sie als drei verschiedene Ergebnistypen. Bei gleichem Intent filtert der Algorithmus.</p>
 
@@ -1195,17 +1439,17 @@
 
   <!-- ═══════ AKTIONSPLAN ═══════ -->
   <section id="aktion">
-    <p class="eyebrow">Sektion 5</p>
+    <p class="eyebrow">Sektion 6</p>
     <h2>Aktionsplan</h2>
-    <p class="lede">Priorisiert nach Impact und Aufwand. Die roten „Jetzt"-Punkte sind Voraussetzungen für alles danach — sie bringen Google dazu, das Portfolio nicht als eine Entität zu lesen.</p>
+    <p class="lede">Neu priorisiert auf Basis der Live-Ranking-Daten. Die ersten drei Punkte adressieren die Anomalien aus Sektion 2 — dort liegt der schnellste Business-Hebel.</p>
 
     <div class="actions">
 
       <div class="action">
         <div class="num">01</div>
         <div class="body">
-          <h4>WHOIS-Check webdesign-norderstedt.com</h4>
-          <p>Prüfen, wie alt die Domain ist. Ist sie 5+ Jahre alt <b>und</b> hat Backlinks, ist sie der eigentliche Trust-Anker im Portfolio. Dann: alles um sie herum bauen, nicht gegen sie.</p>
+          <h4>Ahrensburg Head-KW Pos 17 → Pos 5 pushen</h4>
+          <p><b>Größter Business-Hebel im Portfolio.</b> 8 Ortsteile ranken Pos 1–5, aber „Baumfällung Ahrensburg" hängt auf Seite 2. Reines Onpage-Signal-Problem: Homepage-Title und H1 auf „Baumfällung Ahrensburg" fokussieren, Ortsteile in <code>/ortsteile/&lt;name&gt;/</code> auslagern (wie Blankenese es mit Rissen macht), interne Links mit Anchor „Baumfällung Ahrensburg" zurück auf Home.</p>
         </div>
         <div class="lane now">Jetzt</div>
       </div>
@@ -1213,8 +1457,8 @@
       <div class="action">
         <div class="num">02</div>
         <div class="body">
-          <h4>Getrennte Rufnummern über SIP-Anbieter</h4>
-          <p>3 Nummern via Sipgate/Placetel/CallFlow, ~ 3–5 €/Nr./Monat. Zuordnen: <code>+49 40 …</code> für HH-Money-Sites, <code>+49 4102 …</code> für Ahrensburg, <code>+49 40 …</code> für Norderstedt/SH. Rufumleitung auf Dein Handy.</p>
+          <h4>Timber + Pinneberg Diagnose · warum 0 Rankings?</h4>
+          <p>timber-baumpflege.de rankt nicht mal auf den eigenen Brand — technisches oder Indexierungs-Problem, nicht Content. Checkliste: GSC Coverage-Report öffnen (indexierte URLs?), <code>site:timber-baumpflege.de</code> in Google, robots.txt, sitemap.xml erreichbar, keine noindex-Reste vom Dev-Setup. Bei pinneberg gleicher Check — die Site ist evtl. nie richtig aufgesetzt worden.</p>
         </div>
         <div class="lane now">Jetzt</div>
       </div>
@@ -1222,14 +1466,32 @@
       <div class="action">
         <div class="num">03</div>
         <div class="body">
-          <h4>Marken-Namen im Impressum variieren</h4>
-          <p>Impressumspflicht = Timm Kluth ist unauflösbar. Aber das <b>Marken-Feld</b> darüber variieren: „TIMBER Baumdienst" · „Hanseatischer Baumdienst" · „Elbvororte Baumpflege" · „Baumdienst Stormarn". Wirkt für Google wie separate Anbieter.</p>
+          <h4>Blankenese Baumpflege-Cluster · 6 neue Ortsteil-Seiten</h4>
+          <p>16 Top-10 für „Baumfällung [Ortsteil]", aber „Baumpflege [Ortsteil]" rankt gar nicht (Nienstedten, Iserbrook, Othmarschen, Rissen, Elbhang, Sülldorf). Reine Content-Lücke, Domain-Autorität ist da. 6 Seiten à 900–1200 W, Struktur analog zur bestehenden /nachbarorte/rissen/. Erwartung: 6× neue Top-10 in 4–8 Wochen.</p>
         </div>
         <div class="lane now">Jetzt</div>
       </div>
 
       <div class="action">
         <div class="num">04</div>
+        <div class="body">
+          <h4>Getrennte Rufnummern über SIP-Anbieter</h4>
+          <p>3 Nummern via Sipgate/Placetel/CallFlow, ~ 3–5 €/Nr./Monat. Zuordnen: <code>+49 40 …</code> für HH-Money-Sites, <code>+49 4102 …</code> für Ahrensburg, <code>+49 40 …</code> für Norderstedt/SH. Rufumleitung auf Dein Handy.</p>
+        </div>
+        <div class="lane short">Woche 1–2</div>
+      </div>
+
+      <div class="action">
+        <div class="num">05</div>
+        <div class="body">
+          <h4>Marken-Namen im Impressum variieren</h4>
+          <p>Impressumspflicht = Timm Kluth ist unauflösbar. Aber das <b>Marken-Feld</b> darüber variieren: „TIMBER Baumdienst" · „Hanseatischer Baumdienst" · „Elbvororte Baumpflege" · „Baumdienst Stormarn". Wirkt für Google wie separate Anbieter.</p>
+        </div>
+        <div class="lane short">Woche 1–2</div>
+      </div>
+
+      <div class="action">
+        <div class="num">06</div>
         <div class="body">
           <h4>Getrennte GA4-Properties + Search-Console-Konten</h4>
           <p>Pro Marke eigenes Google-Konto (Gmail reicht). Weniger für SEO — mehr um den „ein Betreiber"-Fingerprint aus Google Analytics + GSC-Verwaltung zu entfernen.</p>
@@ -1238,16 +1500,16 @@
       </div>
 
       <div class="action">
-        <div class="num">05</div>
+        <div class="num">07</div>
         <div class="body">
           <h4>Entscheidung baumfaellunghamburg.com</h4>
           <p>Zwei Optionen: <b>(A)</b> als Tool/Info-Portal ausbauen (Kostenrechner + Wizard + Schonzeit-Kalender) — konkurriert nicht mit baumfaellung-hamburg.com weil anderes Intent. <b>(B)</b> 301-Redirect auf baumfaellung-hamburg.com — bündelt Trust auf eine Domain.</p>
         </div>
-        <div class="lane short">Woche 1–2</div>
+        <div class="lane short">Woche 2–3</div>
       </div>
 
       <div class="action">
-        <div class="num">06</div>
+        <div class="num">08</div>
         <div class="body">
           <h4>baumpfleger-hamburg.de Homepage ausbauen (469 → 1500 W)</h4>
           <p>Aktuell zu dünn für Head-KW „Baumpfleger Hamburg". Bezirks-Cluster ist stark, aber Home muss mit — sonst rankt eine der Konkurrenz-Sites für den Head-Term.</p>
@@ -1256,7 +1518,7 @@
       </div>
 
       <div class="action">
-        <div class="num">07</div>
+        <div class="num">09</div>
         <div class="body">
           <h4>baumfaellung-norderstedt.de auf 1300+ W bringen</h4>
           <p>492 W ist Cold-Start. Übernehmen was aus timber-baumpflege.de/norderstedt und baumfaellung-ahrensburg.de übertragbar ist (Umschreiben, nicht Kopieren — sonst Duplicate).</p>
@@ -1265,7 +1527,7 @@
       </div>
 
       <div class="action">
-        <div class="num">08</div>
+        <div class="num">10</div>
         <div class="body">
           <h4>timber-baumpflege.de/hamburg deprioritisieren</h4>
           <p>TIMBER-Marke soll für <b>SH-Umland</b> ranken, nicht für HH. Der /hamburg-Zweig kannibalisiert mit baumpfleger-hamburg.de. Content dort dünner halten, Fokus auf Bad Segeberg · Kaltenkirchen · Norderstedt · Quickborn stärken.</p>
@@ -1274,7 +1536,7 @@
       </div>
 
       <div class="action">
-        <div class="num">09</div>
+        <div class="num">11</div>
         <div class="body">
           <h4>Klärung baumpflege-hamburg.de</h4>
           <p>Domain existiert, DNS zeigt auf Vercel, aber keine Website. Optionen: (a) 301 auf baumpfleger-hamburg.de (bündelt Trust); (b) als reine Ratgeber-Site aufsetzen (informational-Intent, damit kein Konflikt); (c) parken bis andere Sites stabil ranken.</p>
@@ -1283,7 +1545,7 @@
       </div>
 
       <div class="action">
-        <div class="num">10</div>
+        <div class="num">12</div>
         <div class="body">
           <h4>baumfaellung-pinneberg.de aufsetzen</h4>
           <p>Selbes Template wie -ahrensburg / -norderstedt, angepasste Ortsteile: Pinneberg, Schenefeld, Halstenbek, Rellingen, Elmshorn, Wedel. 25–30 URLs, 1200–1500 W Homepage.</p>
@@ -1292,7 +1554,7 @@
       </div>
 
       <div class="action">
-        <div class="num">11</div>
+        <div class="num">13</div>
         <div class="body">
           <h4>baumschnitthamburg.de: Nischen-Site „Obst- & Formschnitt HH"</h4>
           <p>Statt Head-„Baumschnitt Hamburg" (kannibalisiert) → Nische besetzen: Obstbaumschnitt, Formschnitt, Junghecken. Zielgruppe Gartenbesitzer · WEG-Innenhöfe. Anderes Design/Marke.</p>
@@ -1301,7 +1563,7 @@
       </div>
 
       <div class="action">
-        <div class="num">12</div>
+        <div class="num">14</div>
         <div class="body">
           <h4>Externe Backlinks statt Cross-Links im Portfolio</h4>
           <p>Handwerkskammer Hamburg · Innung Garten- und Landschaftsbau SH · lokale Pressemitteilungen · Nachbarschafts-Portale (nebenan.de) · Immoscout-Ratgeber-Gastbeiträge. <b>Ein</b> externer Backlink von einer Seite mit echtem Trust zählt mehr als 10 interne Verweise zwischen Deinen Sites.</p>
@@ -1310,10 +1572,10 @@
       </div>
 
       <div class="action">
-        <div class="num">13</div>
+        <div class="num">15</div>
         <div class="body">
-          <h4>Rank-Tracker aufsetzen · Ist-Zustand messen</h4>
-          <p>Sistrix (teuer aber gründlich) oder SEObility Ranktracker (günstig). Alle KWs aus der Konflikt-Matrix + Top-10-KWs pro Site einpflegen. Monatlich messen: welche Site rankt für welches KW auf welcher Position. Dann sichtbar, wann Google filtert.</p>
+          <h4>Rank-Tracker · monatlicher Re-Scan</h4>
+          <p>Ist-Zustand ist jetzt gemessen (siehe Sektion 2). Für monatliches Re-Tracking Sistrix (teuer, gründlich) oder SEObility Ranktracker (günstig). Alle KWs aus der Konflikt-Matrix + Top-10-KWs pro Site einpflegen. Kritisch: Ahrensburg Head-KW-Position wöchentlich prüfen — die Fix-Effekte müssen in 6–10 Wochen sichtbar werden.</p>
         </div>
         <div class="lane mid">Q1</div>
       </div>
@@ -1329,7 +1591,7 @@
 
   <!-- ═══════ KW-EXPORT ═══════ -->
   <section id="kw-export">
-    <p class="eyebrow">Sektion 6</p>
+    <p class="eyebrow">Sektion 7</p>
     <h2>KW-Export · zum Kopieren</h2>
     <p class="lede">Alle Ziel-Keywords pro Domain, eine pro Zeile — Orte ausexpandiert. Klick auf „kopieren" landet direkt in Deiner Zwischenablage. Import in Sistrix / SEObility / Ahrefs / Google Search Console geht damit direkt.</p>
 
