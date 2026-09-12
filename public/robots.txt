@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tk-strategie-2026.html
+Disallow: /tk-strategie-2026
 
 Sitemap: https://timber-baumpflege.de/sitemap-index.xml

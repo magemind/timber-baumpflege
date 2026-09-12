@@ -1,0 +1,1254 @@
+<title>Baumpflege-Netzwerk</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ground: #f6f3ec;
+    --surface: #ffffff;
+    --surface-alt: #efeae0;
+    --surface-sunk: #eae4d5;
+    --line: #d9d2c1;
+    --line-strong: #b8afa0;
+    --text: #1d211d;
+    --text-mid: #565c55;
+    --text-low: #8e8f83;
+    --accent: #a95a2f;
+    --accent-soft: #d78d64;
+    --ok: #4c7a5a;
+    --ok-soft: #e0eae1;
+    --warn: #a67320;
+    --warn-soft: #f3ead4;
+    --crit: #a03e3e;
+    --crit-soft: #f0dcdc;
+    --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #131714;
+      --surface: #1b1f1c;
+      --surface-alt: #23281f;
+      --surface-sunk: #181c19;
+      --line: #2c322c;
+      --line-strong: #3c443d;
+      --text: #e8e6de;
+      --text-mid: #a8ac9f;
+      --text-low: #737868;
+      --accent: #d78d64;
+      --accent-soft: #b56b42;
+      --ok: #6ea788;
+      --ok-soft: #223028;
+      --warn: #d9a94b;
+      --warn-soft: #322a1a;
+      --crit: #cf6a6a;
+      --crit-soft: #33201f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #131714;
+    --surface: #1b1f1c;
+    --surface-alt: #23281f;
+    --surface-sunk: #181c19;
+    --line: #2c322c;
+    --line-strong: #3c443d;
+    --text: #e8e6de;
+    --text-mid: #a8ac9f;
+    --text-low: #737868;
+    --accent: #d78d64;
+    --accent-soft: #b56b42;
+    --ok: #6ea788;
+    --ok-soft: #223028;
+    --warn: #d9a94b;
+    --warn-soft: #322a1a;
+    --crit: #cf6a6a;
+    --crit-soft: #33201f;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 28px 96px;
+  }
+  @media (max-width: 720px) {
+    .wrap { padding: 24px 16px 64px; }
+  }
+
+  /* ── header ── */
+  header.page {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  header.page h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0;
+    text-wrap: balance;
+  }
+  header.page h1 em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  header.page .meta {
+    color: var(--text-low);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── sections ── */
+  section { margin-top: 56px; scroll-margin-top: 24px; }
+  section > .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-low);
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  section > h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(22px, 3vw, 30px);
+    letter-spacing: -0.015em;
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+  section > h2 + p.lede {
+    color: var(--text-mid);
+    max-width: 65ch;
+    margin: 0 0 28px;
+  }
+
+  /* ── overview stats ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+  }
+  @media (max-width: 720px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px 22px;
+  }
+  .stat .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-low);
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .stat .value {
+    font-family: var(--font-display);
+    font-size: 32px;
+    line-height: 1;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+  }
+  .stat .note {
+    color: var(--text-mid);
+    font-size: 13px;
+    margin: 6px 0 0;
+  }
+
+  /* ── domain grid ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 1000px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+  }
+  .card.tier-1 { border-left: 3px solid var(--accent); }
+  .card.tier-2 { border-left: 3px solid var(--line-strong); }
+  .card.tier-3 { border-left: 3px solid var(--ok); }
+  .card.dormant { border-left: 3px solid var(--text-low); opacity: 0.72; }
+  .card.draft { border-left: 3px solid var(--warn); }
+
+  .card .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .card .domain {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    word-break: break-word;
+    line-height: 1.3;
+  }
+  .card .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .status .led {
+    width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+  }
+  .status.live .led { background: var(--ok); }
+  .status.draft .led { background: var(--warn); }
+  .status.dormant .led { background: var(--text-low); }
+
+  .card .tier-tag {
+    font-size: 11px;
+    color: var(--text-mid);
+    font-weight: 500;
+  }
+  .card .tier-tag strong {
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--surface-alt);
+    margin-right: 6px;
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0;
+  }
+  .metric { text-align: left; padding: 0 8px 0 0; }
+  .metric:first-child { padding-left: 0; }
+  .metric .k {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    display: block;
+    line-height: 1;
+  }
+  .metric .v {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-low);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .kws {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .kw {
+    font-size: 11.5px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--surface-alt);
+    color: var(--text);
+    border: 1px solid transparent;
+  }
+  .kw.primary { border-color: var(--accent-soft); background: transparent; color: var(--accent); font-weight: 500; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .chip.ok { background: var(--ok-soft); color: var(--ok); }
+  .chip.warn { background: var(--warn-soft); color: var(--warn); }
+  .chip.crit { background: var(--crit-soft); color: var(--crit); }
+
+  .intent {
+    font-size: 12px;
+    color: var(--text-mid);
+  }
+  .intent b {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ── nap fingerprint ── */
+  .nap-table {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .nap-table th, .nap-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .nap-table thead th {
+    background: var(--surface-alt);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-mid);
+    font-weight: 600;
+  }
+  .nap-table tbody tr:last-child td { border-bottom: none; }
+  .nap-table .risk { font-weight: 600; }
+  .nap-table .risk.crit { color: var(--crit); }
+  .nap-table .risk.warn { color: var(--warn); }
+  .nap-table .risk.ok { color: var(--ok); }
+  .nap-scroll { overflow-x: auto; }
+
+  /* ── konflikt matrix ── */
+  .conflict {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .conflict-row {
+    display: grid;
+    grid-template-columns: 1.5fr 3fr 0.7fr;
+    gap: 16px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    align-items: flex-start;
+  }
+  .conflict-row:last-child { border-bottom: none; }
+  .conflict-row.head {
+    background: var(--surface-alt);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-mid);
+    font-weight: 600;
+  }
+  .conflict-row .kwlabel {
+    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 16px;
+  }
+  .conflict-row .sites {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+  }
+  .conflict-row .sites span b {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .conflict-row .sites span em {
+    font-style: normal;
+    color: var(--text-mid);
+    font-size: 12px;
+    margin-left: 4px;
+  }
+  .conflict-row .verdict {
+    text-align: right;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .verdict.crit { color: var(--crit); }
+  .verdict.warn { color: var(--warn); }
+  .verdict.ok { color: var(--ok); }
+  @media (max-width: 720px) {
+    .conflict-row { grid-template-columns: 1fr; gap: 8px; }
+    .conflict-row.head { display: none; }
+    .conflict-row .verdict { text-align: left; }
+  }
+
+  /* ── aktionsplan ── */
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .action {
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 18px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+    align-items: flex-start;
+  }
+  .action:last-child { border-bottom: none; }
+  .action .num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--text-low);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    padding-top: 3px;
+  }
+  .action .body h4 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  .action .body p {
+    margin: 0;
+    color: var(--text-mid);
+    font-size: 13px;
+    max-width: 65ch;
+  }
+  .action .body p code {
+    background: var(--surface-alt);
+    padding: 1px 5px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .action .lane {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+    background: var(--surface-alt);
+    color: var(--text-mid);
+    white-space: nowrap;
+  }
+  .lane.now { background: var(--crit-soft); color: var(--crit); }
+  .lane.short { background: var(--warn-soft); color: var(--warn); }
+  .lane.mid { background: var(--ok-soft); color: var(--ok); }
+  @media (max-width: 640px) {
+    .action { grid-template-columns: 32px 1fr; }
+    .action .lane { grid-column: 2; justify-self: start; margin-top: 6px; }
+  }
+
+  /* ── section divider (subtle tree-ring hint) ── */
+  .ring-divider {
+    display: block;
+    margin: 64px auto 0;
+    opacity: 0.5;
+    width: 60px;
+    height: 20px;
+  }
+  .ring-divider path { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+
+  /* nav */
+  nav.jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    padding: 12px 0;
+    margin-bottom: 12px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  nav.jump a {
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  nav.jump a:hover { color: var(--accent); }
+
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  /* callout */
+  .callout {
+    background: var(--surface-alt);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 24px 0 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout p { margin: 0; }
+  .callout p + p { margin-top: 8px; }
+  .callout .icon-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="page">
+    <div>
+      <h1>Baumpflege-<em>Netzwerk</em></h1>
+      <nav class="jump" aria-label="Sprungmarken">
+        <a href="#overview">Übersicht</a>
+        <a href="#domains">Domains</a>
+        <a href="#nap">NAP-Fingerprint</a>
+        <a href="#konflikte">KW-Konflikte</a>
+        <a href="#aktion">Aktionsplan</a>
+      </nav>
+    </div>
+    <div class="meta">
+      Stand · 12.09.2026<br>
+      Betreiber · Timm Kluth · MoinCode
+    </div>
+  </header>
+
+  <!-- ═══════ ÜBERSICHT ═══════ -->
+  <section id="overview">
+    <p class="eyebrow">Sektion 1</p>
+    <h2>Übersicht</h2>
+    <p class="lede">Zwölf Domains rund um Baumpflege, Baumfällung und verwandte Services in Hamburg, Schleswig-Holstein und bundesweit. Die Karten zeigen live, was jede Domain heute leistet — und wo sie kollidiert.</p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <p class="label">Domains</p>
+        <p class="value">12</p>
+        <p class="note">4 Registrare · 3 Hoster</p>
+      </div>
+      <div class="stat">
+        <p class="label">Live</p>
+        <p class="value">8</p>
+        <p class="note">7 Vercel · 1 Apache</p>
+      </div>
+      <div class="stat">
+        <p class="label">Draft / Dormant</p>
+        <p class="value">4</p>
+        <p class="note">1 Hostinger-Draft · 3 nur DNS</p>
+      </div>
+      <div class="stat">
+        <p class="label">NAP identisch</p>
+        <p class="value">7/8</p>
+        <p class="note">Selbes Telefon, Impressum, Vercel-Pool</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p class="icon-label">Wichtigste Erkenntnis</p>
+      <p><b>webdesign-norderstedt.com</b> ist keine „Nebendomain" — auf Apache/WordPress liegt dort die content-tiefste Baumpflege-Site des Portfolios (3.622 W Homepage). Sie zielt auf dieselben Hamburger Head-KWs wie baumpfleger-hamburg.de. <b>Vermutlich der eigentliche Ranking-Anker</b> — Domain-Alter checken (WHOIS), dann Strategie um sie herum bauen.</p>
+    </div>
+  </section>
+
+  <svg class="ring-divider" viewBox="0 0 60 20" aria-hidden="true">
+    <path d="M2 10 Q30 4 58 10"/>
+    <path d="M4 10 Q30 8 56 10"/>
+    <path d="M8 10 Q30 12 52 10"/>
+  </svg>
+
+  <!-- ═══════ DOMAIN GRID ═══════ -->
+  <section id="domains">
+    <p class="eyebrow">Sektion 2</p>
+    <h2>Domain-Netzwerk</h2>
+    <p class="lede">Karten sortiert nach Priorität. Farb-Balken links zeigen die Rolle in der Pyramide: <span style="color:var(--accent);font-weight:600">Tier 1</span> = Money · <span style="color:var(--line-strong);font-weight:600">Tier 2</span> = Satellit · <span style="color:var(--ok);font-weight:600">Tier 3</span> = Content-Hub.</p>
+
+    <div class="grid">
+
+      <!-- 1 -->
+      <div class="card tier-1">
+        <div class="top">
+          <div>
+            <div class="domain">baumpfleger-hamburg.de</div>
+            <div class="tier-tag"><strong>T1</strong>Money-Site Hamburg</div>
+          </div>
+          <div class="status live"><span class="led"></span>Live</div>
+        </div>
+        <div class="intent">Intent: <b>transactional</b> — „beauftragen"</div>
+        <div class="metrics">
+          <div class="metric"><span class="k">41</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">469</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">6</span><span class="v">Bezirke</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw primary">Baumpfleger Hamburg</span>
+          <span class="kw primary">Baumpflege Hamburg</span>
+          <span class="kw primary">Baumfällung Hamburg</span>
+          <span class="kw">Bezirks-Kombis ×12</span>
+          <span class="kw">HmbBaumSchVO</span>
+        </div>
+        <span class="chip crit">NAP identisch</span>
+      </div>
+
+      <!-- 2 -->
+      <div class="card tier-1">
+        <div class="top">
+          <div>
+            <div class="domain">webdesign-norderstedt.com</div>
+            <div class="tier-tag"><strong>T1?</strong>Versteckte HH-Money-Site</div>
+          </div>
+          <div class="status live"><span class="led"></span>Live</div>
+        </div>
+        <div class="intent">Intent: <b>mixed</b> — Info + Beauftragen</div>
+        <div class="metrics">
+          <div class="metric"><span class="k">30+</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">3.622</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">Apache</span><span class="v">alt!</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw primary">Baumpflege Hamburg</span>
+          <span class="kw primary">Baumgutachten Hamburg</span>
+          <span class="kw">Kroneneinkürzung Hamburg</span>
+          <span class="kw">Kronensicherung</span>
+          <span class="kw">Jungbaumpflege</span>
+        </div>
+        <span class="chip warn">NAP-Status prüfen</span>
+      </div>
+
+      <!-- 3 -->
+      <div class="card tier-1">
+        <div class="top">
+          <div>
+            <div class="domain">timber-baumpflege.de</div>
+            <div class="tier-tag"><strong>T1</strong>Marken-Hub überregional</div>
+          </div>
+          <div class="status live"><span class="led"></span>Live</div>
+        </div>
+        <div class="intent">Intent: <b>transactional + info</b> — Marke + Wissen</div>
+        <div class="metrics">
+          <div class="metric"><span class="k">41</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">657</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">7</span><span class="v">Orte</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw primary">TIMBER Baumpflege</span>
+          <span class="kw primary">Baumpflege Schleswig-Holstein</span>
+          <span class="kw">Norderstedt · Kaltenkirchen · Bad Segeberg</span>
+          <span class="kw">Wissen-Cluster (17)</span>
+        </div>
+        <span class="chip crit">NAP identisch</span>
+      </div>
+
+      <!-- 4 -->
+      <div class="card tier-3">
+        <div class="top">
+          <div>
+            <div class="domain">baumpflege-baumdienst.de</div>
+            <div class="tier-tag"><strong>T3</strong>Content-Hub bundesweit</div>
+          </div>
+          <div class="status live"><span class="led"></span>Live</div>
+        </div>
+        <div class="intent">Intent: <b>informational only</b> — kein Verkauf</div>
+        <div class="metrics">
+          <div class="metric"><span class="k">78</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">3.563</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">16</span><span class="v">Bundesl.</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw primary">Baumarten ×17</span>
+          <span class="kw primary">Baumkrankheiten ×9</span>
+          <span class="kw">Baumschutz je Bundesland</span>
+          <span class="kw">Jahreskalender ×12</span>
+        </div>
+        <span class="chip ok">Intent-Diff. sauber</span>
+      </div>
+
+      <!-- 5 -->
+      <div class="card tier-1">
+        <div class="top">
+          <div>
+            <div class="domain">baumfaellung-hamburg.com</div>
+            <div class="tier-tag"><strong>T1</strong>HH-Fällungs-Fokus + Rechner</div>
+          </div>
+          <div class="status live"><span class="led"></span>Live</div>
+        </div>
+        <div class="intent">Intent: <b>tool + transactional</b> — Kostenrechner-USP</div>
+        <div class="metrics">
+          <div class="metric"><span class="k">69</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">1.114</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">7</span><span class="v">Bezirke</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw primary">Baumfällung Hamburg</span>
+          <span class="kw primary">Baumfällung Kostenrechner</span>
+          <span class="kw">Genehmigung Hamburg</span>
+          <span class="kw">7 Bezirke ×7 Services</span>
+        </div>
+        <span class="chip crit">NAP identisch</span>
+      </div>
+
+      <!-- 6 -->
+      <div class="card tier-2">
+        <div class="top">
+          <div>
+            <div class="domain">baumfaellung-blankenese.de</div>
+            <div class="tier-tag"><strong>T2</strong>Stadtteil-Satellit Elbvororte</div>
+          </div>
+          <div class="status live"><span class="led"></span>Live</div>
+        </div>
+        <div class="intent">Intent: <b>transactional-lokal</b></div>
+        <div class="metrics">
+          <div class="metric"><span class="k">26</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">1.645</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">Nische</span><span class="v">Treppen­viertel</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw primary">Baumfällung Blankenese</span>
+          <span class="kw primary">Baumfällung Treppenviertel</span>
+          <span class="kw">Nienstedten · Iserbrook · Rissen</span>
+          <span class="kw">Kronensicherung Blankenese</span>
+        </div>
+        <span class="chip ok">Local-Diff. sauber</span>
+      </div>
+
+      <!-- 7 -->
+      <div class="card tier-2">
+        <div class="top">
+          <div>
+            <div class="domain">baumfaellung-ahrensburg.de</div>
+            <div class="tier-tag"><strong>T2</strong>Umland-Satellit Stormarn</div>
+          </div>
+          <div class="status live"><span class="led"></span>Live</div>
+        </div>
+        <div class="intent">Intent: <b>transactional-lokal</b></div>
+        <div class="metrics">
+          <div class="metric"><span class="k">35</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">1.356</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">8</span><span class="v">Ortst.</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw primary">Baumfällung Ahrensburg</span>
+          <span class="kw">8 Ortsteile · Ahrensfelde · Gartenholz · Wulfsdorf</span>
+          <span class="kw">Fällgenehmigung Ahrensburg</span>
+        </div>
+        <span class="chip ok">Local-Diff. sauber</span>
+      </div>
+
+      <!-- 8 -->
+      <div class="card tier-2">
+        <div class="top">
+          <div>
+            <div class="domain">baumfaellung-norderstedt.de</div>
+            <div class="tier-tag"><strong>T2</strong>Umland-Satellit Norderstedt</div>
+          </div>
+          <div class="status live"><span class="led"></span>Live</div>
+        </div>
+        <div class="intent">Intent: <b>transactional-lokal</b> — dünn (492W)</div>
+        <div class="metrics">
+          <div class="metric"><span class="k">28</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">492</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">10</span><span class="v">Orte</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw primary">Baumfällung Norderstedt</span>
+          <span class="kw">Garstedt · Glashütte · Harksheide · Friedrichsgabe</span>
+          <span class="kw">Henstedt-Ulzburg · Kaltenkirchen · Quickborn</span>
+        </div>
+        <span class="chip warn">Content-Ausbau nötig</span>
+      </div>
+
+      <!-- 9 -->
+      <div class="card draft">
+        <div class="top">
+          <div>
+            <div class="domain">baumfaellunghamburg.com</div>
+            <div class="tier-tag"><strong>—</strong>Hostinger AI-Builder Draft</div>
+          </div>
+          <div class="status draft"><span class="led"></span>Draft</div>
+        </div>
+        <div class="intent">Intent: <b>unklar</b> — Entscheidung offen</div>
+        <div class="metrics">
+          <div class="metric"><span class="k">0</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">187</span><span class="v">Home-W.</span></div>
+          <div class="metric"><span class="k">Wird</span><span class="v">Vercel</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw">Vorschlag: Tools + Info-Portal</span>
+          <span class="kw">Kostenrechner · Genehmigungs-Wizard · Schonzeit</span>
+        </div>
+        <span class="chip warn">Entscheiden</span>
+      </div>
+
+      <!-- 10 -->
+      <div class="card dormant">
+        <div class="top">
+          <div>
+            <div class="domain">baumfaellung-pinneberg.de</div>
+            <div class="tier-tag"><strong>—</strong>Umland-Satellit (geplant)</div>
+          </div>
+          <div class="status dormant"><span class="led"></span>DNS only</div>
+        </div>
+        <div class="intent">Intent: geplant <b>transactional-lokal</b></div>
+        <div class="metrics">
+          <div class="metric"><span class="k">0</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">—</span><span class="v">—</span></div>
+          <div class="metric"><span class="k">IONOS</span><span class="v">Vercel-DNS</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw">Baumfällung Pinneberg</span>
+          <span class="kw">Schenefeld · Halstenbek · Rellingen · Elmshorn</span>
+        </div>
+        <span class="chip warn">Aufsetzen</span>
+      </div>
+
+      <!-- 11 -->
+      <div class="card dormant">
+        <div class="top">
+          <div>
+            <div class="domain">baumpflege-hamburg.de</div>
+            <div class="tier-tag"><strong>?</strong>Konflikt-Kandidat</div>
+          </div>
+          <div class="status dormant"><span class="led"></span>DNS only</div>
+        </div>
+        <div class="intent">Intent: <b>Klärung</b> — Duplikat oder anders?</div>
+        <div class="metrics">
+          <div class="metric"><span class="k">0</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">—</span><span class="v">—</span></div>
+          <div class="metric"><span class="k">IONOS</span><span class="v">Vercel-DNS</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw">Baumpflege Hamburg</span>
+          <span class="kw">— würde mit baumpfleger-hamburg.de + webdesign kollidieren</span>
+        </div>
+        <span class="chip crit">Rolle klären</span>
+      </div>
+
+      <!-- 12 -->
+      <div class="card dormant">
+        <div class="top">
+          <div>
+            <div class="domain">baumschnitthamburg.de</div>
+            <div class="tier-tag"><strong>—</strong>Head-KW-Satellit (geplant)</div>
+          </div>
+          <div class="status dormant"><span class="led"></span>Nur Domain</div>
+        </div>
+        <div class="intent">Intent: geplant <b>tool + transactional</b></div>
+        <div class="metrics">
+          <div class="metric"><span class="k">0</span><span class="v">URLs</span></div>
+          <div class="metric"><span class="k">—</span><span class="v">—</span></div>
+          <div class="metric"><span class="k">Hostinger</span><span class="v">Domain-only</span></div>
+        </div>
+        <div class="kws">
+          <span class="kw">Baumschnitt Hamburg</span>
+          <span class="kw">Obstbaumschnitt · Formschnitt</span>
+        </div>
+        <span class="chip warn">Aufsetzen</span>
+      </div>
+
+    </div>
+  </section>
+
+  <svg class="ring-divider" viewBox="0 0 60 20" aria-hidden="true">
+    <path d="M2 10 Q30 4 58 10"/>
+    <path d="M4 10 Q30 8 56 10"/>
+    <path d="M8 10 Q30 12 52 10"/>
+  </svg>
+
+  <!-- ═══════ NAP FINGERPRINT ═══════ -->
+  <section id="nap">
+    <p class="eyebrow">Sektion 3</p>
+    <h2>NAP-Fingerprint — was Google gerade sieht</h2>
+    <p class="lede">Google kennt kein „Owner-Register", aber es liest identische Business-Signale mit. Jede Zeile ist ein Fingerabdruck, der Deine Sites als eine Entität ausweist. Ziel: mindestens drei dieser Zeilen ↓ pro Site diversifizieren — dann behandelt SpamBrain sie als separate Anbieter.</p>
+
+    <div class="nap-scroll">
+    <table class="nap-table">
+      <thead>
+        <tr>
+          <th>Signal</th>
+          <th>Wert</th>
+          <th>Sites mit diesem Wert</th>
+          <th>Risiko</th>
+          <th>Fix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Telefonnummer</b></td>
+          <td><code>+49 177 15 83 264</code></td>
+          <td>7 Sites (Schema-JSON-LD)</td>
+          <td class="risk crit">Kritisch</td>
+          <td>3+ separate SIP-Nummern (~3€/Mo)</td>
+        </tr>
+        <tr>
+          <td><b>E-Mail-Adresse</b></td>
+          <td><code>kontakt@baumpfleger-hamburg.de</code> auf mehreren Sites</td>
+          <td>≥ 5 Sites</td>
+          <td class="risk crit">Kritisch</td>
+          <td>Pro Marke eigene Adresse</td>
+        </tr>
+        <tr>
+          <td><b>Impressum-Inhaber</b></td>
+          <td>Timm Kluth · MoinCode · Segeberger Straße 100</td>
+          <td>Alle Sites</td>
+          <td class="risk crit">Kritisch</td>
+          <td>Unauflösbar (Impressumspflicht), aber Marken-Name variieren</td>
+        </tr>
+        <tr>
+          <td><b>Hosting-Cluster</b></td>
+          <td>Vercel FRA1 (Frankfurt)</td>
+          <td>7 Sites auf gleichem IP-Pool</td>
+          <td class="risk warn">Mittel</td>
+          <td>Hoster-Diversifizierung nicht kritisch, aber webdesign-norderstedt (Apache) ist Vorteil</td>
+        </tr>
+        <tr>
+          <td><b>Search-Console-Konto</b></td>
+          <td>hallo@moincode.de</td>
+          <td>Vermutlich alle</td>
+          <td class="risk warn">Mittel</td>
+          <td>Getrennte Google-Konten pro Marke (kein SEO-Risiko, aber sichtbarer Cluster)</td>
+        </tr>
+        <tr>
+          <td><b>Analytics-ID</b></td>
+          <td>GA4 / GTM Container</td>
+          <td>Prüfen — falls geteilt: ID pro Site</td>
+          <td class="risk warn">Mittel</td>
+          <td>Eigene GA4-Properties pro Site</td>
+        </tr>
+        <tr>
+          <td><b>areaServed (Schema)</b></td>
+          <td>Weitgehend Hamburg / Stormarn / SH</td>
+          <td>Fast alle</td>
+          <td class="risk warn">Mittel</td>
+          <td>areaServed geografisch schärfen (Blankenese-Site nur Elbvororte, etc.)</td>
+        </tr>
+        <tr>
+          <td><b>Template-Fingerprint</b></td>
+          <td>Astro + Tailwind, ähnliche HTML-Struktur</td>
+          <td>6 Sites</td>
+          <td class="risk ok">Niedrig</td>
+          <td>Unterschiedliche Farbwelten pro Site (bereits teils erledigt)</td>
+        </tr>
+        <tr>
+          <td><b>Registrar-Cluster</b></td>
+          <td>IONOS-Bulk-Registrierung 24./25.04.2027</td>
+          <td>7 Domains am selben Tag</td>
+          <td class="risk warn">Mittel</td>
+          <td>Bereits eingespielt — nichts zu tun außer künftig Käufe splitten</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout">
+      <p class="icon-label">Strategie NAP-Diversifizierung</p>
+      <p>Der günstigste + wirksamste Hebel: <b>getrennte Telefonnummern via CallFlow/Sipgate/Placetel</b>. Kostet ca. 3–5 €/Nummer/Monat. Für 3 separate Marken-Nummern → 15 €/Monat und Google sieht plötzlich drei verschiedene Business-Entities.</p>
+      <p>Kombiniert mit: unterschiedlichem Marken-Namen im Impressum („TIMBER Baumdienst" · „HanseGrün" · „Baumdienst Elbvororte"), unterschiedlicher E-Mail (info@ / kontakt@ / hallo@), <b>und</b> unterschiedlichen Google-Konten für Search Console + GBP. Dann greift SpamBrain-Detektion nicht mehr.</p>
+    </div>
+  </section>
+
+  <svg class="ring-divider" viewBox="0 0 60 20" aria-hidden="true">
+    <path d="M2 10 Q30 4 58 10"/>
+    <path d="M4 10 Q30 8 56 10"/>
+    <path d="M8 10 Q30 12 52 10"/>
+  </svg>
+
+  <!-- ═══════ KW-KONFLIKT-MATRIX ═══════ -->
+  <section id="konflikte">
+    <p class="eyebrow">Sektion 4</p>
+    <h2>KW-Konflikt-Matrix</h2>
+    <p class="lede">Wo zielen mehrere Sites auf dasselbe KW? Entscheidend ist <b>nicht</b> die Anzahl, sondern die <b>Intent-Differenz</b>. Ist der Intent unterschiedlich (Info vs. Tool vs. Beauftragen), können mehrere Sites gleichzeitig ranken — Google zeigt sie als drei verschiedene Ergebnistypen. Bei gleichem Intent filtert der Algorithmus.</p>
+
+    <div class="conflict">
+      <div class="conflict-row head">
+        <div>Keyword</div>
+        <div>Sites & Intent</div>
+        <div>Verdikt</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Baumpflege Hamburg</div>
+        <div class="sites">
+          <span><b>baumpfleger-hamburg.de</b><em>transactional</em></span>
+          <span><b>webdesign-norderstedt.com</b><em>mixed (info + transactional)</em></span>
+          <span><b>timber-baumpflege.de</b><em>transactional</em></span>
+        </div>
+        <div class="verdict crit">Konflikt<br>3× transactional</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Baumfällung Hamburg</div>
+        <div class="sites">
+          <span><b>baumfaellung-hamburg.com</b><em>tool + transactional</em></span>
+          <span><b>baumpfleger-hamburg.de/…</b><em>transactional</em></span>
+          <span><b>webdesign-norderstedt.com</b><em>mixed</em></span>
+        </div>
+        <div class="verdict warn">Teils sauber<br>Tool-USP hilft</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Baumkontrolle Hamburg</div>
+        <div class="sites">
+          <span><b>baumpfleger-hamburg.de</b><em>transactional</em></span>
+          <span><b>webdesign-norderstedt.com</b><em>info-heavy</em></span>
+        </div>
+        <div class="verdict ok">Sauber<br>Intent getrennt</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Sturmschaden Hamburg</div>
+        <div class="sites">
+          <span><b>baumpfleger-hamburg.de</b><em>24/7 Notdienst</em></span>
+          <span><b>baumfaellung-hamburg.com</b><em>Service-Sub</em></span>
+          <span><b>webdesign-norderstedt.com</b><em>Deep-Dive</em></span>
+        </div>
+        <div class="verdict crit">Konflikt<br>alle drei transactional</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Kronensicherung Hamburg</div>
+        <div class="sites">
+          <span><b>webdesign-norderstedt.com</b><em>Deep-Dive-Service</em></span>
+          <span><b>baumfaellung-hamburg.com</b><em>Service-Sub</em></span>
+        </div>
+        <div class="verdict warn">Grenzwertig<br>ähnl. Intent</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Stubbenfräsen Hamburg</div>
+        <div class="sites">
+          <span><b>webdesign-norderstedt.com</b><em>Deep-Dive</em></span>
+          <span><b>baumfaellung-hamburg.com</b><em>Service-Sub</em></span>
+          <span><b>baumpfleger-hamburg.de</b><em>Service-Sub „Wurzelentfernung"</em></span>
+        </div>
+        <div class="verdict warn">Grenzwertig</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Baumfällung Norderstedt</div>
+        <div class="sites">
+          <span><b>baumfaellung-norderstedt.de</b><em>lokal-transactional</em></span>
+          <span><b>baumpfleger-hamburg.de/baumfaellung-norderstedt</b><em>HH-Bezirks-Sub</em></span>
+          <span><b>timber-baumpflege.de/norderstedt</b><em>überregional</em></span>
+        </div>
+        <div class="verdict warn">Local-Signal löst es normalerweise</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Baumfällung Altona</div>
+        <div class="sites">
+          <span><b>baumpfleger-hamburg.de/baumfaellung-altona</b><em>Bezirks-Sub</em></span>
+          <span><b>baumfaellung-hamburg.com/hamburg/altona</b><em>Bezirks-Sub</em></span>
+        </div>
+        <div class="verdict crit">Konflikt<br>identischer Intent</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Fällgenehmigung Hamburg</div>
+        <div class="sites">
+          <span><b>baumpfleger-hamburg.de/ratgeber/…</b><em>informational</em></span>
+          <span><b>baumfaellung-hamburg.com/genehmigung</b><em>informational + Tool</em></span>
+        </div>
+        <div class="verdict warn">Grenzwertig<br>Tool-USP könnte trennen</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Baumgutachten Hamburg</div>
+        <div class="sites">
+          <span><b>webdesign-norderstedt.com</b><em>Deep-Dive</em></span>
+        </div>
+        <div class="verdict ok">Unique<br>keine Konkurrenz aus Portfolio</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Baumschutzverordnung Hamburg</div>
+        <div class="sites">
+          <span><b>baumpfleger-hamburg.de/baumschutzverordnung-hamburg</b><em>Ratgeber</em></span>
+          <span><b>baumpflege-baumdienst.de/baumschutz/hamburg</b><em>bundesweiter Info-Hub</em></span>
+          <span><b>timber-baumpflege.de/wissen/recht/baumschutzsatzung-hamburg-sh</b><em>Wissen</em></span>
+        </div>
+        <div class="verdict crit">Konflikt<br>3× informational</div>
+      </div>
+
+      <div class="conflict-row">
+        <div class="kwlabel">Eichenprozessionsspinner Hamburg</div>
+        <div class="sites">
+          <span><b>baumpfleger-hamburg.de/ratgeber/eichenprozessionsspinner-hamburg</b><em>Ratgeber-HH</em></span>
+          <span><b>webdesign-norderstedt.com/baumpflege-hamburg/…</b><em>Service+Info</em></span>
+          <span><b>timber-baumpflege.de/wissen/…-bekaempfen</b><em>überregional Info</em></span>
+        </div>
+        <div class="verdict warn">Grenzwertig</div>
+      </div>
+
+    </div>
+  </section>
+
+  <svg class="ring-divider" viewBox="0 0 60 20" aria-hidden="true">
+    <path d="M2 10 Q30 4 58 10"/>
+    <path d="M4 10 Q30 8 56 10"/>
+    <path d="M8 10 Q30 12 52 10"/>
+  </svg>
+
+  <!-- ═══════ AKTIONSPLAN ═══════ -->
+  <section id="aktion">
+    <p class="eyebrow">Sektion 5</p>
+    <h2>Aktionsplan</h2>
+    <p class="lede">Priorisiert nach Impact und Aufwand. Die roten „Jetzt"-Punkte sind Voraussetzungen für alles danach — sie bringen Google dazu, das Portfolio nicht als eine Entität zu lesen.</p>
+
+    <div class="actions">
+
+      <div class="action">
+        <div class="num">01</div>
+        <div class="body">
+          <h4>WHOIS-Check webdesign-norderstedt.com</h4>
+          <p>Prüfen, wie alt die Domain ist. Ist sie 5+ Jahre alt <b>und</b> hat Backlinks, ist sie der eigentliche Trust-Anker im Portfolio. Dann: alles um sie herum bauen, nicht gegen sie.</p>
+        </div>
+        <div class="lane now">Jetzt</div>
+      </div>
+
+      <div class="action">
+        <div class="num">02</div>
+        <div class="body">
+          <h4>Getrennte Rufnummern über SIP-Anbieter</h4>
+          <p>3 Nummern via Sipgate/Placetel/CallFlow, ~ 3–5 €/Nr./Monat. Zuordnen: <code>+49 40 …</code> für HH-Money-Sites, <code>+49 4102 …</code> für Ahrensburg, <code>+49 40 …</code> für Norderstedt/SH. Rufumleitung auf Dein Handy.</p>
+        </div>
+        <div class="lane now">Jetzt</div>
+      </div>
+
+      <div class="action">
+        <div class="num">03</div>
+        <div class="body">
+          <h4>Marken-Namen im Impressum variieren</h4>
+          <p>Impressumspflicht = Timm Kluth ist unauflösbar. Aber das <b>Marken-Feld</b> darüber variieren: „TIMBER Baumdienst" · „Hanseatischer Baumdienst" · „Elbvororte Baumpflege" · „Baumdienst Stormarn". Wirkt für Google wie separate Anbieter.</p>
+        </div>
+        <div class="lane now">Jetzt</div>
+      </div>
+
+      <div class="action">
+        <div class="num">04</div>
+        <div class="body">
+          <h4>Getrennte GA4-Properties + Search-Console-Konten</h4>
+          <p>Pro Marke eigenes Google-Konto (Gmail reicht). Weniger für SEO — mehr um den „ein Betreiber"-Fingerprint aus Google Analytics + GSC-Verwaltung zu entfernen.</p>
+        </div>
+        <div class="lane short">Woche 1–2</div>
+      </div>
+
+      <div class="action">
+        <div class="num">05</div>
+        <div class="body">
+          <h4>Entscheidung baumfaellunghamburg.com</h4>
+          <p>Zwei Optionen: <b>(A)</b> als Tool/Info-Portal ausbauen (Kostenrechner + Wizard + Schonzeit-Kalender) — konkurriert nicht mit baumfaellung-hamburg.com weil anderes Intent. <b>(B)</b> 301-Redirect auf baumfaellung-hamburg.com — bündelt Trust auf eine Domain.</p>
+        </div>
+        <div class="lane short">Woche 1–2</div>
+      </div>
+
+      <div class="action">
+        <div class="num">06</div>
+        <div class="body">
+          <h4>baumpfleger-hamburg.de Homepage ausbauen (469 → 1500 W)</h4>
+          <p>Aktuell zu dünn für Head-KW „Baumpfleger Hamburg". Bezirks-Cluster ist stark, aber Home muss mit — sonst rankt eine der Konkurrenz-Sites für den Head-Term.</p>
+        </div>
+        <div class="lane short">Woche 2–3</div>
+      </div>
+
+      <div class="action">
+        <div class="num">07</div>
+        <div class="body">
+          <h4>baumfaellung-norderstedt.de auf 1300+ W bringen</h4>
+          <p>492 W ist Cold-Start. Übernehmen was aus timber-baumpflege.de/norderstedt und baumfaellung-ahrensburg.de übertragbar ist (Umschreiben, nicht Kopieren — sonst Duplicate).</p>
+        </div>
+        <div class="lane short">Woche 2–3</div>
+      </div>
+
+      <div class="action">
+        <div class="num">08</div>
+        <div class="body">
+          <h4>timber-baumpflege.de/hamburg deprioritisieren</h4>
+          <p>TIMBER-Marke soll für <b>SH-Umland</b> ranken, nicht für HH. Der /hamburg-Zweig kannibalisiert mit baumpfleger-hamburg.de. Content dort dünner halten, Fokus auf Bad Segeberg · Kaltenkirchen · Norderstedt · Quickborn stärken.</p>
+        </div>
+        <div class="lane short">Woche 2–3</div>
+      </div>
+
+      <div class="action">
+        <div class="num">09</div>
+        <div class="body">
+          <h4>Klärung baumpflege-hamburg.de</h4>
+          <p>Domain existiert, DNS zeigt auf Vercel, aber keine Website. Optionen: (a) 301 auf baumpfleger-hamburg.de (bündelt Trust); (b) als reine Ratgeber-Site aufsetzen (informational-Intent, damit kein Konflikt); (c) parken bis andere Sites stabil ranken.</p>
+        </div>
+        <div class="lane mid">Q1</div>
+      </div>
+
+      <div class="action">
+        <div class="num">10</div>
+        <div class="body">
+          <h4>baumfaellung-pinneberg.de aufsetzen</h4>
+          <p>Selbes Template wie -ahrensburg / -norderstedt, angepasste Ortsteile: Pinneberg, Schenefeld, Halstenbek, Rellingen, Elmshorn, Wedel. 25–30 URLs, 1200–1500 W Homepage.</p>
+        </div>
+        <div class="lane mid">Q1</div>
+      </div>
+
+      <div class="action">
+        <div class="num">11</div>
+        <div class="body">
+          <h4>baumschnitthamburg.de: Nischen-Site „Obst- & Formschnitt HH"</h4>
+          <p>Statt Head-„Baumschnitt Hamburg" (kannibalisiert) → Nische besetzen: Obstbaumschnitt, Formschnitt, Junghecken. Zielgruppe Gartenbesitzer · WEG-Innenhöfe. Anderes Design/Marke.</p>
+        </div>
+        <div class="lane mid">Q1–Q2</div>
+      </div>
+
+      <div class="action">
+        <div class="num">12</div>
+        <div class="body">
+          <h4>Externe Backlinks statt Cross-Links im Portfolio</h4>
+          <p>Handwerkskammer Hamburg · Innung Garten- und Landschaftsbau SH · lokale Pressemitteilungen · Nachbarschafts-Portale (nebenan.de) · Immoscout-Ratgeber-Gastbeiträge. <b>Ein</b> externer Backlink von einer Seite mit echtem Trust zählt mehr als 10 interne Verweise zwischen Deinen Sites.</p>
+        </div>
+        <div class="lane mid">Q1–Q2</div>
+      </div>
+
+      <div class="action">
+        <div class="num">13</div>
+        <div class="body">
+          <h4>Rank-Tracker aufsetzen · Ist-Zustand messen</h4>
+          <p>Sistrix (teuer aber gründlich) oder SEObility Ranktracker (günstig). Alle KWs aus der Konflikt-Matrix + Top-10-KWs pro Site einpflegen. Monatlich messen: welche Site rankt für welches KW auf welcher Position. Dann sichtbar, wann Google filtert.</p>
+        </div>
+        <div class="lane mid">Q1</div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
