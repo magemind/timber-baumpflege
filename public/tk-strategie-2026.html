@@ -512,6 +512,75 @@
   a { color: var(--accent); }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 
+  /* kw export */
+  .kw-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 900px) { .kw-grid { grid-template-columns: 1fr; } }
+  .kw-block {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .kw-block-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .kw-block-head h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 13.5px;
+    margin: 0;
+    letter-spacing: -0.005em;
+    word-break: break-word;
+  }
+  .kw-block-head .count {
+    font-size: 11px;
+    color: var(--text-low);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-left: 6px;
+    font-weight: 500;
+  }
+  .copy-btn {
+    background: var(--surface-alt);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 5px 12px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: var(--font-body);
+    white-space: nowrap;
+    transition: background 0.12s, color 0.12s;
+  }
+  .copy-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .copy-btn.ok { background: var(--ok); color: #fff; border-color: var(--ok); }
+  .kw-block textarea {
+    width: 100%;
+    background: var(--surface-sunk);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.55;
+    resize: vertical;
+    min-height: 180px;
+  }
+
   /* callout */
   .callout {
     background: var(--surface-alt);
@@ -543,6 +612,7 @@
         <a href="#nap">NAP-Fingerprint</a>
         <a href="#konflikte">KW-Konflikte</a>
         <a href="#aktion">Aktionsplan</a>
+        <a href="#kw-export">KW-Export</a>
       </nav>
     </div>
     <div class="meta">
@@ -1249,6 +1319,497 @@
       </div>
 
     </div>
+  </section>
+
+  <svg class="ring-divider" viewBox="0 0 60 20" aria-hidden="true">
+    <path d="M2 10 Q30 4 58 10"/>
+    <path d="M4 10 Q30 8 56 10"/>
+    <path d="M8 10 Q30 12 52 10"/>
+  </svg>
+
+  <!-- ═══════ KW-EXPORT ═══════ -->
+  <section id="kw-export">
+    <p class="eyebrow">Sektion 6</p>
+    <h2>KW-Export · zum Kopieren</h2>
+    <p class="lede">Alle Ziel-Keywords pro Domain, eine pro Zeile — Orte ausexpandiert. Klick auf „kopieren" landet direkt in Deiner Zwischenablage. Import in Sistrix / SEObility / Ahrefs / Google Search Console geht damit direkt.</p>
+
+    <div class="kw-grid">
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumpfleger-hamburg.de <span class="count">44 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-bph">kopieren</button>
+        </div>
+        <textarea id="kw-bph" readonly rows="18">Baumpfleger Hamburg
+Baumpflege Hamburg
+Baumfällung Hamburg
+Baumdienst Hamburg
+Baumkontrolle Hamburg
+Sturmschaden Hamburg
+Sturmschaden-Notdienst Hamburg
+Wurzelentfernung Hamburg
+Stubbenfräsen Hamburg
+Baumschutzverordnung Hamburg
+HmbBaumSchVO
+Baumpfleger Altona
+Baumpfleger Eimsbüttel
+Baumpfleger Wandsbek
+Baumpfleger Hamburg-Nord
+Baumpfleger Bergedorf
+Baumpfleger Harburg
+Baumpflege Altona
+Baumpflege Eimsbüttel
+Baumpflege Wandsbek
+Baumpflege Hamburg-Nord
+Baumpflege Bergedorf
+Baumpflege Harburg
+Baumfällung Altona
+Baumfällung Eimsbüttel
+Baumfällung Wandsbek
+Baumfällung Hamburg-Nord
+Baumfällung Bergedorf
+Baumfällung Harburg
+Baumpflege Norderstedt
+Baumfällung Norderstedt
+Baumpfleger Norderstedt
+Baumfällung Landkreis Harburg
+Baumfällung Hamburg Kosten
+Fällgenehmigung Hamburg
+Baum fällen Privatgrundstück Hamburg
+Toten Baum fällen Hamburg
+Wann Baum schneiden Hamburg
+Eichenprozessionsspinner Hamburg
+Baumkrankheiten erkennen
+Wurzelschäden Haus
+Baumfällung Genehmigung Hamburg
+Baumfällung Hamburg wann notwendig
+Sturmvorsorge Hamburger Bäume</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>webdesign-norderstedt.com <span class="count">30 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-wdn">kopieren</button>
+        </div>
+        <textarea id="kw-wdn" readonly rows="18">Baumpflege Hamburg
+Baumfällung Hamburg
+Baumgutachten Hamburg
+Baumsachverständiger Hamburg
+Baumschutz auf Baustellen Hamburg
+Kroneneinkürzung Hamburg
+Kronenauslichtung Hamburg
+Kronenpflege Hamburg
+Kronensicherung Hamburg
+Jungbaumpflege Hamburg
+Baumpflanzung Hamburg
+Baumkontrolle Hamburg
+Baumschnitt Hamburg
+Stubbenfräsen Hamburg
+Eichenprozessionsspinner Hamburg
+Sturmschaden Baum Hamburg
+Kosten Baumfällung Hamburg
+Grundstücksrodung Hamburg
+Baumpflege Hamburg Altona
+Baumpflege Hamburg Wandsbek
+Baumpflege Hamburg Eimsbüttel
+Baumpflege Hamburg Harburg
+Baumpflege Hamburg Winterhude
+Baumpflege Hamburg Eppendorf
+Baumpflege Hamburg Barmbek
+Baumpflege Hamburg Niendorf
+Baumfällung Hamburg Altona
+Baumfällung Hamburg Wandsbek
+Baumfällung Hamburg Eimsbüttel
+Baumfällung Hamburg Harburg</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>timber-baumpflege.de <span class="count">50 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-timber">kopieren</button>
+        </div>
+        <textarea id="kw-timber" readonly rows="18">TIMBER Baumpflege
+TIMBER Baumdienst
+Baumpflege Schleswig-Holstein
+Baumpflege Norddeutschland
+Baumdienst Schleswig-Holstein
+Preisrechner Baumfällung
+Baumfällung Kostenrechner
+Baumpflege Norderstedt
+Baumfällung Norderstedt
+Baumdienst Norderstedt
+Baumpfleger Norderstedt
+Baumpflege Bad Segeberg
+Baumfällung Bad Segeberg
+Baumdienst Bad Segeberg
+Baumpfleger Bad Segeberg
+Baumpflege Kaltenkirchen
+Baumfällung Kaltenkirchen
+Baumdienst Kaltenkirchen
+Baumpfleger Kaltenkirchen
+Baumpflege Henstedt-Ulzburg
+Baumfällung Henstedt-Ulzburg
+Baumdienst Henstedt-Ulzburg
+Baumpfleger Henstedt-Ulzburg
+Baumpflege Quickborn
+Baumfällung Quickborn
+Baumdienst Quickborn
+Baumpfleger Quickborn
+Baumpflege Hamburg
+Baumfällung Hamburg
+Baumdienst Hamburg
+Baumpfleger Hamburg
+Brandkrustenpilz erkennen
+Eichenprozessionsspinner bekämpfen
+Massaria Platanen
+Rußrindenkrankheit Ahorn
+Baumkontrolle FLL
+Baumschutzsatzung Grundlagen
+Baumschutzsatzung Hamburg
+Kronensicherung dynamisch
+Kronensicherung statisch
+SKT-B
+SKT-A
+Sturmschaden Checkliste
+Verkehrssicherungspflicht Baum
+Verkehrssicherungspflicht Baumeigentümer
+Vogelschutzfrist Baumfällung
+Winterschnitt vs Sommerschnitt
+Wurzelschäden am Haus
+Fällantrag Ablauf
+Ersatzpflanzung</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumpflege-baumdienst.de <span class="count">67 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-bbd">kopieren</button>
+        </div>
+        <textarea id="kw-bbd" readonly rows="18">Baumpflege
+Baumdienst
+Berg-Ahorn
+Eiche
+Feld-Ahorn
+Gemeine Esche
+Gemeine Fichte
+Ginkgo
+Hainbuche
+Platane
+Robinie
+Rosskastanie
+Rotbuche
+Sand-Birke
+Silber-Weide
+Sommer-Linde
+Spitz-Ahorn
+Wald-Kiefer
+Winter-Linde
+Brandkrustenpilz
+Eichenprozessionsspinner
+Eschentriebsterben
+Feuerbrand
+Kastanien-Miniermotte
+Massaria
+Phytophthora
+Riesenporling
+Rußrindenkrankheit
+Baumschutzverordnung Baden-Württemberg
+Baumschutzverordnung Bayern
+Baumschutzverordnung Berlin
+Baumschutzverordnung Brandenburg
+Baumschutzverordnung Bremen
+Baumschutzverordnung Hamburg
+Baumschutzverordnung Hessen
+Baumschutzverordnung Mecklenburg-Vorpommern
+Baumschutzverordnung Niedersachsen
+Baumschutzverordnung Nordrhein-Westfalen
+Baumschutzverordnung Rheinland-Pfalz
+Baumschutzverordnung Saarland
+Baumschutzverordnung Sachsen-Anhalt
+Baumschutzverordnung Sachsen
+Baumschutzverordnung Schleswig-Holstein
+Baumschutzverordnung Thüringen
+Baumpflege Januar
+Baumpflege Februar
+Baumpflege März
+Baumpflege April
+Baumpflege Mai
+Baumpflege Juni
+Baumpflege Juli
+Baumpflege August
+Baumpflege September
+Baumpflege Oktober
+Baumpflege November
+Baumpflege Dezember
+Baumdienst wählen
+Baumkontrolle FLL
+Baumpflege Kosten
+Baumtestament
+Ersatzpflanzung Fällgenehmigung
+Klimawandel Baumbestand
+Nachbarrecht Bäume
+Verkehrssicherungspflicht
+Wurzelraum Schutz Baustellen
+Baumart bestimmen
+Baumkrankheiten Finder
+Baumwert Rechner
+Darf ich fällen</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumfaellung-ahrensburg.de <span class="count">24 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-ahr">kopieren</button>
+        </div>
+        <textarea id="kw-ahr" readonly rows="18">Baumfällung Ahrensburg
+Baumpflege Ahrensburg
+Baumpfleger Ahrensburg
+Baumdienst Ahrensburg
+Baumschnitt Ahrensburg
+Wurzelentfernung Ahrensburg
+Notfall Baumfällung Ahrensburg
+Stubbenfräsen Ahrensburg
+Baumkontrolle Ahrensburg
+Baumfällung Ahrensburg-West
+Baumfällung Ahrensfelde
+Baumfällung Am Hagen
+Baumfällung Erlenhof
+Baumfällung Gartenholz
+Baumfällung Reesenbüttel
+Baumfällung Stadtzentrum Ahrensburg
+Baumfällung Wulfsdorf
+Baumfällgenehmigung Ahrensburg
+Baumschutz Ahrensburg
+Kosten Baumfällung Ahrensburg
+Baumfällung Ahrensburg Kosten
+Baum fällen ohne Genehmigung
+Kosten Stubbenfräsen
+Schonzeit Baumschnitt Ahrensburg</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumfaellung-norderstedt.de <span class="count">22 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-nds">kopieren</button>
+        </div>
+        <textarea id="kw-nds" readonly rows="18">Baumfällung Norderstedt
+Baumpflege Norderstedt
+Baumpfleger Norderstedt
+Baumdienst Norderstedt
+Baumschnitt Norderstedt
+Notfall Sturmdienst Norderstedt
+Wurzelentfernung Norderstedt
+Stubbenfräsen Norderstedt
+Baumkontrolle Norderstedt
+Baumfällung Norderstedt-Mitte
+Baumfällung Garstedt
+Baumfällung Glashütte
+Baumfällung Harksheide
+Baumfällung Friedrichsgabe
+Baumfällung Henstedt-Ulzburg
+Baumfällung Kaltenkirchen
+Baumfällung Quickborn
+Baumfällung Ellerau
+Baumfällung Hasloh
+Baumfällung Norderstedt Kosten
+Fällgenehmigung Norderstedt
+Sturmschaden Norderstedt</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumfaellung-blankenese.de <span class="count">27 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-bla">kopieren</button>
+        </div>
+        <textarea id="kw-bla" readonly rows="18">Baumfällung Blankenese
+Baumpflege Blankenese
+Baumpfleger Blankenese
+Baumdienst Blankenese
+Baumschnitt Blankenese
+Kronensicherung Blankenese
+Stubbenfräsen Blankenese
+Wurzelentfernung Blankenese
+Baumkontrolle Blankenese
+Baumfällung Treppenviertel
+Baumfällung Elbhang
+Baumfällung Elbchaussee
+Baumpflege Treppenviertel
+Baumpflege Elbhang
+Baumfällung Nienstedten
+Baumfällung Iserbrook
+Baumfällung Rissen
+Baumfällung Sülldorf
+Baumfällung Othmarschen
+Baumpflege Nienstedten
+Baumpflege Iserbrook
+Baumpflege Rissen
+Baumpflege Sülldorf
+Baumpflege Othmarschen
+Baumfällgenehmigung Altona
+Baumfällung Blankenese Kosten
+Baumpflege Elbvororte</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumfaellung-hamburg.com <span class="count">25 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-bfhh">kopieren</button>
+        </div>
+        <textarea id="kw-bfhh" readonly rows="18">Baumfällung Hamburg
+Baumfällung Hamburg Kostenrechner
+Baumfällung Hamburg Kosten
+Baumfällung Genehmigung Hamburg
+Baumpflege Hamburg
+Baumschnitt Hamburg
+Kronensicherung Hamburg
+Wurzelentfernung Hamburg
+Notfall Baumfällung Hamburg
+Sturmschaden Hamburg
+Stubbenfräsen Hamburg
+Baumfällung Hamburg-Mitte
+Baumfällung Altona
+Baumfällung Eimsbüttel
+Baumfällung Hamburg-Nord
+Baumfällung Wandsbek
+Baumfällung Bergedorf
+Baumfällung Harburg
+Baumfällung Hamburg wann notwendig
+Baumkrankheiten Hamburg erkennen
+Sturmvorsorge Hamburger Bäume
+Fällgenehmigung Hamburg
+Baumfällung Kosten Rechner
+Baumfällkosten Hamburg
+Baumfällung HH</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumfaellunghamburg.com <span class="count">geplant · 12 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-bfhh2">kopieren</button>
+        </div>
+        <textarea id="kw-bfhh2" readonly rows="14">Baumfällung Hamburg Kosten
+Baumfällung Hamburg Kostenrechner
+Fällgenehmigung Hamburg
+HmbBaumSchVO Wizard
+Baum selbst fällen Hamburg
+Wann Baum fällen Hamburg
+Baumfällung Hamburg DIY
+Baumfällung Hamburg Ablauf
+Baumfällung Hamburg selbst machen
+Baumfällung Hamburg Anleitung
+Baumfällung Hamburg Genehmigung Antrag
+Vogelschutzfrist Hamburg</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumfaellung-pinneberg.de <span class="count">geplant · 18 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-pin">kopieren</button>
+        </div>
+        <textarea id="kw-pin" readonly rows="14">Baumfällung Pinneberg
+Baumpflege Pinneberg
+Baumdienst Pinneberg
+Baumpfleger Pinneberg
+Baumschnitt Pinneberg
+Baumkontrolle Pinneberg
+Stubbenfräsen Pinneberg
+Baumfällung Schenefeld
+Baumfällung Halstenbek
+Baumfällung Rellingen
+Baumfällung Elmshorn
+Baumfällung Wedel
+Baumfällung Uetersen
+Baumfällung Tornesch
+Baumfällung Pinneberg Kosten
+Fällgenehmigung Pinneberg
+Sturmschaden Pinneberg
+Notfall Baumfällung Pinneberg</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumschnitthamburg.de <span class="count">geplant · 16 KWs</span></h3>
+          <button class="copy-btn" data-target="kw-bsh">kopieren</button>
+        </div>
+        <textarea id="kw-bsh" readonly rows="14">Baumschnitt Hamburg
+Obstbaumschnitt Hamburg
+Formschnitt Hamburg
+Junghecke Hamburg
+Heckenschnitt Hamburg
+Kroneneinkürzung Hamburg
+Kronenauslichtung Hamburg
+Kronenpflege Hamburg
+Baumschnitt Altona
+Baumschnitt Wandsbek
+Baumschnitt Eimsbüttel
+Baumschnitt Blankenese
+Baumschnitt Bergedorf
+Baumschnitt Harburg
+Obstbaum schneiden Hamburg
+Wann Obstbaum schneiden</textarea>
+      </div>
+
+      <div class="kw-block">
+        <div class="kw-block-head">
+          <h3>baumpflege-hamburg.de <span class="count">Klärung offen</span></h3>
+          <button class="copy-btn" data-target="kw-bph2">kopieren</button>
+        </div>
+        <textarea id="kw-bph2" readonly rows="6">Baumpflege Hamburg
+(Rolle klären: entweder 301 auf baumpfleger-hamburg.de,
+oder als reine Ratgeber-Site mit informational Intent,
+sonst Konflikt mit baumpfleger-hamburg.de + webdesign-norderstedt.com)</textarea>
+      </div>
+
+      <div class="kw-block" style="grid-column: 1/-1;">
+        <div class="kw-block-head">
+          <h3>ALLE KWs (335) · in einer Liste</h3>
+          <button class="copy-btn" data-target="kw-all">alles kopieren</button>
+        </div>
+        <textarea id="kw-all" readonly rows="20"></textarea>
+      </div>
+
+    </div>
+
+    <script>
+      // "Alle" Textarea aus den anderen zusammenbauen
+      (function () {
+        const ids = ['kw-bph','kw-wdn','kw-timber','kw-bbd','kw-ahr','kw-nds','kw-bla','kw-bfhh','kw-bfhh2','kw-pin','kw-bsh'];
+        const all = new Set();
+        ids.forEach(id => {
+          const t = document.getElementById(id);
+          if (!t) return;
+          t.value.split('\n').forEach(kw => {
+            const clean = kw.trim();
+            if (clean && !clean.startsWith('(')) all.add(clean);
+          });
+        });
+        const allEl = document.getElementById('kw-all');
+        if (allEl) allEl.value = Array.from(all).sort((a,b)=>a.localeCompare(b,'de')).join('\n');
+      })();
+
+      // Copy-Buttons
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const el = document.getElementById(btn.dataset.target);
+          if (!el) return;
+          const text = el.value;
+          const done = () => {
+            const orig = btn.textContent;
+            btn.textContent = '✓ kopiert';
+            btn.classList.add('ok');
+            setTimeout(() => { btn.textContent = orig; btn.classList.remove('ok'); }, 1500);
+          };
+          try {
+            await navigator.clipboard.writeText(text);
+            done();
+          } catch (e) {
+            el.focus(); el.select();
+            try { document.execCommand('copy'); done(); }
+            catch (err) { alert('Bitte manuell markieren und kopieren.'); }
+          }
+        });
+      });
+    </script>
   </section>
 
 </div>
