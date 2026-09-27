@@ -10,7 +10,7 @@ export const SITE = {
 export const CONTACT = {
   phone: '+491771583264',
   phoneDisplay: '0177 15 83 264',
-  email: 'kontakt@timber-baumpflege.de',
+  email: 'baumpflege247@gmail.com',
   whatsapp: 'https://wa.me/491771583264',
   street: 'Segeberger Straße 100',
   zip: '23866',
