@@ -26,7 +26,7 @@ export const CONTACT = {
 export const TEAM = {
   headline: 'Ein Team. Ein Anspruch.',
   intro:
-    'TIMBER ist kein Ein-Mann-Betrieb und keine Kette. TIMBER ist ein festes Kernteam mit SKT-A-Kletterei plus ein eingespielter Kreis freier Fachpartner, die die weiteren Nachweise abdecken. Auf jeden Einsatz kommt das Team so, dass die geforderten Qualifikationen vor Ort sind — nicht auf einer Website versprochen, sondern in der Krone.',
+    'TIMBER ist kein Ein-Mann-Betrieb und keine Kette. TIMBER ist ein Baumpflege-Verbund mit ETW-, SKT-A/B- und AS-Baum-qualifizierten Kletterern, die alle geforderten Nachweise abdecken. Auf jeden Einsatz kommt das Team so, dass die geforderten Qualifikationen vor Ort sind — nicht auf einer Website versprochen, sondern in der Krone.',
   fokus:
     'Unser Fokus: schwierige Fällungen in engen Lagen, Kronensicherung statt Kahlschlag, langfristige Baumpflege statt Notfall-Kaskade.',
 };
@@ -392,3 +392,17 @@ export function localBusinessSchema(stadt: { name: string; lat: number; lng: num
     serviceType: ['Baumpflege', 'Baumfällung', 'Kronensicherung', 'Verkehrssicherungspflicht', 'Sturm-Notdienst'],
   };
 }
+
+// Bevorzugter Kontaktweg: WhatsApp oder E-Mail MIT FOTOS. Telefon nur sekundär (Notfall).
+export function waLink(text = 'Hallo, ich schicke Euch Fotos von meinem Baum. Bitte um Einschätzung und Preisspanne.') {
+  return `${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`;
+}
+// Mail-Link nur Base64-kodiert ausgeliefert (Anti-Scraping); Skript in BaseLayout setzt den href.
+export function mailB64(subject = 'Baum-Anfrage mit Fotos') {
+  const body = 'Hallo, anbei Fotos von meinem Baum (Gesamtansicht, Stamm, Standort).\n\nAdresse/PLZ:\nWas soll passieren (fällen, pflegen, kürzen):\nTelefon für Rückfragen (optional):';
+  return Buffer.from(`mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`).toString('base64');
+}
+export const VERBUND = {
+  name: 'TIMBER Verbund',
+  short: 'Verbund aus festem Kernteam und regionalen Fachpartnern',
+};

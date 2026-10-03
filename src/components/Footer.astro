@@ -1,5 +1,5 @@
 ---
-import { SITE, CONTACT, LEISTUNGEN, WISSEN, STAEDTE } from '../config';
+import { SITE, CONTACT, LEISTUNGEN, WISSEN, STAEDTE, waLink, mailB64 } from '../config';
 const year = new Date().getFullYear();
 ---
 
@@ -52,7 +52,9 @@ const year = new Date().getFullYear();
       <div>
         <h4 class="text-caption font-semibold uppercase tracking-widest text-messing mb-4">Kontakt</h4>
         <ul class="space-y-2.5 text-body-sm text-birke/70">
-          <li><a href={`tel:${CONTACT.phone}`} class="text-messing font-semibold no-underline hover:text-birke transition-colors">☎ {CONTACT.phoneDisplay}</a></li>
+          <li><a href={waLink()} class="text-messing font-semibold no-underline hover:text-birke transition-colors" target="_blank" rel="noopener">WhatsApp mit Fotos</a></li>
+          <li><a data-mb={mailB64()} href="/kontakt/" class="no-underline hover:text-birke transition-colors">E-Mail mit Fotos</a></li>
+          <li><a href={`tel:${CONTACT.phone}`} class="no-underline hover:text-birke transition-colors">Notfall-Telefon: {CONTACT.phoneDisplay}</a></li>
           <li class="text-caption">{CONTACT.hours}</li>
           <li class="pt-3 text-caption">
             <a href="/impressum/" class="text-birke/60 hover:text-messing no-underline mr-4">Impressum</a>

@@ -2,7 +2,7 @@
 import { CONTACT } from '../config';
 
 const phoneDigits = CONTACT.phone.replace(/[^0-9]/g, '').replace(/^0/, '49');
-const text = 'Hallo TIMBER Baumpflege, ich habe eine Anfrage.';
+const text = 'Hallo, ich schicke Euch Fotos von meinem Baum. Bitte um Einschätzung und Preisspanne.';
 const href = `https://api.whatsapp.com/send/?phone=${phoneDigits}&text=${encodeURIComponent(text)}&type=phone_number&app_absent=0`;
 ---
 <a
@@ -10,12 +10,12 @@ const href = `https://api.whatsapp.com/send/?phone=${phoneDigits}&text=${encodeU
   class="wa-pill"
   target="_blank"
   rel="noopener noreferrer"
-  aria-label="Per WhatsApp Kontakt aufnehmen"
+  aria-label="Foto per WhatsApp senden"
 >
   <svg class="wa-ico" viewBox="0 0 32 32" aria-hidden="true">
     <path fill="currentColor" d="M16 2.667C8.636 2.667 2.667 8.636 2.667 16c0 2.354.618 4.66 1.79 6.687L2.667 29.333l6.85-1.767A13.28 13.28 0 0 0 16 29.333c7.364 0 13.333-5.969 13.333-13.333S23.364 2.667 16 2.667Zm7.744 18.85c-.33.923-1.934 1.766-2.687 1.827-.686.057-1.548.084-2.502-.156-.577-.145-1.317-.386-2.267-.795-3.987-1.723-6.591-5.735-6.79-6-.198-.265-1.622-2.155-1.622-4.11 0-1.956 1.028-2.917 1.392-3.315.363-.397.79-.497 1.055-.497.264 0 .528.003.759.014.243.012.57-.092.892.68.331.796 1.127 2.752 1.226 2.95.099.199.165.43.033.696-.132.264-.198.43-.397.662-.198.232-.418.518-.596.696-.198.198-.405.413-.174.812.232.397 1.032 1.703 2.216 2.758 1.523 1.357 2.807 1.777 3.204 1.975.397.199.63.166.86-.099.232-.264.99-1.16 1.253-1.558.264-.397.529-.331.892-.198.363.132 2.315 1.09 2.712 1.29.397.198.662.297.76.463.099.166.099.96-.231 1.884Z"/>
   </svg>
-  <span class="wa-txt">WhatsApp</span>
+  <span class="wa-txt">Foto senden</span>
 </a>
 
 <style>
