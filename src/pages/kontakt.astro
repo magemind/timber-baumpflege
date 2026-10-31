@@ -56,7 +56,7 @@ const mailActionB64 = Buffer.from('mailto:' + CONTACT.email).toString('base64');
         id="contact-form"
         method="post"
         class="panel space-y-5"
-        data-action={mailActionB64}
+        data-timber-anfrage
       >
         <div>
           <span class="eyebrow">Nachricht</span>
@@ -84,25 +84,10 @@ const mailActionB64 = Buffer.from('mailto:' + CONTACT.email).toString('base64');
         </label>
 
         <button type="submit" class="btn-primary w-full justify-center">Nachricht senden</button>
-        <p class="text-caption text-rauch">Öffnet Deine E-Mail-App mit vorausgefülltem Text.</p>
       </form>
     </div>
   </section>
 
-  <script is:inline>
-    const form = document.getElementById('contact-form');
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const b64 = form.getAttribute('data-action');
-        if (!b64) return;
-        const mailto = atob(b64);
-        const fd = new FormData(form);
-        const body = `Name: ${fd.get('name')}\nKontakt: ${fd.get('kontakt')}\nStandort: ${fd.get('ort')}\n\n${fd.get('nachricht')}`;
-        const subject = 'Anfrage TIMBER Baumpflege';
-        window.location.href = `${mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      });
-    }
-  </script>
 
+  <script is:inline src="https://serp-ecru.vercel.app/anfrage.js" defer></script>
 </BaseLayout>
