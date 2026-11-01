@@ -1,5 +1,20 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "tdm-reservation",
+          "value": "1"
+        },
+        {
+          "key": "tdm-policy",
+          "value": "https://timber-baumpflege.de/impressum/"
+        }
+      ]
+    }
+  ]
 }

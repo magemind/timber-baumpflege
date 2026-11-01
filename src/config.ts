@@ -394,7 +394,7 @@ export function localBusinessSchema(stadt: { name: string; lat: number; lng: num
 }
 
 // Bevorzugter Kontaktweg: WhatsApp oder E-Mail MIT FOTOS. Telefon nur sekundär (Notfall).
-export function waLink(text = 'Hallo, ich schicke Euch Fotos von meinem Baum. Bitte um Einschätzung und Preisspanne.') {
+export function waLink(text = 'Hallo, ich habe eine Anfrage zu meinem Baum.') {
   return `${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`;
 }
 // Mail-Link nur Base64-kodiert ausgeliefert (Anti-Scraping); Skript in BaseLayout setzt den href.
