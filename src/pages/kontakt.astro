@@ -27,9 +27,9 @@ const mailActionB64 = Buffer.from('mailto:' + CONTACT.email).toString('base64');
       <!-- CONTACT CARDS -->
       <div class="grid gap-4 sm:grid-cols-2 self-start">
         <a href={waLink()} target="_blank" rel="noopener" class="panel group no-underline">
-          <div class="text-caption uppercase tracking-widest text-messing-dark">WhatsApp mit Fotos · empfohlen</div>
-          <div class="mt-3 font-display text-2xl text-forst group-hover:text-messing-dark transition-colors">Chat & Foto</div>
-          <p class="mt-3 text-body-sm text-rauch">Foto vom Baum reicht meist für eine erste Einschätzung</p>
+          <div class="text-caption uppercase tracking-widest text-messing-dark">Kontakt per WhatsApp</div>
+          <div class="mt-3 font-display text-2xl text-forst group-hover:text-messing-dark transition-colors">Chat</div>
+          <p class="mt-3 text-body-sm text-rauch">Am schnellsten – Fotos gern dazu</p>
         </a>
         <a href={`tel:${CONTACT.phone}`} class="panel group no-underline">
           <div class="text-caption uppercase tracking-widest text-messing-dark">Telefon · Notfälle</div>
@@ -37,7 +37,7 @@ const mailActionB64 = Buffer.from('mailto:' + CONTACT.email).toString('base64');
           <p class="mt-3 text-body-sm text-rauch">Für Eiliges &amp; Sturmschäden · 24/7 Notdienst</p>
         </a>
         <div class="panel">
-          <div class="text-caption uppercase tracking-widest text-messing-dark">E-Mail mit Fotos</div>
+          <div class="text-caption uppercase tracking-widest text-messing-dark">Kontakt per E-Mail</div>
           <div class="mt-3 font-display text-lg text-forst"><ProtectedEmail /></div>
           <p class="mt-3 text-body-sm text-rauch">Antwort innerhalb eines Werktags</p>
         </div>
